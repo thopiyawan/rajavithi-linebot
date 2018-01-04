@@ -87,9 +87,11 @@ class GetMessageController extends Controller
                 $case = 1;
                 $seqcode = '0001';
                 $nextseqcode = '0002';
-                // $userMessage  = 'ยินดีครับ/ค่ะ กรุณาอย่าพิมพ์หรือส่งรูปภาพที่ไม่มีข้อความแจ้งบอกนะครับ/ค่ะ';
-                $userMessage  = DB::select( DB::raw('SELECT question FROM public.sequents WHERE seqcode =:seqcode'), array('seqcode' => $seqcode));
-                // $sequentsteps_insert =  sequentsteps::insert(['sender_id'=>$user,'seqcode' => $seqcode,'answer' => 'NULL','nextseqcode' =>$nextseqcode,'status'=>'1','created_at'=>NOW() , 'updated_at'=>NOW()]);             
+                $userMessage  = DB::table('public.sequents')
+                                ->where('seqcode',$seqcode)
+                                ->get();
+                 $userMessage= $userMessage->question;
+                  // $sequentsteps_insert =  $this->sequentsteps_insert($user,$seqcode,$nextseqcode);
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
                 $userMessage  = 'สวัสดีค่ะ ';
                 $case = 1; 
