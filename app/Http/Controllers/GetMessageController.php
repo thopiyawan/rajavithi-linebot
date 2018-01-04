@@ -77,14 +77,17 @@ class GetMessageController extends Controller
            //$sequentsteps->seqcode
 
             if ($userMessage =='ขอนัดกลืนแร่') {
-                  $case = 1;
-                  $seqcode = '0001';
-                  $nextseqcode = '0002';
-                  $userMessage  = $this->sequents_question($seqcode);
+                $case = 1;
+                $seqcode = '0001';
+                $nextseqcode = '0002';
+                $userMessage  = $this->sequents_question($seqcode);
                   // $sequentsteps_insert =  $this->sequentsteps_insert($user,$seqcode,$nextseqcode);
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false) {
-                   $userMessage  = 'สวัสดีค่ะ ';
-                   $case = 1; 
+                $userMessage  = 'สวัสดีค่ะ ';
+                $case = 1; 
+            }else{
+                $userMessage  = 'ฉันไม่เข้าใจ';
+                $case = 1; 
             }     
              return $this->replymessage($replyToken,$userMessage,$case);
     }
