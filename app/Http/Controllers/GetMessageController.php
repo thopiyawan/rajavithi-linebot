@@ -68,9 +68,38 @@ class GetMessageController extends Controller
             }
 
             $textMessageBuilder = new TextMessageBuilder($userMessage);
-            $response = $bot->replyMessage($replyToken,$textMessageBuilder); 
-            // return $this->checkmessage($replyToken,$userMessage,$user);
+            // $response = $bot->replyMessage($replyToken,$textMessageBuilder); 
+            return $this->checkmessage($replyToken,$userMessage,$user);
     }
+    public function checkmessage($replyToken,$userMessage,$user)
+    {  
+         $sequentsteps =  $this->sequentsteps_seqcode($user);
+           //$sequentsteps->seqcode
 
+            if ($userMessage =='ขอนัดกลืนแร่') {
+                  $case = 1;
+                  $userMessage  = 'นัด';
+                  // $seqcode = '0005';
+                  // $nextseqcode = '0007';
+                  // $userMessage  = $this->sequents_question($seqcode);
+                  // $sequentsteps_insert =  $this->sequentsteps_insert($user,$seqcode,$nextseqcode);
+            }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false) {
+                   $userMessage  = 'สวัสดีค่ะ ';
+                   $case = 1; 
+            }     
+             return $this->replymessage($replyToken,$userMessage,$case);
+    }
+    public function replymessage($replyToken,$userMessage,$case)
+    {
+          $httpClient = new CurlHTTPClient('cD31X9SFEuyU6DMIcOcFI+FN0F1FNz7f/367vn5Ca8k8SaKF1zwLiTLfMYFIl8g1GIlbySeNWH4k52hCcs+NM/zhWbdso+sw7Vwnt8sqaPDbFAay60r3CJEdcsC9wUFWJDNTdkc7jnUdKGdoKpdxlAdB04t89/1O/w1cDnyilFU=');
+            $bot = new LINEBot($httpClient, array('channelSecret' => '96503ab7de564a74e4e13c5a7a3e0e40'));
+            
+            switch($case) {
+     
+                 case 1 : 
+                        $textMessageBuilder = new TextMessageBuilder($userMessage);
+                    break;
+
+    }
 
 }
