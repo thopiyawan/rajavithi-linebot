@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-use App\sequents as sequents;
-use App\document_data as document_data;
-use App\sequentsteps as sequentsteps;
-use App\document_type as  document_type;
+use App\Models\sequents as sequents;
+use App\Models\document_data as document_data;
+use App\Models\sequentsteps as sequentsteps;
+use App\Models\document_type as  document_type;
 
 
 
