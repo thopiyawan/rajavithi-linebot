@@ -99,7 +99,7 @@ class GetMessageController extends Controller
                  case 1 : 
                         $textMessageBuilder = new TextMessageBuilder($userMessage);
                     break;
-
+            }
     }
 
 }
