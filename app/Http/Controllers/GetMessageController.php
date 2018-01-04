@@ -69,11 +69,11 @@ class GetMessageController extends Controller
 
             $textMessageBuilder = new TextMessageBuilder($userMessage);
             // $response = $bot->replyMessage($replyToken,$textMessageBuilder); 
-            return $this->checkmessage($replyToken,$userMessage,$user);
+            $checkmessage = $this->checkmessage($replyToken,$userMessage,$user);
     }
     public function checkmessage($replyToken,$userMessage,$user)
     {  
-         $sequentsteps =  $this->sequentsteps_seqcode($user);
+         // $sequentsteps =  $this->sequentsteps_seqcode($user);
            //$sequentsteps->seqcode
 
             if ($userMessage =='ขอนัดกลืนแร่') {
