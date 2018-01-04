@@ -88,7 +88,7 @@ class GetMessageController extends Controller
                 $seqcode = '0001';
                 $nextseqcode = '0002';
                 $userMessage  = DB::table('sequents')
-                                ->select('question')
+                                ->select('id')
                                 ->where('seqcode',$seqcode)
                                 ->first();
                   // $sequentsteps_insert =  $this->sequentsteps_insert($user,$seqcode,$nextseqcode);
