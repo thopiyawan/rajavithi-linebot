@@ -100,6 +100,7 @@ class GetMessageController extends Controller
                         $textMessageBuilder = new TextMessageBuilder($userMessage);
                     break;
             }
+            $response = $bot->replyMessage($replyToken,$textMessageBuilder); 
     }
 
 }
