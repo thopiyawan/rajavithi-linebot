@@ -14,8 +14,9 @@ class GetMessageController extends Controller
     public function index()
     {
         $code = 200;
+        $code1 = 'pi';
 
-        $data = ['data' => 'piyawm', 'code' => $code];
+        $data = ['data' =>   $code1, 'code' => $code];
         return response()->json($data);
     }
 
