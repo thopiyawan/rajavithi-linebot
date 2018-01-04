@@ -90,7 +90,7 @@ class GetMessageController extends Controller
                 $userMessage  = DB::table('sequents')
                                 ->select('question')
                                 ->where('seqcode',$seqcode)
-                                ->first();
+                                ->get();
                   // $sequentsteps_insert =  $this->sequentsteps_insert($user,$seqcode,$nextseqcode);
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false) {
                 $userMessage  = 'สวัสดีค่ะ ';
