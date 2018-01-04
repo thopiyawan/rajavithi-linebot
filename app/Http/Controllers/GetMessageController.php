@@ -91,6 +91,17 @@ class GetMessageController extends Controller
             }     
              return $this->replymessage($replyToken,$userMessage,$case);
     }
+
+
+
+    
+     public function sequents_question($seqcode)
+    {          
+                   $question = sequents::select('question')
+                                ->where('seqcode',$seqcode)
+                                ->first();
+                   return $question->question;
+    }
     public function replymessage($replyToken,$userMessage,$case)
     {
           $httpClient = new CurlHTTPClient('cD31X9SFEuyU6DMIcOcFI+FN0F1FNz7f/367vn5Ca8k8SaKF1zwLiTLfMYFIl8g1GIlbySeNWH4k52hCcs+NM/zhWbdso+sw7Vwnt8sqaPDbFAay60r3CJEdcsC9wUFWJDNTdkc7jnUdKGdoKpdxlAdB04t89/1O/w1cDnyilFU=');
@@ -104,5 +115,6 @@ class GetMessageController extends Controller
             }
             $response = $bot->replyMessage($replyToken,$textMessageBuilder); 
     }
+
 
 }
