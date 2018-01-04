@@ -63,8 +63,8 @@ class GetMessageController extends Controller
      public function getmessage()
     {         
     
-            $httpClient = new CurlHTTPClient('sthhyNpOjACE5tonT5xOsPUJ/kFtra9Fkc4Y38PlTgMh6D8FNisPlumPf9lMvAeYGIlbySeNWH4k52hCcs+NM/zhWbdso+sw7Vwnt8sqaPBy/2ib5ed7RLFQ3FIU+tVq9Y1MT2PmMG6OH+DdqjJMeAdB04t89/1O/w1cDnyilFU=');
-            $bot = new LINEBot($httpClient, array('channelSecret' => '96503ab7de564a74e4e13c5a7a3e0e40'));
+            $httpClient = new CurlHTTPClient('omL/jl2l8TFJaYFsOI2FaZipCYhBl6fnCf3da/PEvFG1e5ADvMJaILasgLY7jhcwrR2qOr2ClpTLmveDOrTBuHNPAIz2fzbNMGr7Wwrvkz08+ZQKyQ3lUfI5RK/NVozfMhLLAgcUPY7m4UtwVwqQKwdB04t89/1O/w1cDnyilFU=');
+            $bot = new LINEBot($httpClient, array('channelSecret' => 'f571a88a60d19bb28d06383cdd7af631'));
             // คำสั่งรอรับการส่งค่ามาของ LINE Messaging API
             $content = file_get_contents('php://input');
             // แปลงข้อความรูปแบบ JSON  ให้อยู่ในโครงสร้างตัวแปร array
@@ -76,7 +76,6 @@ class GetMessageController extends Controller
             $userMessage = $events['events'][0]['message']['text'];
             }
 
-            $userMessage = '55555555555';
             $textMessageBuilder = new TextMessageBuilder($userMessage);
             return $response = $bot->replyMessage($replyToken,$textMessageBuilder); 
             // return $this->checkmessage($replyToken,$userMessage,$user);
