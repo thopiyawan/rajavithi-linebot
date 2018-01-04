@@ -76,6 +76,7 @@ class GetMessageController extends Controller
             $userMessage = $events['events'][0]['message']['text'];
             }
 
+            $userMessage = '55555555555';
             $textMessageBuilder = new TextMessageBuilder($userMessage);
             return $response = $bot->replyMessage($replyToken,$textMessageBuilder); 
             // return $this->checkmessage($replyToken,$userMessage,$user);
