@@ -16,7 +16,7 @@ class Sequents extends Migration
         Schema::create('sequents', function (Blueprint $table) {
             $table->increments('id');
             $table->string('seqcode');
-            $table->string('question');
+            $table->text('question');
             $table->string('answer');
             $table->integer('nexttype');
             $table->string('nextseqcode');
