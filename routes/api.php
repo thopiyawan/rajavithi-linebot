@@ -21,4 +21,9 @@ use Illuminate\Http\Request;
 //     logger("message request : ", $request->all());
 // });
 
-Route::get('bot','GetMessageController@index');
+// Route::get('bot','GetMessageController@index');
+
+Route::get('bot', function (Request $request) {
+    logger("message request : ", $request->all());
+});
+Route::post('bot', ['as' => 'line.bot.message', 'uses' => 'GetMessageController@getmessage']);
