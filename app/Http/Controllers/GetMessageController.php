@@ -13,7 +13,7 @@ class GetMessageController extends Controller
      */
     public function index()
     {
-        $data = [1,2];
+        $data = '2';
         return response()->json($data);
     }
 
