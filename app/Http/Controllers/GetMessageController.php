@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 
 
 use App\Models\sequents as sequents;
@@ -11,7 +11,7 @@ use App\Models\sequentsteps as sequentsteps;
 use App\Models\document_type as  document_type;
 
 
-
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use LINE\LINEBot;
