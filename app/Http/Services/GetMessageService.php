@@ -18,8 +18,8 @@ class GetMessageService
     {
         $replyToken = $formData['events']['0']['replyToken'];
         
-        $this->client = new CurlHTTPClient(env('sthhyNpOjACE5tonT5xOsPUJ/kFtra9Fkc4Y38PlTgMh6D8FNisPlumPf9lMvAeYGIlbySeNWH4k52hCcs+NM/zhWbdso+sw7Vwnt8sqaPBy/2ib5ed7RLFQ3FIU+tVq9Y1MT2PmMG6OH+DdqjJMeAdB04t89/1O/w1cDnyilFU='));
-        $this->bot = new LINEBot($this->client, ['channelSecret' => env('96503ab7de564a74e4e13c5a7a3e0e40')]);
+        $this->client = new CurlHTTPClient(env('omL/jl2l8TFJaYFsOI2FaZipCYhBl6fnCf3da/PEvFG1e5ADvMJaILasgLY7jhcwrR2qOr2ClpTLmveDOrTBuHNPAIz2fzbNMGr7Wwrvkz08+ZQKyQ3lUfI5RK/NVozfMhLLAgcUPY7m4UtwVwqQKwdB04t89/1O/w1cDnyilFU='));
+        $this->bot = new LINEBot($this->client, ['channelSecret' => env('f571a88a60d19bb28d06383cdd7af631')]);
         
         $response = $this->bot->replyText($replyToken, 'hello!');
         
