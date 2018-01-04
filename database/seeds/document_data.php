@@ -48,7 +48,6 @@ class document_data extends Seeder
          ));
 
          DB::table('document_type')->delete();
-         //insert some dummy records
          DB::table('document_type')->insert(array(
              array('document_type'=>'1','document_descript'=>'ใบส่งตัว'),
              array('document_type'=>'2','document_descript'=>'ใบส่งตัวประกันสังคม1'),
@@ -56,15 +55,6 @@ class document_data extends Seeder
              array('document_type'=>'4','document_descript'=>'เอกสารหมายเลข 1'),
              array('document_type'=>'5','document_descript'=>'บัตรประจำตัวประชาชนของผู้ป่วย'),
              array('document_type'=>'6','document_descript'=>'ใบกรอกประวัติผู้ป่วยใหม่ของโรงพยาบาลราชวิถี'),
-             // array('seqcode'=>'0025','question'=>'','answer'=>'NULL','nexttype'=>'1','nextseqcode'=>'0026'),
-             // array('seqcode'=>'0026','question'=>'','answer'=>'NULL','nexttype'=>'1','nextseqcode'=>'0027'),
-             // array('seqcode'=>'0027','question'=>'','answer'=>'NULL','nexttype'=>'1','nextseqcode'=>'0028'),
-             // array('seqcode'=>'0028','question'=>'','answer'=>'NULL','nexttype'=>'1','nextseqcode'=>'1001'),
-             // array('seqcode'=>'0029','question'=>'','answer'=>'NULL','nexttype'=>'1','nextseqcode'=>'0030'),
-             // array('seqcode'=>'1001','question'=>'','answer'=>'NULL','nexttype'=>'1','nextseqcode'=>'1002'),
-             // array('seqcode'=>'1002','question'=>'','answer'=>'NULL','nexttype'=>'1','nextseqcode'=>'NULL'),
          ));
-
-
     }
 }
