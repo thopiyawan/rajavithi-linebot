@@ -63,6 +63,7 @@ class GetMessageController extends Controller
            $answer = sequents::select('question')
                                 ->where('seqcode','0001')
                                 ->first();
+           echo $answer ;
                    // return $question->question;
 
         // $user = 'U2dc636d2cd052e82c29f5284e00f69b9';
@@ -79,10 +80,10 @@ class GetMessageController extends Controller
                     //    ->where('user_id', $user)
                     //    ->update(['email' => $answer ]);
 
-            $answer = iconv("tis-620","utf-8",$answer);
-         $code = 200;
-         $data = ['data' => $answer, 'code' => $code];
-         return response()->json($data);
+           // $answer = json_decode($answer , true);
+         // $code = 200;
+         // $data = ['data' => $answer, 'code' => $code];
+         // return response()->json($data);
 
      }
      public function getmessage()
