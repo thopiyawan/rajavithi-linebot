@@ -61,7 +61,7 @@ class GetMessageController extends Controller
 
      public function index(){
            $answer = sequents::select('question')
-                                ->where('seqcode',$seqcode)
+                                ->where('seqcode','0001')
                                 ->first();
                    // return $question->question;
 
