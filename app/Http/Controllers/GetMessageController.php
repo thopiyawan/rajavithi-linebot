@@ -123,7 +123,7 @@ class GetMessageController extends Controller
                      ->where('seqcode', '0001')
                      ->first();
 
-                 $userMessage = json_decode($userMessage, true);
+                 $userMessage = json_decode($userMessage);
                  // $userMessage= $userMessage->question;
                   // $sequentsteps_insert =  $this->sequentsteps_insert($user,$seqcode,$nextseqcode);
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
