@@ -88,6 +88,7 @@ class GetMessageController extends Controller
                 $seqcode = '0001';
                 $nextseqcode = '0002';
                 $userMessage  = DB::table('public.sequents')
+                                ->select('question')
                                 ->where('seqcode',$seqcode)
                                 ->first();
                  // $userMessage= $userMessage->question;
