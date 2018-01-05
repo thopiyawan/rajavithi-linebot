@@ -63,8 +63,8 @@ class GetMessageController extends Controller
            $answer = sequents::select('question')
                                 ->where('seqcode','0001')
                                 ->first();
-           $data = iconv("utf-8","tis-620",$answer);
-           echo $data ;
+           echo json_encode($answer);
+         
                    // return $question->question;
 
         // $user = 'U2dc636d2cd052e82c29f5284e00f69b9';
