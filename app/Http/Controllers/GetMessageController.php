@@ -58,6 +58,33 @@ class GetMessageController extends Controller
 
 
      */
+
+     public function index(){
+          // $question = sequents::select('question')
+          //                       ->where('seqcode',$seqcode)
+          //                       ->first();
+          //          return $question->question;
+
+        // $user = 'U2dc636d2cd052e82c29f5284e00f69b9';
+
+           // $users_register = DB::table('users_register')
+           //             ->where('sender_id', $user)
+           //             ->update(['user_age' => $answer ]);
+                     $answer = DB::table('sequents')
+                     ->select('question')
+                     ->where('seqcode', '0001')
+                     ->get();
+                    $answer = $answer->answer;
+                    // $users_register = DB::table('users_register')
+                    //    ->where('user_id', $user)
+                    //    ->update(['email' => $answer ]);
+
+
+         $code = 200;
+         $data = ['data' => $answer, 'code' => $code];
+         return response()->json($data);
+
+     }
      public function getmessage()
     {         
     
