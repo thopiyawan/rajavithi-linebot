@@ -79,7 +79,7 @@ class GetMessageController extends Controller
                     //    ->where('user_id', $user)
                     //    ->update(['email' => $answer ]);
 
-
+           $answer = json_decode($answer , true);
          $code = 200;
          $data = ['data' => $answer, 'code' => $code];
          return response()->json($data);
