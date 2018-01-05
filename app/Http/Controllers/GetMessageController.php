@@ -74,7 +74,7 @@ class GetMessageController extends Controller
                      ->select('question')
                      ->where('seqcode', '0001')
                      ->get();
-                    $answer = $answer->answer;
+                    $answer = $answer->question;
                     // $users_register = DB::table('users_register')
                     //    ->where('user_id', $user)
                     //    ->update(['email' => $answer ]);
