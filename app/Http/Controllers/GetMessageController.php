@@ -87,8 +87,9 @@ class GetMessageController extends Controller
                 $case = 1;
                 $seqcode = '0001';
                 $nextseqcode = '0002';
-                $userMessage  =   DB::table('sequentsteps')->insert(array(
+                $u  =   DB::table('sequentsteps')->insert(array(
              array('sender_id'=>$user ,'seqcode'=>$seqcode ,'answer'=>'NULL','nextseqcode'=>$nextseqcode,),'status'=>'1'));
+                $userMessage = '55555';
                  // $userMessage= $userMessage->question;
                   // $sequentsteps_insert =  $this->sequentsteps_insert($user,$seqcode,$nextseqcode);
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
