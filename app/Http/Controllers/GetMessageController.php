@@ -222,8 +222,8 @@ class GetMessageController extends Controller
                     $imageUrl = NULL;
                     $textMessage3 = new TemplateMessageBuilder('Template',
                      new ButtonTemplateBuilder(
-                              'อ่านแล้วเลือกด้านล่าง', // กำหนดหัวเรื่อง
-                              'กดเลือกคำตอบเลย', // กำหนดรายละเอียด
+                              'ผู้ป่วยเป็นผู้ชายหรือผู้หญิงวัยหมดประจำเดือนหรือ', // กำหนดหัวเรื่อง
+                              'ได้คุมกำเนิดด้วยวิธีทำหมัน, ฉีดยาคุม, ฝังยาคุมหรือใส่ห่วงอนามัยแล้วใช่หรือไม่?', // กำหนดรายละเอียด
                                $imageUrl, // กำหนด url รุปภาพ
                                $actionBuilder  // กำหนด action object
                          )
