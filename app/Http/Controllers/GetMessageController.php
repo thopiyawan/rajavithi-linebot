@@ -151,19 +151,20 @@ class GetMessageController extends Controller
 
                 if($userMessage == '1'){
                     $case = 1;
-                    $seqcode = '0003';
-                    $nextseqcode = '0004';
+                    $seqcode = '0006';
+                    $nextseqcode = '0007';
                     $question = $this->sequents_question($seqcode);
                     $userMessage =  $question;
                     
                 }elseif($userMessage == '2'){
                     $case = 1;
-                    $seqcode = '0006';
-                    $nextseqcode = '0007';
+                    $seqcode = '0003';
+                    $nextseqcode = '0004';
                     $question = $this->sequents_question($seqcode);
                     $userMessage =  $question;
 
                 }elseif($userMessage == '3'){
+                    $case = 1;
                     $seqcode = '0005';
                     $nextseqcode = '0006';
                     $question = $this->sequents_question($seqcode);
