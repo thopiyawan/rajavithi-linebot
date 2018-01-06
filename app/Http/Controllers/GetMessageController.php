@@ -224,9 +224,9 @@ class GetMessageController extends Controller
         $dbconn = pg_pconnect($conn_string);
                 $result = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '$seqcode'");
                 while ($row = pg_fetch_row($result)) {
-                     $question = $row[0];
+                   return  $question = $row[0];
                 }  
-                   return $question;
+                 
     }
      public function insert_sequentsteps($user,$seqcode,$nextseqcode)
     {          
