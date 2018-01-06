@@ -141,12 +141,12 @@ class GetMessageController extends Controller
            // $answer = sequents::select('question')
            //                      ->where('seqcode','0001')
            //                      ->first();
-              $userMessage1 = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0001'");
+              $userMessage = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '0001'");
                 while ($row = pg_fetch_row($result)) {
                   // echo $seqcode =  $row[0];
-                    $question = $row[1];
+                    $userMessage= $row[1];
                 }   
-                $userMessage =  $question;
+                // $userMessage =  $question;
              //    $u  =   DB::table('sequentsteps')->insert(array(
              // array('sender_id'=>$user ,'seqcode'=>$seqcode ,'answer'=>'NULL','nextseqcode'=>$nextseqcode,),'status'=>'1'));
                 // $userMessage = DB::table('sequents')
