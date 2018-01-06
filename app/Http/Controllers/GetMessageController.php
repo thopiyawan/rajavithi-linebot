@@ -131,6 +131,11 @@ class GetMessageController extends Controller
     $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
     $dbconn = pg_pconnect($conn_string);
 
+        $result = pg_query($dbconn,"SELECT seqcode FROM sequentsteps WHERE sender_id = '$user'");
+                while ($row = pg_fetch_row($result)) {
+                  echo $seqcode =  $row[0];
+                  //echo $question = $row[1];
+                }   
 
             if ($userMessage =='ขอนัดกลืนแร่') {
                 $case = 1;
@@ -140,7 +145,15 @@ class GetMessageController extends Controller
                $question = $this->sequents_question($seqcode);
                $insert_sequentsteps = $this->insert_sequentsteps($user);
                $userMessage =  $question;
-           
+            }elseif($userMessage =='ขอนัดกลืนแร่' &&  $seqcode == '0002'){
+                $case = 1;
+                $seqcode = '0002';
+                $nextseqcode = '0003';
+             
+               $question = $this->sequents_question($seqcode);
+               $insert_sequentsteps = $this->insert_sequentsteps($user);
+               $userMessage =  $question;
+
 
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
                 $userMessage  = 'สวัสดีค่ะ ';
@@ -164,7 +177,6 @@ class GetMessageController extends Controller
         $dbconn = pg_pconnect($conn_string);
                 $result = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '$seqcode'");
                 while ($row = pg_fetch_row($result)) {
-                  // echo $seqcode =  $row[0];
                      $question = $row[0];
                 }  
                    return $question;
