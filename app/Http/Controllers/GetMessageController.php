@@ -220,10 +220,10 @@ class GetMessageController extends Controller
                                          );
 
                     $imageUrl = NULL;
-                    $textMessage2 = new TemplateMessageBuilder('Template',
+                    $textMessage3 = new TemplateMessageBuilder('Template',
                      new ButtonTemplateBuilder(
                               'อ่านแล้วเลือกด้านล่าง', // กำหนดหัวเรื่อง
-                              '', // กำหนดรายละเอียด
+                              'กดเลือกคำตอบเลย', // กำหนดรายละเอียด
                                $imageUrl, // กำหนด url รุปภาพ
                                $actionBuilder  // กำหนด action object
                          )
@@ -232,6 +232,7 @@ class GetMessageController extends Controller
                  $multiMessage = new MultiMessageBuilder;
                   $multiMessage->add($textMessage1);
                   $multiMessage->add($textMessage2);
+                  $multiMessage->add($textMessage3);
                   $textMessageBuilder = $multiMessage; 
                     break;
             }
