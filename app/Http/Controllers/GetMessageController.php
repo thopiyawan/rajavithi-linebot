@@ -145,13 +145,13 @@ class GetMessageController extends Controller
                $question = $this->sequents_question($seqcode);
                $insert_sequentsteps = $this->insert_sequentsteps($user);
                $userMessage =  $question;
-            }elseif($userMessage =='ขอนัดกลืนแร่' &&  $seqcode == '0002'){
+            }elseif($userMessage =='ขอนัดกลืนแร่' &&  $seqcode == '0003'){
                 $case = 1;
-                $seqcode = '0002';
-                $nextseqcode = '0003';
+                $seqcode = '0003';
+                $nextseqcode = '0004';
              
                $question = $this->sequents_question($seqcode);
-               $insert_sequentsteps = $this->insert_sequentsteps($user);
+               // $insert_sequentsteps = $this->insert_sequentsteps($user);
                $userMessage =  $question;
 
 
@@ -188,7 +188,7 @@ class GetMessageController extends Controller
                    // $question = sequents::select('question')
                    //              ->where('seqcode',$seqcode)
                    //              ->first();
-        $insert_sequentsteps = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','0002','','0003','0',NOW(),NOW())") or die(pg_errormessage());
+        $insert_sequentsteps = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','0003','','0004','0',NOW(),NOW())") or die(pg_errormessage());
         return $insert_sequentsteps;
     }
     public function replymessage($replyToken,$userMessage,$case)
@@ -198,8 +198,40 @@ class GetMessageController extends Controller
             
             switch($case) {
      
-                 case 1 : 
+                case 1 : 
                         $textMessageBuilder = new TextMessageBuilder($userMessage);
+                    break;
+                case 2 : 
+                        $textMessage1 = new TextMessageBuilder($userMessage);
+                        $actionBuilder = array(
+                                          new MessageTemplateActionBuilder(
+                                          'ใช่',// ข้อความแสดงในปุ่ม
+                                          '1' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                          ),
+                                           new MessageTemplateActionBuilder(
+                                          'ไม่ใช่',// ข้อความแสดงในปุ่ม
+                                          '2' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                          ),
+                                           new MessageTemplateActionBuilder(
+                                          'ไม่แน่ใจ',// ข้อความแสดงในปุ่ม
+                                          '3' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                          ) 
+                                         );
+
+                    $imageUrl = NULL;
+                    $textMessage2 = new TemplateMessageBuilder('Template',
+                     new ButtonTemplateBuilder(
+                              'ผู้ป่วยเป็นผู้ชายหรือผู้หญิงวัยหมดประจำเดือนหรือได้คุมกำเนิดด้วยวิธี', // กำหนดหัวเรื่อง
+                              'ทำหมัน, ฉีดยาคุม, ฝังยาคุมหรือใส่ห่วงอนามัยแล้วใช่หรือไม่', // กำหนดรายละเอียด
+                               $imageUrl, // กำหนด url รุปภาพ
+                               $actionBuilder  // กำหนด action object
+                         )
+                      );    
+
+                 $multiMessage = new MultiMessageBuilder;
+                  $multiMessage->add($textMessage1);
+                  $multiMessage->add($textMessage2);
+                  $textMessageBuilder = $multiMessage; 
                     break;
             }
             $response = $bot->replyMessage($replyToken,$textMessageBuilder); 
