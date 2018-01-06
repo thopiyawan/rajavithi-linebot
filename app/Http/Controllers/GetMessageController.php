@@ -157,11 +157,7 @@ class GetMessageController extends Controller
 
                  // $userMessage= $userMessage->question;
                   // $sequentsteps_insert =  $this->sequentsteps_insert($user,$seqcode,$nextseqcode);
-               $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0006'");
-                while ($row = pg_fetch_row($result)) {
-                  echo $seqcode =  $row[0];
-                  echo $question = $row[1];
-                }   
+            
 
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
                 $userMessage  = 'สวัสดีค่ะ ';
