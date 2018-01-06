@@ -145,15 +145,36 @@ class GetMessageController extends Controller
                $question = $this->sequents_question($seqcode);
                $insert_sequentsteps = $this->insert_sequentsteps($user);
                $userMessage =  $question;
-            }elseif($userMessage =='ขอนัดกลืนแร่' &&  $seqcode == '0003'){
-                $case = 1;
-                $seqcode = '0003';
-                $nextseqcode = '0004';
+            }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0001'){
+                
+                
+
+                if($userMessage == '1'){
+                    $seqcode = '0003';
+                    $nextseqcode = '0004';
+                    $question = $this->sequents_question($seqcode);
+                    $userMessage =  $question;
+                    
+                }elseif($userMessage == '2'){
+                    $seqcode = '0006';
+                    $nextseqcode = '0007';
+                    $question = $this->sequents_question($seqcode);
+                    $userMessage =  $question;
+
+                }elseif($userMessage == '3'){
+                    $seqcode = '0005';
+                    $nextseqcode = '0006';
+                    $question = $this->sequents_question($seqcode);
+                    $userMessage =  $question;
+
+                }else{
+                    $case = 1;
+                    $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
+                }
              
                $question = $this->sequents_question($seqcode);
                // $insert_sequentsteps = $this->insert_sequentsteps($user);
                $userMessage =  $question;
-
 
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
                 $userMessage  = 'สวัสดีค่ะ ';
@@ -188,7 +209,7 @@ class GetMessageController extends Controller
                    // $question = sequents::select('question')
                    //              ->where('seqcode',$seqcode)
                    //              ->first();
-        $insert_sequentsteps = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','0003','','0004','0',NOW(),NOW())") or die(pg_errormessage());
+        $insert_sequentsteps = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','0001','','0003','0',NOW(),NOW())") or die(pg_errormessage());
         return $insert_sequentsteps;
     }
     public function replymessage($replyToken,$userMessage,$case)
