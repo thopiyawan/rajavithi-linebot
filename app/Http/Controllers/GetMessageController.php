@@ -247,10 +247,10 @@ class GetMessageController extends Controller
     public function seqcode_select($user){
          $result = pg_query($dbconn,"SELECT seqcode FROM sequentsteps WHERE sender_id = '$user'");
                 while ($row = pg_fetch_row($result)) {
-                  $seqcode =  $row[0];
+                  return $seqcode =  $row[0];
                   //echo $question = $row[1];
                 }   
-        return $seqcode;
+ 
 
     }
     public function replymessage($replyToken,$userMessage,$case)
