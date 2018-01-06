@@ -155,13 +155,15 @@ class GetMessageController extends Controller
                     $nextseqcode = '0007';
                     $question = $this->sequents_question($seqcode);
                     $userMessage =  $question;
+                    //รูป
                     
                 }elseif($userMessage == '2'){
-                    $case = 1;
+                    $case = 3;
                     $seqcode = '0003';
                     $nextseqcode = '0004';
                     $question = $this->sequents_question($seqcode);
                     $userMessage =  $question;
+
 
                 }elseif($userMessage == '3'){
                     $case = 1;
@@ -247,6 +249,34 @@ class GetMessageController extends Controller
                      new ButtonTemplateBuilder(
                               'ผู้ป่วยเป็นผู้ชายหรือผู้หญิงวัยหมดประจำเดือนหรือ', // กำหนดหัวเรื่อง
                               'ได้คุมกำเนิดด้วยวิธีทำหมัน, ฉีดยาคุม, ฝังยาคุมหรือใส่ห่วงอนามัยแล้วใช่หรือไม่?', // กำหนดรายละเอียด
+                               $imageUrl, // กำหนด url รุปภาพ
+                               $actionBuilder  // กำหนด action object
+                         )
+                      );    
+
+                 $multiMessage = new MultiMessageBuilder;
+                  $multiMessage->add($textMessage1);
+                  $multiMessage->add($textMessage2);
+                  $textMessageBuilder = $multiMessage; 
+                    break;
+                  case 3 : 
+                        $textMessage1 = new TextMessageBuilder($userMessage);
+                        $actionBuilder = array(
+                                          new MessageTemplateActionBuilder(
+                                          'ตกลง',// ข้อความแสดงในปุ่ม
+                                          '1' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                          ),
+                                           new MessageTemplateActionBuilder(
+                                          'มีปัญหาการคุมกำเนิด',// ข้อความแสดงในปุ่ม
+                                          '2' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                          )
+                                         );
+
+                    $imageUrl = NULL;
+                    $textMessage2 = new TemplateMessageBuilder('Template',
+                     new ButtonTemplateBuilder(
+                              'โปรดอ่านข้างบนก่อน', // กำหนดหัวเรื่อง
+                              'กดเลือกด้านล่างได้เลยค่ะ', // กำหนดรายละเอียด
                                $imageUrl, // กำหนด url รุปภาพ
                                $actionBuilder  // กำหนด action object
                          )
