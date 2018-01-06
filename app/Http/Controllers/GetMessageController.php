@@ -245,7 +245,7 @@ class GetMessageController extends Controller
          $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
         $dbconn = pg_pconnect($conn_string);  
 
-        $update_sequentsteps = pg_exec($dbconn, "UPDATE sequentsteps SET  seqcode = $seqcode, nextseqcode = $nextseqcode WHERE sender_id = '{$user}' ") or die(pg_errormessage());  
+        $update_sequentsteps = pg_exec($dbconn, "UPDATE sequentsteps SET  seqcode = '$seqcode', nextseqcode = '$nextseqcode' WHERE sender_id = '{$user}' ") or die(pg_errormessage());  
         return $update_sequentsteps;
     }
     public function replymessage($replyToken,$userMessage,$case)
