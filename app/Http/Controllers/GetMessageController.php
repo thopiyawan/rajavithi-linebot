@@ -203,6 +203,7 @@ class GetMessageController extends Controller
                     break;
                 case 2 : 
                         $textMessage1 = new TextMessageBuilder($userMessage);
+                        $textMessage2 = new TextMessageBuilder('ผู้ป่วยเป็นผู้ชายหรือผู้หญิงวัยหมดประจำเดือนหรือได้คุมกำเนิดด้วยวิธีทำหมัน, ฉีดยาคุม, ฝังยาคุมหรือใส่ห่วงอนามัยแล้วใช่หรือไม่');
                         $actionBuilder = array(
                                           new MessageTemplateActionBuilder(
                                           'ใช่',// ข้อความแสดงในปุ่ม
@@ -221,8 +222,8 @@ class GetMessageController extends Controller
                     $imageUrl = NULL;
                     $textMessage2 = new TemplateMessageBuilder('Template',
                      new ButtonTemplateBuilder(
-                              'ผู้ป่วยเป็นผู้ชายหรือผู้หญิงวัยหมดประจำเดือนหรือได้คุมกำเนิดด้วยวิธี', // กำหนดหัวเรื่อง
-                              'ทำหมัน, ฉีดยาคุม, ฝังยาคุมหรือใส่ห่วงอนามัยแล้วใช่หรือไม่', // กำหนดรายละเอียด
+                              'อ่านแล้วเลือกด้านล่าง', // กำหนดหัวเรื่อง
+                              '', // กำหนดรายละเอียด
                                $imageUrl, // กำหนด url รุปภาพ
                                $actionBuilder  // กำหนด action object
                          )
