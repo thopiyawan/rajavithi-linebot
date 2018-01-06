@@ -63,10 +63,13 @@ class GetMessageController extends Controller
 
      */
 
-    $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
-    $dbconn = pg_pconnect($conn_string);
-
+   
      public function index(){
+
+
+        $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
+        $dbconn = pg_pconnect($conn_string);
+
 
            // $answer = sequents::select('question')
            //                      ->where('seqcode','0001')
@@ -125,6 +128,9 @@ class GetMessageController extends Controller
     {  
          // $sequentsteps =  $this->sequentsteps_seqcode($user);
            //$sequentsteps->seqcode
+    $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
+    $dbconn = pg_pconnect($conn_string);
+
 
             if ($userMessage =='ขอนัดกลืนแร่') {
                 $case = 1;
