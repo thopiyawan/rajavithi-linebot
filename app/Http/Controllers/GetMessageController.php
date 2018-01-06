@@ -141,7 +141,7 @@ class GetMessageController extends Controller
                $question = $this->sequents_question($seqcode);
                $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
                $userMessage =  $question;
-            }elseif(is_numeric($userMessage) !== false &&   ($this->seqcode_select($user)) == '0001'){
+            }elseif(is_numeric($userMessage) !== false &&   ($seqcode = $this->seqcode_select($user)) == '0001'){
                 
                 if($userMessage == '1'){
                     $case = 1;
@@ -245,7 +245,7 @@ class GetMessageController extends Controller
         return $update_sequentsteps;
     }
     public function seqcode_select($user){
-         $result = pg_query($dbconn,"SELECT seqcode FROM sequentsteps WHERE sender_id = '$user' , status = '1'");
+         $result = pg_query($dbconn,"SELECT seqcode FROM sequentsteps WHERE sender_id = '$user'");
                 while ($row = pg_fetch_row($result)) {
                   $seqcode =  $row[0];
                   //echo $question = $row[1];
