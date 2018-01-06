@@ -132,10 +132,10 @@ class GetMessageController extends Controller
     $dbconn = pg_pconnect($conn_string);
 
         // $result = pg_query($dbconn,"SELECT seqcode FROM sequentsteps WHERE sender_id = '$user' , status = '1'");
-                while ($row = pg_fetch_row($result)) {
-                  echo $seqcode =  $row[0];
-                  //echo $question = $row[1];
-                }   
+                // while ($row = pg_fetch_row($result)) {
+                //   echo $seqcode =  $row[0];
+                //   //echo $question = $row[1];
+                // }   
 
             if ($userMessage =='ขอนัดกลืนแร่') {
                 $case = 2;
