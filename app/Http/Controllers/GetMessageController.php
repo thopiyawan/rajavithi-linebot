@@ -79,9 +79,9 @@ class GetMessageController extends Controller
              //      echo $question = $row[1];
              //    }   
 
-              $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','0006','','0007','0',NOW(),NOW())") or die(pg_errormessage());
+              // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','0006','','0007','0',NOW(),NOW())") or die(pg_errormessage());
                
-         
+         $update_sequentsteps = pg_exec($dbconn, "UPDATE sequentsteps SET  seqcode = '100', nextseqcode = '2000' WHERE sender_id = '{$user}' ") or die(pg_errormessage());  
                    // return $question->question;
 
         // $user = 'U2dc636d2cd052e82c29f5284e00f69b9';
