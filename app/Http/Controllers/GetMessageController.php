@@ -122,6 +122,7 @@ class GetMessageController extends Controller
                      ->select('question')
                      ->where('seqcode', '0001')
                      ->first();
+                $userMessage = pg_escape_string($userMessage);
 
                  // $userMessage= $userMessage->question;
                   // $sequentsteps_insert =  $this->sequentsteps_insert($user,$seqcode,$nextseqcode);
