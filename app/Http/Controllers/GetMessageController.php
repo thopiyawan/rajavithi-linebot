@@ -74,12 +74,10 @@ class GetMessageController extends Controller
            //                      ->first();
              $seqcode = '0001';
               $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '$seqcode'");
-              echo $result;
-
-                // while ($row = pg_fetch_row($result)) {
-                //   echo $seqcode =  $row[0];
-                //   echo $question = $row[1];
-                // }   
+                while ($row = pg_fetch_row($result)) {
+                  echo $seqcode =  $row[0];
+                  echo $question = $row[1];
+                }   
 
               // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','0006','','0007','0',NOW(),NOW())") or die(pg_errormessage());
          //       $seqcode = '5000';
@@ -143,7 +141,7 @@ class GetMessageController extends Controller
                $question = $this->sequents_question($seqcode);
                $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
                $userMessage =  $question;
-            }elseif(is_numeric($userMessage) !== false &&   ($seqcode = $this->seqcode_select($user)) == '0001'){
+            }elseif(is_numeric($userMessage) !== false &&   ($this->seqcode_select($user)) == '0001'){
                 
                 if($userMessage == '1'){
                     $case = 1;
