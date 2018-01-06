@@ -1,4 +1,6 @@
 <?php
+$conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
+$dbconn = pg_pconnect($conn_string);
 
 namespace App\Http\Controllers;
 
@@ -60,10 +62,16 @@ class GetMessageController extends Controller
      */
 
      public function index(){
-           $answer = sequents::select('question')
-                                ->where('seqcode','0001')
-                                ->first();
+           // $answer = sequents::select('question')
+           //                      ->where('seqcode','0001')
+           //                      ->first();
+              $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0006'");
+                while ($row = pg_fetch_row($result)) {
+                  echo $seqcode =  $row[0];
+                  echo $question = $row[1];
+                }   
 
+               
          
                    // return $question->question;
 
@@ -118,14 +126,20 @@ class GetMessageController extends Controller
                 $nextseqcode = '0002';
              //    $u  =   DB::table('sequentsteps')->insert(array(
              // array('sender_id'=>$user ,'seqcode'=>$seqcode ,'answer'=>'NULL','nextseqcode'=>$nextseqcode,),'status'=>'1'));
-                $userMessage = DB::table('sequents')
-                     ->select('question')
-                     ->where('seqcode', '0001')
-                     ->first();
-                $userMessage = pg_escape_string($userMessage);
+                // $userMessage = DB::table('sequents')
+                //      ->select('question')
+                //      ->where('seqcode', '0001')
+                //      ->first();
+                // $userMessage = pg_escape_string($userMessage);
 
                  // $userMessage= $userMessage->question;
                   // $sequentsteps_insert =  $this->sequentsteps_insert($user,$seqcode,$nextseqcode);
+               $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0006'");
+                while ($row = pg_fetch_row($result)) {
+                  echo $seqcode =  $row[0];
+                  echo $question = $row[1];
+                }   
+
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
                 $userMessage  = 'สวัสดีค่ะ ';
                 $case = 1; 
