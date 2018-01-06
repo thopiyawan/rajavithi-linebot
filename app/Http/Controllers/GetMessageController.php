@@ -143,7 +143,7 @@ class GetMessageController extends Controller
                 $nextseqcode = '0002';
              
                $question = $this->sequents_question($seqcode);
-               $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+               // $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
                $userMessage =  $question;
             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0001'){
                 
@@ -152,49 +152,49 @@ class GetMessageController extends Controller
                     $seqcode = '0006';
                     $nextseqcode = '0007';
                     $question = $this->sequents_question($seqcode);
-                    $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+                    // $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
                     $userMessage =  $question;
                     //รูป
                     
-                }elseif($userMessage == '2'){
-                    $case = 3;
-                    $seqcode = '0003';
-                    $nextseqcode = '0004';
-                    $question = $this->sequents_question($seqcode);
-                    $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
-                    $userMessage =  $question;
+             //    }elseif($userMessage == '2'){
+             //        $case = 3;
+             //        $seqcode = '0003';
+             //        $nextseqcode = '0004';
+             //        $question = $this->sequents_question($seqcode);
+             //        $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+             //        $userMessage =  $question;
 
 
-                }elseif($userMessage == '3'){
-                    $case = 1;
-                    $seqcode = '0005';
-                    $nextseqcode = '0006';
-                    $question = $this->sequents_question($seqcode);
-                    $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
-                    $userMessage =  $question;
+             //    }elseif($userMessage == '3'){
+             //        $case = 1;
+             //        $seqcode = '0005';
+             //        $nextseqcode = '0006';
+             //        $question = $this->sequents_question($seqcode);
+             //        $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+             //        $userMessage =  $question;
 
-                }else{
-                    $case = 1;
-                    $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
-                }
-             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0003'){
+             //    }else{
+             //        $case = 1;
+             //        $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
+             //    }
+             // }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0003'){
                 
-                if($userMessage == '1'){
-                    $case = 1;
-                    $seqcode = '0004';
-                    $nextseqcode = '0005';
-                    $question = $this->sequents_question($seqcode);
-                    $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
-                    $userMessage =  $question;
-                    //รูป
+             //    if($userMessage == '1'){
+             //        $case = 1;
+             //        $seqcode = '0004';
+             //        $nextseqcode = '0005';
+             //        $question = $this->sequents_question($seqcode);
+             //        $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+             //        $userMessage =  $question;
+             //        //รูป
                     
-                }elseif($userMessage == '2'){
-                    $case = 3;
-                    $seqcode = '0005';
-                    $nextseqcode = '0006';
-                    $question = $this->sequents_question($seqcode);
-                    $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
-                    $userMessage =  $question;
+             //    }elseif($userMessage == '2'){
+             //        $case = 3;
+             //        $seqcode = '0005';
+             //        $nextseqcode = '0006';
+             //        $question = $this->sequents_question($seqcode);
+             //        $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+             //        $userMessage =  $question;
 
                 }else{
                     $case = 1;
@@ -228,16 +228,16 @@ class GetMessageController extends Controller
                 }  
                    return $question;
     }
-     public function insert_sequentsteps($user,$seqcode,$nextseqcode)
-    {          
-         $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
-        $dbconn = pg_pconnect($conn_string);
+    //  public function insert_sequentsteps($user,$seqcode,$nextseqcode)
+    // {          
+    //      $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
+    //     $dbconn = pg_pconnect($conn_string);
 
-        // $q1 = pg_exec($dbconn, "UPDATE sequentsteps SET  status = '0' WHERE sender_id = '{$user}' ") or die(pg_errormessage());  
+    //     // $q1 = pg_exec($dbconn, "UPDATE sequentsteps SET  status = '0' WHERE sender_id = '{$user}' ") or die(pg_errormessage());  
 
-        $insert_sequentsteps = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','{$seqcode}','','{$nextseqcode}','1',NOW(),NOW())") or die(pg_errormessage());
-        return $insert_sequentsteps;
-    }
+    //     $insert_sequentsteps = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','{$seqcode}','','{$nextseqcode}','1',NOW(),NOW())") or die(pg_errormessage());
+    //     return $insert_sequentsteps;
+    // }
     public function replymessage($replyToken,$userMessage,$case)
     {
           $httpClient = new CurlHTTPClient('Vf5/E8YVJGtBLdDKO0KKypasAfw+x3BjBCXG18D602yuJsY5Jp+r/fS8jS54THIgGIlbySeNWH4k52hCcs+NM/zhWbdso+sw7Vwnt8sqaPBtze3kBiiQUNI4BI/oy+b5j5WlZnsV8yxL8ozCHMQUXwdB04t89/1O/w1cDnyilFU=');
@@ -303,7 +303,7 @@ class GetMessageController extends Controller
                          )
                       );    
 
-                 $multiMessage = new MultiMessageBuilder;
+                  $multiMessage = new MultiMessageBuilder;
                   $multiMessage->add($textMessage1);
                   $multiMessage->add($textMessage2);
                   $textMessageBuilder = $multiMessage; 
