@@ -72,18 +72,20 @@ class GetMessageController extends Controller
            // $answer = sequents::select('question')
            //                      ->where('seqcode','0001')
            //                      ->first();
-             // $seqcode = '0001';
-             //  $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '$seqcode'");
-             //    while ($row = pg_fetch_row($result)) {
-             //      echo $seqcode =  $row[0];
-             //      echo $question = $row[1];
-             //    }   
+             $seqcode = '0001';
+              $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '$seqcode'");
+              echo $result;
+
+                // while ($row = pg_fetch_row($result)) {
+                //   echo $seqcode =  $row[0];
+                //   echo $question = $row[1];
+                // }   
 
               // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','0006','','0007','0',NOW(),NOW())") or die(pg_errormessage());
-               $seqcode = '5000';
-               $nextseqcode = '0000';
+         //       $seqcode = '5000';
+         //       $nextseqcode = '0000';
 
-         $update_sequentsteps = pg_exec($dbconn, "UPDATE sequentsteps SET  seqcode = '{$seqcode}', nextseqcode = '{$nextseqcode}' WHERE sender_id = '{$user}' ") or die(pg_errormessage());  
+         // $update_sequentsteps = pg_exec($dbconn, "UPDATE sequentsteps SET  seqcode = '{$seqcode}', nextseqcode = '{$nextseqcode}' WHERE sender_id = '{$user}' ") or die(pg_errormessage());  
                    // return $question->question;
 
         // $user = 'U2dc636d2cd052e82c29f5284e00f69b9';
