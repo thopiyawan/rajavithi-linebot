@@ -138,7 +138,7 @@ class GetMessageController extends Controller
                 }   
 
             if ($userMessage =='ขอนัดกลืนแร่') {
-                $case = 1;
+                $case = 2;
                 $seqcode = '0001';
                 $nextseqcode = '0002';
              
