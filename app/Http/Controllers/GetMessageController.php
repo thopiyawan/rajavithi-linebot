@@ -75,7 +75,7 @@ class GetMessageController extends Controller
            //                      ->where('seqcode','0001')
            //                      ->first();
              $seqcode = '0001';
-              $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = "$seqcode"");
+              $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '$seqcode'");
                 while ($row = pg_fetch_row($result)) {
                   echo $seqcode =  $row[0];
                   echo $question = $row[1];
