@@ -67,18 +67,18 @@ class GetMessageController extends Controller
      public function index(){
 
 
-        $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
-        $dbconn = pg_pconnect($conn_string);
+        // $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
+        // $dbconn = pg_pconnect($conn_string);
 
 
-           // $answer = sequents::select('question')
-           //                      ->where('seqcode','0001')
-           //                      ->first();
-              $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0006'");
-                while ($row = pg_fetch_row($result)) {
-                  echo $seqcode =  $row[0];
-                  echo $question = $row[1];
-                }   
+           $answer = sequents::select('question')
+                                ->where('seqcode','0001')
+                                ->first();
+              // $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0006'");
+              //   while ($row = pg_fetch_row($result)) {
+              //     echo $seqcode =  $row[0];
+              //     echo $question = $row[1];
+              //   }   
 
                
          
@@ -141,12 +141,13 @@ class GetMessageController extends Controller
            // $answer = sequents::select('question')
            //                      ->where('seqcode','0001')
            //                      ->first();
-              $userMessage = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '0001'");
+              $result = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '0001'");
                 while ($row = pg_fetch_row($result)) {
                   // echo $seqcode =  $row[0];
-                    $userMessage= $row[1];
+                     $question = $row[1];
                 }   
-                // $userMessage =  $question;
+          
+               $userMessage =  $question;
              //    $u  =   DB::table('sequentsteps')->insert(array(
              // array('sender_id'=>$user ,'seqcode'=>$seqcode ,'answer'=>'NULL','nextseqcode'=>$nextseqcode,),'status'=>'1'));
                 // $userMessage = DB::table('sequents')
