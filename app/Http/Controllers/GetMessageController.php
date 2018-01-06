@@ -144,7 +144,7 @@ class GetMessageController extends Controller
               $result = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '0001'");
                 while ($row = pg_fetch_row($result)) {
                   // echo $seqcode =  $row[0];
-                     $question = $row[1];
+                     $question = $row[0];
                 }   
           
                $userMessage =  $question;
