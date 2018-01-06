@@ -131,79 +131,79 @@ class GetMessageController extends Controller
     $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
     $dbconn = pg_pconnect($conn_string);
 
-        $result = pg_query($dbconn,"SELECT seqcode FROM sequentsteps WHERE sender_id = '$user' , status = '1'");
-                while ($row = pg_fetch_row($result)) {
-                  echo $seqcode =  $row[0];
-                  //echo $question = $row[1];
-                }   
+        // $result = pg_query($dbconn,"SELECT seqcode FROM sequentsteps WHERE sender_id = '$user' , status = '1'");
+        //         while ($row = pg_fetch_row($result)) {
+        //           echo $seqcode =  $row[0];
+        //           //echo $question = $row[1];
+        //         }   
 
             if ($userMessage =='ขอนัดกลืนแร่') {
-                $case = 2;
+                $case = 1;
                 $seqcode = '0001';
                 $nextseqcode = '0002';
              
                $question = $this->sequents_question($seqcode);
                $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
-               $userMessage =  $question;
-            }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0001'){
+               $userMessage =  '5555555555555555';
+            // }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0001'){
                 
-                if($userMessage == '1'){
-                    $case = 1;
-                    $seqcode = '0006';
-                    $nextseqcode = '0007';
-                    $question = $this->sequents_question($seqcode);
-                    $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
-                    $userMessage =  $question;
-                    //รูป
+            //     if($userMessage == '1'){
+            //         $case = 1;
+            //         $seqcode = '0006';
+            //         $nextseqcode = '0007';
+            //         $question = $this->sequents_question($seqcode);
+            //         $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+            //         $userMessage =  $question;
+            //         //รูป
                     
-                }elseif($userMessage == '2'){
-                    $case = 3;
-                    $seqcode = '0003';
-                    $nextseqcode = '0004';
-                    $question = $this->sequents_question($seqcode);
-                    $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
-                    $userMessage =  $question;
+            //     }elseif($userMessage == '2'){
+            //         $case = 3;
+            //         $seqcode = '0003';
+            //         $nextseqcode = '0004';
+            //         $question = $this->sequents_question($seqcode);
+            //         $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+            //         $userMessage =  $question;
 
 
-                }elseif($userMessage == '3'){
-                    $case = 1;
-                    $seqcode = '0005';
-                    $nextseqcode = '0006';
-                    $question = $this->sequents_question($seqcode);
-                    $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
-                    $userMessage =  $question;
+            //     }elseif($userMessage == '3'){
+            //         $case = 1;
+            //         $seqcode = '0005';
+            //         $nextseqcode = '0006';
+            //         $question = $this->sequents_question($seqcode);
+            //         $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+            //         $userMessage =  $question;
 
-                }else{
-                    $case = 1;
-                    $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
-                }
-             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0003'){
+            //     }else{
+            //         $case = 1;
+            //         $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
+            //     }
+            //  }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0003'){
                 
-                if($userMessage == '1'){
-                    $case = 1;
-                    $seqcode = '0004';
-                    $nextseqcode = '0005';
-                    $question = $this->sequents_question($seqcode);
-                    $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
-                    $userMessage =  $question;
-                    //รูป
+            //     if($userMessage == '1'){
+            //         $case = 1;
+            //         $seqcode = '0004';
+            //         $nextseqcode = '0005';
+            //         $question = $this->sequents_question($seqcode);
+            //         $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+            //         $userMessage =  $question;
+            //         //รูป
                     
-                }elseif($userMessage == '2'){
-                    $case = 3;
-                    $seqcode = '0005';
-                    $nextseqcode = '0006';
-                    $question = $this->sequents_question($seqcode);
-                    $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
-                    $userMessage =  $question;
+            //     }elseif($userMessage == '2'){
+            //         $case = 3;
+            //         $seqcode = '0005';
+            //         $nextseqcode = '0006';
+            //         $question = $this->sequents_question($seqcode);
+            //         $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+            //         $userMessage =  $question;
 
-                }else{
-                    $case = 1;
-                    $userMessage ='กรุณาเลือกตกลง หรือ มีปัญหาการคุมกำเนิด';
-                }
+            //     }else{
+            //         $case = 1;
+            //         $userMessage ='กรุณาเลือกตกลง หรือ มีปัญหาการคุมกำเนิด';
+            //     }
              
-               $question = $this->sequents_question($seqcode);
-               // $insert_sequentsteps = $this->insert_sequentsteps($user);
-               $userMessage =  $question;
+            //    $question = $this->sequents_question($seqcode);
+            //    // $insert_sequentsteps = $this->insert_sequentsteps($user);
+            //    $userMessage =  $question;
  
 
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
@@ -219,29 +219,29 @@ class GetMessageController extends Controller
 
 
 
-     public function sequents_question($seqcode)
-    {          
-                   // $question = sequents::select('question')
-                   //              ->where('seqcode',$seqcode)
-                   //              ->first();
-        $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
-        $dbconn = pg_pconnect($conn_string);
-                $result = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '$seqcode'");
-                while ($row = pg_fetch_row($result)) {
-                     $question = $row[0];
-                }  
-                   return $question;
-    }
-     public function insert_sequentsteps($user,$seqcode,$nextseqcode)
-    {          
-         $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
-        $dbconn = pg_pconnect($conn_string);
+    //  public function sequents_question($seqcode)
+    // {          
+    //                // $question = sequents::select('question')
+    //                //              ->where('seqcode',$seqcode)
+    //                //              ->first();
+    //     $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
+    //     $dbconn = pg_pconnect($conn_string);
+    //             $result = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '$seqcode'");
+    //             while ($row = pg_fetch_row($result)) {
+    //                  $question = $row[0];
+    //             }  
+    //                return $question;
+    // }
+    //  public function insert_sequentsteps($user,$seqcode,$nextseqcode)
+    // {          
+    //      $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
+    //     $dbconn = pg_pconnect($conn_string);
 
-        $q1 = pg_exec($dbconn, "UPDATE users SET  status = '0' WHERE user_id = '{$user_id}' ") or die(pg_errormessage());  
+    //     $q1 = pg_exec($dbconn, "UPDATE users SET  status = '0' WHERE user_id = '{$user_id}' ") or die(pg_errormessage());  
 
-        $insert_sequentsteps = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','{$seqcode}','','{$nextseqcode}','1',NOW(),NOW())") or die(pg_errormessage());
-        return $insert_sequentsteps;
-    }
+    //     $insert_sequentsteps = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','{$seqcode}','','{$nextseqcode}','1',NOW(),NOW())") or die(pg_errormessage());
+    //     return $insert_sequentsteps;
+    // }
     public function replymessage($replyToken,$userMessage,$case)
     {
           $httpClient = new CurlHTTPClient('Vf5/E8YVJGtBLdDKO0KKypasAfw+x3BjBCXG18D602yuJsY5Jp+r/fS8jS54THIgGIlbySeNWH4k52hCcs+NM/zhWbdso+sw7Vwnt8sqaPBtze3kBiiQUNI4BI/oy+b5j5WlZnsV8yxL8ozCHMQUXwdB04t89/1O/w1cDnyilFU=');
