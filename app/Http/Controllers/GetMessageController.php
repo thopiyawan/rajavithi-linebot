@@ -67,18 +67,19 @@ class GetMessageController extends Controller
      public function index(){
 
 
-        // $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
-        // $dbconn = pg_pconnect($conn_string);
+        $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
+        $dbconn = pg_pconnect($conn_string);
 
 
-           $answer = sequents::select('question')
-                                ->where('seqcode','0001')
-                                ->first();
-              // $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0006'");
-              //   while ($row = pg_fetch_row($result)) {
-              //     echo $seqcode =  $row[0];
-              //     echo $question = $row[1];
-              //   }   
+           // $answer = sequents::select('question')
+           //                      ->where('seqcode','0001')
+           //                      ->first();
+             $seqcode = '0001';
+              $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode =  $seqcode");
+                while ($row = pg_fetch_row($result)) {
+                  echo $seqcode =  $row[0];
+                  echo $question = $row[1];
+                }   
 
                
          
@@ -136,29 +137,10 @@ class GetMessageController extends Controller
                 $case = 1;
                 $seqcode = '0001';
                 $nextseqcode = '0002';
-
-
-           // $answer = sequents::select('question')
-           //                      ->where('seqcode','0001')
-           //                      ->first();
-              $result = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '0001'");
-                while ($row = pg_fetch_row($result)) {
-                  // echo $seqcode =  $row[0];
-                     $question = $row[0];
-                }   
+             
+               $this->sequents_question($seqcode);
           
                $userMessage =  $question;
-             //    $u  =   DB::table('sequentsteps')->insert(array(
-             // array('sender_id'=>$user ,'seqcode'=>$seqcode ,'answer'=>'NULL','nextseqcode'=>$nextseqcode,),'status'=>'1'));
-                // $userMessage = DB::table('sequents')
-                //      ->select('question')
-                //      ->where('seqcode', '0001')
-                //      ->first();
-                // $userMessage = pg_escape_string($userMessage);
-
-                 // $userMessage= $userMessage->question;
-                  // $sequentsteps_insert =  $this->sequentsteps_insert($user,$seqcode,$nextseqcode);
-            
 
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
                 $userMessage  = 'สวัสดีค่ะ ';
@@ -175,10 +157,15 @@ class GetMessageController extends Controller
 
      public function sequents_question($seqcode)
     {          
-                   $question = sequents::select('question')
-                                ->where('seqcode',$seqcode)
-                                ->first();
-                   return $question->question;
+                   // $question = sequents::select('question')
+                   //              ->where('seqcode',$seqcode)
+                   //              ->first();
+                $result = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '0001'");
+                while ($row = pg_fetch_row($result)) {
+                  // echo $seqcode =  $row[0];
+                     $question = $row[0];
+                }  
+                   return $question;
     }
     public function replymessage($replyToken,$userMessage,$case)
     {
