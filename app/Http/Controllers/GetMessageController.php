@@ -196,10 +196,10 @@ class GetMessageController extends Controller
              //        $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
              //        $userMessage =  $question;
 
-                }else{
-                    $case = 1;
-                    $userMessage ='กรุณาเลือกตกลง หรือ มีปัญหาการคุมกำเนิด';
-                }
+                // }else{
+                //     $case = 1;
+                //     $userMessage ='กรุณาเลือกตกลง หรือ มีปัญหาการคุมกำเนิด';
+                // }
              
 
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
@@ -215,19 +215,19 @@ class GetMessageController extends Controller
 
 
 
-     public function sequents_question($seqcode)
-    {          
-                   // $question = sequents::select('question')
-                   //              ->where('seqcode',$seqcode)
-                   //              ->first();
-        $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
-        $dbconn = pg_pconnect($conn_string);
-                $result = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '$seqcode'");
-                while ($row = pg_fetch_row($result)) {
-                     $question = $row[0];
-                }  
-                   return $question;
-    }
+    //  public function sequents_question($seqcode)
+    // {          
+    //                // $question = sequents::select('question')
+    //                //              ->where('seqcode',$seqcode)
+    //                //              ->first();
+    //     $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
+    //     $dbconn = pg_pconnect($conn_string);
+    //             $result = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '$seqcode'");
+    //             while ($row = pg_fetch_row($result)) {
+    //                  $question = $row[0];
+    //             }  
+    //                return $question;
+    // }
     //  public function insert_sequentsteps($user,$seqcode,$nextseqcode)
     // {          
     //      $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
@@ -238,78 +238,78 @@ class GetMessageController extends Controller
     //     $insert_sequentsteps = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','{$seqcode}','','{$nextseqcode}','1',NOW(),NOW())") or die(pg_errormessage());
     //     return $insert_sequentsteps;
     // }
-    public function replymessage($replyToken,$userMessage,$case)
-    {
-          $httpClient = new CurlHTTPClient('Vf5/E8YVJGtBLdDKO0KKypasAfw+x3BjBCXG18D602yuJsY5Jp+r/fS8jS54THIgGIlbySeNWH4k52hCcs+NM/zhWbdso+sw7Vwnt8sqaPBtze3kBiiQUNI4BI/oy+b5j5WlZnsV8yxL8ozCHMQUXwdB04t89/1O/w1cDnyilFU=');
-            $bot = new LINEBot($httpClient, array('channelSecret' => '96503ab7de564a74e4e13c5a7a3e0e40'));
+    // public function replymessage($replyToken,$userMessage,$case)
+    // {
+    //       $httpClient = new CurlHTTPClient('Vf5/E8YVJGtBLdDKO0KKypasAfw+x3BjBCXG18D602yuJsY5Jp+r/fS8jS54THIgGIlbySeNWH4k52hCcs+NM/zhWbdso+sw7Vwnt8sqaPBtze3kBiiQUNI4BI/oy+b5j5WlZnsV8yxL8ozCHMQUXwdB04t89/1O/w1cDnyilFU=');
+    //         $bot = new LINEBot($httpClient, array('channelSecret' => '96503ab7de564a74e4e13c5a7a3e0e40'));
             
-            switch($case) {
+    //         switch($case) {
      
-                case 1 : 
-                        $textMessageBuilder = new TextMessageBuilder($userMessage);
-                    break;
-                case 2 : 
-                        $textMessage1 = new TextMessageBuilder($userMessage);
-                        $actionBuilder = array(
-                                          new MessageTemplateActionBuilder(
-                                          'ใช่',// ข้อความแสดงในปุ่ม
-                                          '1' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                                          ),
-                                           new MessageTemplateActionBuilder(
-                                          'ไม่ใช่',// ข้อความแสดงในปุ่ม
-                                          '2' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                                          ),
-                                           new MessageTemplateActionBuilder(
-                                          'ไม่แน่ใจ',// ข้อความแสดงในปุ่ม
-                                          '3' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                                          ) 
-                                         );
+    //             case 1 : 
+    //                     $textMessageBuilder = new TextMessageBuilder($userMessage);
+    //                 break;
+    //             case 2 : 
+    //                     $textMessage1 = new TextMessageBuilder($userMessage);
+    //                     $actionBuilder = array(
+    //                                       new MessageTemplateActionBuilder(
+    //                                       'ใช่',// ข้อความแสดงในปุ่ม
+    //                                       '1' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+    //                                       ),
+    //                                        new MessageTemplateActionBuilder(
+    //                                       'ไม่ใช่',// ข้อความแสดงในปุ่ม
+    //                                       '2' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+    //                                       ),
+    //                                        new MessageTemplateActionBuilder(
+    //                                       'ไม่แน่ใจ',// ข้อความแสดงในปุ่ม
+    //                                       '3' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+    //                                       ) 
+    //                                      );
 
-                    $imageUrl = NULL;
-                    $textMessage2 = new TemplateMessageBuilder('Template',
-                     new ButtonTemplateBuilder(
-                              'ผู้ป่วยเป็นผู้ชายหรือผู้หญิงวัยหมดประจำเดือนหรือ', // กำหนดหัวเรื่อง
-                              'ได้คุมกำเนิดด้วยวิธีทำหมัน, ฉีดยาคุม, ฝังยาคุมหรือใส่ห่วงอนามัยแล้วใช่หรือไม่?', // กำหนดรายละเอียด
-                               $imageUrl, // กำหนด url รุปภาพ
-                               $actionBuilder  // กำหนด action object
-                         )
-                      );    
+    //                 $imageUrl = NULL;
+    //                 $textMessage2 = new TemplateMessageBuilder('Template',
+    //                  new ButtonTemplateBuilder(
+    //                           'ผู้ป่วยเป็นผู้ชายหรือผู้หญิงวัยหมดประจำเดือนหรือ', // กำหนดหัวเรื่อง
+    //                           'ได้คุมกำเนิดด้วยวิธีทำหมัน, ฉีดยาคุม, ฝังยาคุมหรือใส่ห่วงอนามัยแล้วใช่หรือไม่?', // กำหนดรายละเอียด
+    //                            $imageUrl, // กำหนด url รุปภาพ
+    //                            $actionBuilder  // กำหนด action object
+    //                      )
+    //                   );    
 
-                 $multiMessage = new MultiMessageBuilder;
-                  $multiMessage->add($textMessage1);
-                  $multiMessage->add($textMessage2);
-                  $textMessageBuilder = $multiMessage; 
-                    break;
-                  case 3 : 
-                        $textMessage1 = new TextMessageBuilder($userMessage);
-                        $actionBuilder = array(
-                                          new MessageTemplateActionBuilder(
-                                          'ตกลง',// ข้อความแสดงในปุ่ม
-                                          '1' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                                          ),
-                                           new MessageTemplateActionBuilder(
-                                          'มีปัญหาการคุมกำเนิด',// ข้อความแสดงในปุ่ม
-                                          '2' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                                          )
-                                         );
+    //              $multiMessage = new MultiMessageBuilder;
+    //               $multiMessage->add($textMessage1);
+    //               $multiMessage->add($textMessage2);
+    //               $textMessageBuilder = $multiMessage; 
+    //                 break;
+    //               case 3 : 
+    //                     $textMessage1 = new TextMessageBuilder($userMessage);
+    //                     $actionBuilder = array(
+    //                                       new MessageTemplateActionBuilder(
+    //                                       'ตกลง',// ข้อความแสดงในปุ่ม
+    //                                       '1' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+    //                                       ),
+    //                                        new MessageTemplateActionBuilder(
+    //                                       'มีปัญหาการคุมกำเนิด',// ข้อความแสดงในปุ่ม
+    //                                       '2' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+    //                                       )
+    //                                      );
 
-                    $imageUrl = NULL;
-                    $textMessage2 = new TemplateMessageBuilder('Template',
-                     new ButtonTemplateBuilder(
-                              'โปรดอ่านข้างบนก่อน', // กำหนดหัวเรื่อง
-                              'กดเลือกด้านล่างได้เลยค่ะ', // กำหนดรายละเอียด
-                               $imageUrl, // กำหนด url รุปภาพ
-                               $actionBuilder  // กำหนด action object
-                         )
-                      );    
+    //                 $imageUrl = NULL;
+    //                 $textMessage2 = new TemplateMessageBuilder('Template',
+    //                  new ButtonTemplateBuilder(
+    //                           'โปรดอ่านข้างบนก่อน', // กำหนดหัวเรื่อง
+    //                           'กดเลือกด้านล่างได้เลยค่ะ', // กำหนดรายละเอียด
+    //                            $imageUrl, // กำหนด url รุปภาพ
+    //                            $actionBuilder  // กำหนด action object
+    //                      )
+    //                   );    
 
-                  $multiMessage = new MultiMessageBuilder;
-                  $multiMessage->add($textMessage1);
-                  $multiMessage->add($textMessage2);
-                  $textMessageBuilder = $multiMessage; 
-                    break;
-            }
-            $response = $bot->replyMessage($replyToken,$textMessageBuilder); 
+    //               $multiMessage = new MultiMessageBuilder;
+    //               $multiMessage->add($textMessage1);
+    //               $multiMessage->add($textMessage2);
+    //               $textMessageBuilder = $multiMessage; 
+    //                 break;
+    //         }
+    //         $response = $bot->replyMessage($replyToken,$textMessageBuilder); 
     }
 
 
