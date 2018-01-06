@@ -90,7 +90,7 @@ class GetMessageController extends Controller
      public function getmessage()
     {         
     
-            $httpClient = new CurlHTTPClient('cD31X9SFEuyU6DMIcOcFI+FN0F1FNz7f/367vn5Ca8k8SaKF1zwLiTLfMYFIl8g1GIlbySeNWH4k52hCcs+NM/zhWbdso+sw7Vwnt8sqaPDbFAay60r3CJEdcsC9wUFWJDNTdkc7jnUdKGdoKpdxlAdB04t89/1O/w1cDnyilFU=');
+            $httpClient = new CurlHTTPClient('7DdGm6HIorfFbWu6lAvz4kgc+6h2dPy0wlJfgGikgbsp+Akd0CCi+IUn/ufWCiyzGIlbySeNWH4k52hCcs+NM/zhWbdso+sw7Vwnt8sqaPBL2T8ztuQpc3GS/CjcaIK3glSo2UTEhlnsnNMf/+7qRgdB04t89/1O/w1cDnyilFU=');
             $bot = new LINEBot($httpClient, array('channelSecret' => '96503ab7de564a74e4e13c5a7a3e0e40'));
             // คำสั่งรอรับการส่งค่ามาของ LINE Messaging API
             $content = file_get_contents('php://input');
@@ -123,7 +123,6 @@ class GetMessageController extends Controller
                      ->where('seqcode', '0001')
                      ->first();
 
-                 $userMessage = json_decode($userMessage);
                  // $userMessage= $userMessage->question;
                   // $sequentsteps_insert =  $this->sequentsteps_insert($user,$seqcode,$nextseqcode);
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
