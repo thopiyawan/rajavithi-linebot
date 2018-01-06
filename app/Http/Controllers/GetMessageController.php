@@ -152,7 +152,7 @@ class GetMessageController extends Controller
                     $seqcode = '0006';
                     $nextseqcode = '0007';
                     $question = $this->sequents_question($seqcode);
-                    $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                     $userMessage =  $question;
                     //รูป
                     
@@ -161,7 +161,7 @@ class GetMessageController extends Controller
                     $seqcode = '0003';
                     $nextseqcode = '0004';
                     $question = $this->sequents_question($seqcode);
-                    $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                     $userMessage =  $question;
 
 
@@ -170,7 +170,7 @@ class GetMessageController extends Controller
                     $seqcode = '0005';
                     $nextseqcode = '0006';
                     $question = $this->sequents_question($seqcode);
-                    $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                     $userMessage =  $question;
 
                 }else{
@@ -184,7 +184,7 @@ class GetMessageController extends Controller
                     $seqcode = '0004';
                     $nextseqcode = '0005';
                     $question = $this->sequents_question($seqcode);
-                    $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                     $userMessage =  $question;
                     //รูป
                     
@@ -193,7 +193,7 @@ class GetMessageController extends Controller
                     $seqcode = '0005';
                     $nextseqcode = '0006';
                     $question = $this->sequents_question($seqcode);
-                    $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                     $userMessage =  $question;
 
                 }else{
