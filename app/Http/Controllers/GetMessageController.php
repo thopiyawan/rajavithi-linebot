@@ -162,7 +162,7 @@ class GetMessageController extends Controller
                $question = $this->sequents_question($seqcode);
                $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                $userMessage =  $question;
-            }elseif(is_numeric($userMessage) !== false &&  $row->question == '0001'){
+            }elseif(is_numeric($userMessage) !== false &&  $row->seqcode == '0001'){
                 
                 if($userMessage == '1'){
                     $case = 1;
@@ -194,7 +194,7 @@ class GetMessageController extends Controller
                     $case = 1;
                     $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
                 }
-             }elseif(is_numeric($userMessage) !== false &&   $row->question== '0003'){
+             }elseif(is_numeric($userMessage) !== false &&   $row->seqcode== '0003'){
                 
                 if($userMessage == '1'){
                     $case = 1;
