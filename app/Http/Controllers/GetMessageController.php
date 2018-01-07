@@ -132,8 +132,9 @@ class GetMessageController extends Controller
             // $response = $bot->replyMessage($replyToken,$textMessageBuilder);
              $seqcode = '0000';
              $nextseqcode = '0000';            
-             $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+            
             $checkmessage = $this->checkmessage($replyToken,$userMessage,$user);
+             $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
     }
     public function checkmessage($replyToken,$userMessage,$user)
     {  
