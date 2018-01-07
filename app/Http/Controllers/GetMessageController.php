@@ -147,7 +147,11 @@ class GetMessageController extends Controller
     $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
     $dbconn = pg_pconnect($conn_string);
 
-            $seqcode = $this->seqcode_select($user);
+              $dbconn = pg_pconnect($conn_string);  
+          $result = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '$seqcode'");
+                while ($row = pg_fetch_object($result)) {
+                  
+               
 
 
             if ($userMessage =='ขอนัดกลืนแร่') {
@@ -158,7 +162,7 @@ class GetMessageController extends Controller
                $question = $this->sequents_question($seqcode);
                $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                $userMessage =  $question;
-            }elseif(is_numeric($userMessage) !== false && $seqcode == '0001'){
+            }elseif(is_numeric($userMessage) !== false &&  $row->question == '0001'){
                 
                 if($userMessage == '1'){
                     $case = 1;
@@ -190,7 +194,7 @@ class GetMessageController extends Controller
                     $case = 1;
                     $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
                 }
-             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0003'){
+             }elseif(is_numeric($userMessage) !== false &&   $row->question== '0003'){
                 
                 if($userMessage == '1'){
                     $case = 1;
@@ -228,7 +232,7 @@ class GetMessageController extends Controller
             }     
              return $this->replymessage($replyToken,$userMessage,$case);
     }
-
+    }
 
 
 
