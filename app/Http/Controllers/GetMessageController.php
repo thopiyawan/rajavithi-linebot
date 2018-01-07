@@ -129,7 +129,10 @@ class GetMessageController extends Controller
             }
 
             // $textMessageBuilder = new TextMessageBuilder($userMessage);
-            // $response = $bot->replyMessage($replyToken,$textMessageBuilder); 
+            // $response = $bot->replyMessage($replyToken,$textMessageBuilder);
+             $seqcode = '0000';
+             $nextseqcode = '0000';            
+             $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
             $checkmessage = $this->checkmessage($replyToken,$userMessage,$user);
     }
     public function checkmessage($replyToken,$userMessage,$user)
@@ -139,15 +142,18 @@ class GetMessageController extends Controller
     $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
     $dbconn = pg_pconnect($conn_string);
 
+            $seqcode = $this->seqcode_select($user);
+
+
             if ($userMessage =='ขอนัดกลืนแร่') {
                 $case = 2;
                 $seqcode = '0001';
                 $nextseqcode = '0002';
              
                $question = $this->sequents_question($seqcode);
-               $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+               $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                $userMessage =  $question;
-            }elseif(is_numeric($userMessage) !== false && (($seqcode=$this->seqcode_select($user)) == '0001')){
+            }elseif(is_numeric($userMessage) !== false && $seqcode == '0001'){
                 
                 if($userMessage == '1'){
                     $case = 1;
@@ -256,6 +262,7 @@ class GetMessageController extends Controller
                   return $seqcode =  $row[0];
                   //echo $question = $row[1];
                 }   
+        return $seqcode;
  
 
     }
