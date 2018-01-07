@@ -78,12 +78,15 @@ class GetMessageController extends Controller
              //      echo $seqcode =  $row[0];
              //      echo $question = $row[1];
              //    }   
-              $result = pg_query($dbconn,"SELECT seqcode FROM sequentsteps WHERE sender_id = '$user'");
-                while ($row = pg_fetch_row($result)) {
-                  return $seqcode =  $row[0];
-                  //echo $question = $row[1];
-                }   
- 
+              // $result = pg_query($dbconn,"SELECT seqcode FROM sequentsteps WHERE sender_id = '$user'");
+              //   while ($row = pg_fetch_row($result)) {
+              //     return $seqcode =  $row[0];
+              //     //echo $question = $row[1];
+              //   }   
+  $result = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '$seqcode'");
+                while ($row = pg_fetch_object($result)) {
+                   echo  $question->question;
+                } 
 
               // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','0006','','0007','0',NOW(),NOW())") or die(pg_errormessage());
          //       $seqcode = '5000';
@@ -237,8 +240,8 @@ class GetMessageController extends Controller
         $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
         $dbconn = pg_pconnect($conn_string);
                 $result = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '$seqcode'");
-                while ($row = pg_fetch_row($result)) {
-                   return  $question = $row[0];
+                while ($row = pg_fetch_object($result)) {
+                   return  $question->question;
                 }  
                  
     }
