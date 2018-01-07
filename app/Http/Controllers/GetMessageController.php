@@ -83,9 +83,11 @@ class GetMessageController extends Controller
               //     return $seqcode =  $row[0];
               //     //echo $question = $row[1];
               //   }   
-  $result = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '$seqcode'");
+
+          $result = pg_query($dbconn,"SELECT seqcode FROM sequentsteps WHERE sender_id = '$user'");
                 while ($row = pg_fetch_object($result)) {
-                   echo  $row->question;
+            
+                   echo  $row->seqcode;
                 } 
 
               // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','0006','','0007','0',NOW(),NOW())") or die(pg_errormessage());
