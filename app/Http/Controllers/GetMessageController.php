@@ -165,35 +165,21 @@ class GetMessageController extends Controller
                 $userMessage = strtolower($userMessage); // แปลงเป็นตัวเล็ก สำหรับทดสอบ
                 switch ($userMessage) {
                     case "p":
-                        // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
-                        $response = $bot->getProfile($userID);
-                        if ($response->isSucceeded()) {
+           
                             // ดึงค่ามาแบบเป็น JSON String โดยใช้คำสั่ง getRawBody() กรณีเป้นข้อความ text
-                            $textReplyMessage = $response->getRawBody(); // return string            
+                            $textReplyMessage = 'pppppppppp'; // return string            
                             $userMessage = new TextMessageBuilder($textReplyMessage);         
                             break;              
-                        }
-                        // กรณีไม่สามารถดึงข้อมูลได้ ให้แสดงสถานะ และข้อมูลแจ้ง ถ้าไม่ต้องการแจ้งก็ปิดส่วนนี้ไปก็ได้
-                        $failMessage = json_encode($response->getHTTPStatus() . ' ' . $response->getRawBody());
-                        $userMessage = new TextMessageBuilder($failMessage);
+                    
+                     
                         break;              
                     case "สวัสดี":
                         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
-                        $response = $bot->getProfile($userID);
-                        if ($response->isSucceeded()) {
-                            // ดึงค่าโดยแปลจาก JSON String .ให้อยู่ใรูปแบบโครงสร้าง ตัวแปร array 
-                            $userData = $response->getJSONDecodedBody(); // return array     
-                            // $userData['userId']
-                            // $userData['displayName']
-                            // $userData['pictureUrl']
-                            // $userData['statusMessage']
-                            $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];             
+                   
+                            $textReplyMessage = 'สวัสดีครับ คุณ ';             
                             $userMessage = new TextMessageBuilder($textReplyMessage);         
                             break;              
-                        }
-                        // กรณีไม่สามารถดึงข้อมูลได้ ให้แสดงสถานะ และข้อมูลแจ้ง ถ้าไม่ต้องการแจ้งก็ปิดส่วนนี้ไปก็ได้
-                        $failMessage = json_encode($response->getHTTPStatus() . ' ' . $response->getRawBody());
-                        $userMessage = new TextMessageBuilder($failMessage);
+             
                         break;                                                                                                                                                                                                                                          
                     default:
                         $textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
@@ -202,47 +188,9 @@ class GetMessageController extends Controller
                 }
                 break;      
             case (preg_match('/[image|audio|video]/',$typeMessage) ? true : false) :
-                $response = $bot->getMessageContent($idMessage);
-                if ($response->isSucceeded()) {
-                    // คำสั่ง getRawBody() ในกรณีนี้ จะได้ข้อมูลส่งกลับมาเป็น binary 
-                    // เราสามารถเอาข้อมูลไปบันทึกเป็นไฟล์ได้
-                    $dataBinary = $response->getRawBody(); // return binary
-                    // ดึงข้อมูลประเภทของไฟล์ จาก header
-                    $fileType = $response->getHeader('Content-Type');    
-                    switch ($fileType){
-                        case (preg_match('/^image/',$fileType) ? true : false):
-                            list($typeFile,$ext) = explode("/",$fileType);
-                            $ext = ($ext=='jpeg' || $ext=='jpg')?"jpg":$ext;
-                            $fileNameSave = time().".".$ext;
-                            break;
-                        case (preg_match('/^audio/',$fileType) ? true : false):
-                            list($typeFile,$ext) = explode("/",$fileType);
-                            $fileNameSave = time().".".$ext;                        
-                            break;
-                        case (preg_match('/^video/',$fileType) ? true : false):
-                            list($typeFile,$ext) = explode("/",$fileType);
-                            $fileNameSave = time().".".$ext;                                
-                            break;                                                      
-                    }
-                    $botDataFolder = 'botdata/'; // โฟลเดอร์หลักที่จะบันทึกไฟล์
-                    $botDataUserFolder = $botDataFolder.$userID; // มีโฟลเดอร์ด้านในเป็น userId อีกขั้น
-                    if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
-                        mkdir($botDataUserFolder, 0777, true);
-                    }   
-                    // กำหนด path ของไฟล์ที่จะบันทึก
-                    $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
-                    file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
-                    $textReplyMessage = "บันทึกไฟล์เรียบร้อยแล้ว $fileNameSave";
-                    $userMessage = new TextMessageBuilder($textReplyMessage);
-                    break;
-                }
-                $failMessage = json_encode($idMessage.' '.$response->getHTTPStatus() . ' ' . $response->getRawBody());
-                $userMessage = new TextMessageBuilder($failMessage);  
-                break;                                                      
-            default:
-                $textReplyMessage = json_encode($events);
-                $userMessage = new TextMessageBuilder($textReplyMessage);         
-                break;  
+                 $textReplyMessage = 'รูปปปปปปปปปปปปป '.$userData['displayName'];             
+                            $userMessage = new TextMessageBuilder($textReplyMessage);   
+                break; 
         }
             $response = $bot->replyMessage($replyToken, $userMessage); 
             //$checkmessage = $this->checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage);
