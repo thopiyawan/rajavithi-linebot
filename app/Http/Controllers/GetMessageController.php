@@ -353,7 +353,7 @@ if($typeMessage=='text'){
                 $nextseqcode = '0011';
                 $question = $this->sequents_question($seqcode);
                 $userMessage = $question;
-                $case = 5; 
+                $case = 8; 
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                 break;
             case '0011':
@@ -361,7 +361,7 @@ if($typeMessage=='text'){
                 $nextseqcode = '0011';
                 $question = $this->sequents_question($seqcode);
                 $userMessage = $question;
-                $case = 5; 
+                $case = 8; 
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                 break;
             
@@ -378,11 +378,6 @@ if($typeMessage=='text'){
                 $case = 1; 
              
 }
-
-
-
-
-
 
 
 //////////////////////////////////////////
@@ -577,7 +572,39 @@ if($typeMessage=='text'){
                   $multiMessage->add($textMessage1);
                   $multiMessage->add($textMessage2);
                   $textMessageBuilder = $multiMessage; 
-                    break;   
+                    break;  
+                  case 8 : 
+                        $textMessage1 = new TextMessageBuilder($userMessage);
+                        $actionBuilder = array(
+                                           new MessageTemplateActionBuilder(
+                                          'ใช่',// ข้อความแสดงในปุ่ม
+                                          '1' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                          ),
+                                           new MessageTemplateActionBuilder(
+                                          'ไม่ใช่',// ข้อความแสดงในปุ่ม
+                                          '2' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                          ),
+                                           new MessageTemplateActionBuilder(
+                                          'มีเอกสารไม่ครบ',// ข้อความแสดงในปุ่ม
+                                          '3' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                          )
+                                         );
+
+                    $imageUrl = NULL;
+                    $textMessage2 = new TemplateMessageBuilder('Template',
+                     new ButtonTemplateBuilder(
+                              'โปรดอ่านข้างบนก่อน', // กำหนดหัวเรื่อง
+                              'กดเลือกด้านล่างได้เลยค่ะ', // กำหนดรายละเอียด
+                               $imageUrl, // กำหนด url รุปภาพ
+                               $actionBuilder  // กำหนด action object
+                         )
+                      );    
+
+                 $multiMessage = new MultiMessageBuilder;
+                  $multiMessage->add($textMessage1);
+                  $multiMessage->add($textMessage2);
+                  $textMessageBuilder = $multiMessage; 
+                    break; 
  
               
             }
