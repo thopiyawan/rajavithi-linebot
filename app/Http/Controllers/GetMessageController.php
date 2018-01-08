@@ -183,7 +183,7 @@ class GetMessageController extends Controller
                 $nextseqcode = '0002';
             
                // $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
-               // $question = $this->sequents_question($seqcode);
+               $question = $this->sequents_question($seqcode);
                $userMessage =  $question;
             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0001'){
                 
