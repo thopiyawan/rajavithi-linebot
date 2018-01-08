@@ -156,7 +156,7 @@ class GetMessageController extends Controller
                 $case = 2;
                 $seqcode = '0001';
                 $nextseqcode = '0002';
-             
+            
                $question = $this->sequents_question($seqcode);
                $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                $userMessage =  $question;
