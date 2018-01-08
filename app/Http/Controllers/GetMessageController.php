@@ -226,6 +226,10 @@ class GetMessageController extends Controller
                 $case = 1; 
             }     
              return $this->replymessage($replyToken,$userMessage,$case);
+            $seqcode = '0000';
+            $nextseqcode = '0000';            
+            
+            $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
     }
     }
 
