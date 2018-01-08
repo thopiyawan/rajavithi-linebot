@@ -281,8 +281,8 @@ if($typeMessage=='text'){
                     
                 }elseif($userMessage == '2'){
                     $case = 3;
-                    $seqcode = '0003';
-                    $nextseqcode = '0004';
+                    $seqcode = '0006';
+                    $nextseqcode = '0007';
                     $question = $this->sequents_question($seqcode);
                     $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                     $userMessage =  $question;
