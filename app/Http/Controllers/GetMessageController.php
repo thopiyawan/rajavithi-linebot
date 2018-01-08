@@ -142,12 +142,11 @@ class GetMessageController extends Controller
             // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
             $replyToken  = $events['events'][0]['replyToken'];
             $user        = $events['events'][0]['source']['userId'];
-            $userMessage = $events['events'][0]['message']['text'];
-            $typeMessage = $events['events'][0]['message']['type'];
+           // $userMessage = $events['events'][0]['message']['text'];
+            $userMessage = $events['events'][0]['message']['type'];
             $idMessage   = $events['events'][0]['message']['id']; 
             }
-            $userMessage;
-
+            //$userMessage =  $typeMessage;
             return $this->replymessage($replyToken,$userMessage,$case);
             // $case = 1;
             // return $this->replymessage($replyToken,$userMessage,$case);
