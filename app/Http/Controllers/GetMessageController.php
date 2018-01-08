@@ -146,10 +146,26 @@ class GetMessageController extends Controller
     {  
          // $sequentsteps =  $this->sequentsteps_seqcode($user);
            //$sequentsteps->seqcode
-               $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+             // $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+ 
+
+
+        $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
+        $dbconn = pg_pconnect($conn_string);
+
+                $result = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '$seqcode'");
+                $num = pg_num_rows($result);
+                    if($num==0)         
+                 {  
+                     $seqcode = '0000';
+                     $nextseqcode = '0000';             
+                     $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+                 }
+
+
              $seqcode = $this->seqcode_select;
                   
-            if ($userMessage =='ขอนัดกลืนแร่' && $seqcode == NULL ) {
+            if ($userMessage =='ขอนัดกลืนแร่' && $seqcode == '' ) {
                 $case = 2;
                 $seqcode = '0001';
                 $nextseqcode = '0002';
@@ -226,8 +242,8 @@ class GetMessageController extends Controller
                 $case = 1; 
             }     
              return $this->replymessage($replyToken,$userMessage,$case);
-            $seqcode = '0000';
-            $nextseqcode = '0000';            
+          
+              
             
           
     }
