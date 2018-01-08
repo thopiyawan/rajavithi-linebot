@@ -146,7 +146,7 @@ class GetMessageController extends Controller
     {  
          // $sequentsteps =  $this->sequentsteps_seqcode($user);
            //$sequentsteps->seqcode
-
+               $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
              $seqcode = $this->seqcode_select;
                   
             if ($userMessage =='ขอนัดกลืนแร่' && $seqcode == NULL ) {
@@ -229,7 +229,7 @@ class GetMessageController extends Controller
             $seqcode = '0000';
             $nextseqcode = '0000';            
             
-            $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+          
     }
     }
 
