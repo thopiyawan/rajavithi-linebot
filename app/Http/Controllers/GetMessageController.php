@@ -157,23 +157,10 @@ class GetMessageController extends Controller
                      $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
                  }
 
-
-            // $textMessageBuilder = new TextMessageBuilder($userMessage);
-            // $response = $bot->replyMessage($replyToken,$textMessageBuilder);
-            // $seqcode = '0000';
-            // $nextseqcode = '0000';            
-            
-            // $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
-
             $checkmessage = $this->checkmessage($replyToken,$userMessage,$user);
     }
     public function checkmessage($replyToken,$userMessage,$user)
     {  
-         // $sequentsteps =  $this->sequentsteps_seqcode($user);
-           //$sequentsteps->seqcode
-             // $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
- 
-   
 
               $seqcode = $this->seqcode_select($user);
                   
@@ -188,7 +175,7 @@ class GetMessageController extends Controller
             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0001'){
                 
                 if($userMessage == '1'){
-                    $case = 1;
+                    $case = 4;
                     $seqcode = '0006';
                     $nextseqcode = '0007';
                     $question = $this->sequents_question($seqcode);
@@ -369,6 +356,18 @@ class GetMessageController extends Controller
                       );    
 
                  $multiMessage = new MultiMessageBuilder;
+                  $multiMessage->add($textMessage1);
+                  $multiMessage->add($textMessage2);
+                  $textMessageBuilder = $multiMessage; 
+                    break;
+             case 4 : 
+                        $textMessage1 = new TextMessageBuilder($userMessage);
+                        
+                        $picFullSize = 'https://rajavithi-bot.herokuapp.com/images/1.png';
+                        $picThumbnail = 'https://rajavithi-bot.herokuapp.com/images/1.png';
+                        $textMessage2 = new ImageMessageBuilder($picFullSize,$picThumbnail);
+                      
+                  $multiMessage = new MultiMessageBuilder;
                   $multiMessage->add($textMessage1);
                   $multiMessage->add($textMessage2);
                   $textMessageBuilder = $multiMessage; 
