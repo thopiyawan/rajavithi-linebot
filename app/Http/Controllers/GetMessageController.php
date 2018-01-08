@@ -160,130 +160,93 @@ class GetMessageController extends Controller
                      $nextseqcode = '0000';             
                      $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
                  }
-
-
-                    $seqcode = $this->seqcode_select($user);
-                  
-            if ($userMessage =='ขอนัดกลืนแร่' ) {
-                $case = 2;
-                $seqcode = '0001';
-                $nextseqcode = '0002';
-            
-               $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
-               $question = $this->sequents_question($seqcode);
-               $userMessage = $question;
-            }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0001'){
-                
-                if($userMessage == '1'){
-                    $case = 4;
-                    $seqcode = '0006';
-                    $nextseqcode = '0007';
-                    $question = $this->sequents_question($seqcode);
-                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
-                    $userMessage =  $question;
-                    //รูป
-                    
-                }elseif($userMessage == '2'){
-                    $case = 3;
-                    $seqcode = '0003';
-                    $nextseqcode = '0004';
-                    $question = $this->sequents_question($seqcode);
-                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
-                    $userMessage =  $question;
-
-
-                }elseif($userMessage == '3'){
-                    $case = 1;
-                    $seqcode = '0005';
-                    $nextseqcode = '0006';
-                    $question = $this->sequents_question($seqcode);
-                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
-                    $userMessage =  $question;
-
-                }else{
-                    $case = 1;
-                    $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
-                }
-             }elseif( (preg_match('/[image|audio|video]/',$typeMessage) ? true : false)  && $seqcode == '0006'){
-
-
-                $case = 1;
-                $userMessage = '555555555';
-                // $response = $bot->getMessageContent($idMessage);
-                // if ($response->isSucceeded()) {
-                //     // คำสั่ง getRawBody() ในกรณีนี้ จะได้ข้อมูลส่งกลับมาเป็น binary 
-                //     // เราสามารถเอาข้อมูลไปบันทึกเป็นไฟล์ได้
-                //     $dataBinary = $response->getRawBody(); // return binary
-                //     // ดึงข้อมูลประเภทของไฟล์ จาก header
-                //     $fileType = $response->getHeader('Content-Type');    
-                //     switch ($fileType){
-                //         case ($fileType  == 'image'):
-                //             list($typeFile,$ext) = explode("/",$fileType);
-                //             $ext = ($ext=='jpeg' || $ext=='jpg')?"jpg":$ext;
-                //             $fileNameSave = time().".".$ext;
-                //             break;
-                //         // case (preg_match('/^audio/',$fileType) ? true : false):
-                //         //     list($typeFile,$ext) = explode("/",$fileType);
-                //         //     $fileNameSave = time().".".$ext;                        
-                //         //     break;
-                //         // case (preg_match('/^video/',$fileType) ? true : false):
-                //         //     list($typeFile,$ext) = explode("/",$fileType);
-                //         //     $fileNameSave = time().".".$ext;                                
-                //         //     break;                                                      
-                //     }
-                //     $botDataFolder = 'document_images/'; // โฟลเดอร์หลักที่จะบันทึกไฟล์
-                //     $botDataUserFolder = $botDataFolder.$userID; // มีโฟลเดอร์ด้านในเป็น userId อีกขั้น
-                //     if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
-                //         mkdir($botDataUserFolder, 0777, true);
-                //     }   
-                //     // กำหนด path ของไฟล์ที่จะบันทึก
-                //     $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
-                //     file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
-                //     $case=1;
-                //     $textReplyMessage = "บันทึกไฟล์เรียบร้อยแล้ว $fileNameSave";
-                //     $userMessage = new TextMessageBuilder($textReplyMessage);
-                //     break;
-                // }
-                // $failMessage = json_encode($idMessage.' '.$response->getHTTPStatus() . ' ' . $response->getRawBody());
-                // $case=1;
-                // $userMessage = new TextMessageBuilder($failMessage);  
-
-             }elseif(is_numeric($userMessage) !== false &&   $seqcode== '0003'){
-                
-                if($userMessage == '1'){
-                    $case = 1;
-                    $seqcode = '0004';
-                    $nextseqcode = '0005';
-                    $question = $this->sequents_question($seqcode);
-                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
-                    $userMessage =  $question;
-                    //รูป
-                    
-                }elseif($userMessage == '2'){
-                    $case = 1;
-                    $seqcode = '0005';
-                    $nextseqcode = '0006';
-                    $question = $this->sequents_question($seqcode);
-                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
-                    $userMessage =  $question;
-
-                }else{
-                    $case = 1;
-                    $userMessage ='กรุณาเลือกตกลง หรือ มีปัญหาการคุมกำเนิด';
-                }
-             
-            }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
-                $userMessage  = 'สวัสดีค่ะ ';
-                $case = 1; 
-            }else{
-                $userMessage  = 'ฉันไม่เข้าใจ';
-                $case = 1; 
-            }     
-             return $this->replymessage($replyToken,$userMessage,$case);
-          
-              
-
-            // $checkmessage = $this->checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage);
+        switch ($typeMessage){
+            case 'text':
+                $userMessage = strtolower($userMessage); // แปลงเป็นตัวเล็ก สำหรับทดสอบ
+                switch ($userMessage) {
+                    case "p":
+                        // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
+                        $response = $bot->getProfile($userID);
+                        if ($response->isSucceeded()) {
+                            // ดึงค่ามาแบบเป็น JSON String โดยใช้คำสั่ง getRawBody() กรณีเป้นข้อความ text
+                            $textReplyMessage = $response->getRawBody(); // return string            
+                            $userMessage = new TextMessageBuilder($textReplyMessage);         
+                            break;              
+                        }
+                        // กรณีไม่สามารถดึงข้อมูลได้ ให้แสดงสถานะ และข้อมูลแจ้ง ถ้าไม่ต้องการแจ้งก็ปิดส่วนนี้ไปก็ได้
+                        $failMessage = json_encode($response->getHTTPStatus() . ' ' . $response->getRawBody());
+                        $userMessage = new TextMessageBuilder($failMessage);
+                        break;              
+                    case "สวัสดี":
+                        // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
+                        $response = $bot->getProfile($userID);
+                        if ($response->isSucceeded()) {
+                            // ดึงค่าโดยแปลจาก JSON String .ให้อยู่ใรูปแบบโครงสร้าง ตัวแปร array 
+                            $userData = $response->getJSONDecodedBody(); // return array     
+                            // $userData['userId']
+                            // $userData['displayName']
+                            // $userData['pictureUrl']
+                            // $userData['statusMessage']
+                            $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];             
+                            $userMessage = new TextMessageBuilder($textReplyMessage);         
+                            break;              
+                        }
+                        // กรณีไม่สามารถดึงข้อมูลได้ ให้แสดงสถานะ และข้อมูลแจ้ง ถ้าไม่ต้องการแจ้งก็ปิดส่วนนี้ไปก็ได้
+                        $failMessage = json_encode($response->getHTTPStatus() . ' ' . $response->getRawBody());
+                        $userMessage = new TextMessageBuilder($failMessage);
+                        break;                                                                                                                                                                                                                                          
+                    default:
+                        $textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
+                        $userMessage = new TextMessageBuilder($textReplyMessage);         
+                        break;                                      
+                }
+                break;      
+            case (preg_match('/[image|audio|video]/',$typeMessage) ? true : false) :
+                $response = $bot->getMessageContent($idMessage);
+                if ($response->isSucceeded()) {
+                    // คำสั่ง getRawBody() ในกรณีนี้ จะได้ข้อมูลส่งกลับมาเป็น binary 
+                    // เราสามารถเอาข้อมูลไปบันทึกเป็นไฟล์ได้
+                    $dataBinary = $response->getRawBody(); // return binary
+                    // ดึงข้อมูลประเภทของไฟล์ จาก header
+                    $fileType = $response->getHeader('Content-Type');    
+                    switch ($fileType){
+                        case (preg_match('/^image/',$fileType) ? true : false):
+                            list($typeFile,$ext) = explode("/",$fileType);
+                            $ext = ($ext=='jpeg' || $ext=='jpg')?"jpg":$ext;
+                            $fileNameSave = time().".".$ext;
+                            break;
+                        case (preg_match('/^audio/',$fileType) ? true : false):
+                            list($typeFile,$ext) = explode("/",$fileType);
+                            $fileNameSave = time().".".$ext;                        
+                            break;
+                        case (preg_match('/^video/',$fileType) ? true : false):
+                            list($typeFile,$ext) = explode("/",$fileType);
+                            $fileNameSave = time().".".$ext;                                
+                            break;                                                      
+                    }
+                    $botDataFolder = 'botdata/'; // โฟลเดอร์หลักที่จะบันทึกไฟล์
+                    $botDataUserFolder = $botDataFolder.$userID; // มีโฟลเดอร์ด้านในเป็น userId อีกขั้น
+                    if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
+                        mkdir($botDataUserFolder, 0777, true);
+                    }   
+                    // กำหนด path ของไฟล์ที่จะบันทึก
+                    $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
+                    file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
+                    $textReplyMessage = "บันทึกไฟล์เรียบร้อยแล้ว $fileNameSave";
+                    $userMessage = new TextMessageBuilder($textReplyMessage);
+                    break;
+                }
+                $failMessage = json_encode($idMessage.' '.$response->getHTTPStatus() . ' ' . $response->getRawBody());
+                $userMessage = new TextMessageBuilder($failMessage);  
+                break;                                                      
+            default:
+                $textReplyMessage = json_encode($events);
+                $userMessage = new TextMessageBuilder($textReplyMessage);         
+                break;  
+        }
+            $textMessageBuilder = new TextMessageBuilder($userMessage);
+            $response = $bot->replyMessage($replyToken,$textMessageBuilder); 
+            //$checkmessage = $this->checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage);
     }
     public function checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage)
     {  
@@ -405,6 +368,8 @@ class GetMessageController extends Controller
                 $userMessage  = 'ฉันไม่เข้าใจ';
                 $case = 1; 
             }     
+
+
              return $this->replymessage($replyToken,$userMessage,$case);
           
               
