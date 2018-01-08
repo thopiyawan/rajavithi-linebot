@@ -206,11 +206,11 @@ class GetMessageController extends Controller
                     $case = 1;
                     $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
                 }
-             }elseif($typeMessag  == 'image' &&  $seqcode == '0006'){
+             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0006'){
 
 
                 $case = 1;
-                $userMessage = '555555';
+                $userMessage = $typeMessage;
                 // $response = $bot->getMessageContent($idMessage);
                 // if ($response->isSucceeded()) {
                 //     // คำสั่ง getRawBody() ในกรณีนี้ จะได้ข้อมูลส่งกลับมาเป็น binary 
