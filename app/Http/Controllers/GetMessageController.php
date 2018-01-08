@@ -271,7 +271,7 @@ if($typeMessage=='text'){
              }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0007'){
                 
                 if($userMessage == '1'){
-                    $case = 4;
+                    $case = 6;
                     $seqcode = '0008';
                     $nextseqcode = '0009';
                     $question = $this->sequents_question($seqcode);
@@ -280,7 +280,7 @@ if($typeMessage=='text'){
                     //รูป
                     
                 }elseif($userMessage == '2'){
-                    $case = 3;
+                    $case = 4;
                     $seqcode = '0006';
                     $nextseqcode = '0007';
                     $question = $this->sequents_question($seqcode);
@@ -524,7 +524,6 @@ if($typeMessage=='text'){
                                $actionBuilder  // กำหนด action object
                          )
                       ); 
-                    break;
                case 6 : 
                     $actionBuilder = array(
                                           new MessageTemplateActionBuilder(
