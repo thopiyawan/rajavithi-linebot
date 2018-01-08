@@ -90,15 +90,16 @@ class GetMessageController extends Controller
           //          echo  $row->seqcode;
           //       } 
 
-             
+
                 $result = pg_query($dbconn,"SELECT seqcode FROM sequentsteps WHERE sender_id = '$user'");
                 $num = pg_num_rows($result);
-                    if($num==0)         
-                 {  
-                     $seqcode = '0000';
-                     $nextseqcode = '0000';             
-                     $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
-                 }
+                echo $num;
+                 //    if($num==0)         
+                 // {  
+                 //     $seqcode = '0000';
+                 //     $nextseqcode = '0000';             
+                 //     $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
+                 // }
 
 
               // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','0006','','0007','0',NOW(),NOW())") or die(pg_errormessage());
