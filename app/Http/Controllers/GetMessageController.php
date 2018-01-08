@@ -200,7 +200,7 @@ class GetMessageController extends Controller
 
 //////////////////////////////////////////////////////////////////
 
-// if($typeMessage=='text'){
+if($typeMessage=='text'){
       if(!is_null($events)){
             $userMessage = $events['events'][0]['message']['text'];
             }
@@ -267,11 +267,6 @@ class GetMessageController extends Controller
                     $case = 1;
                     $userMessage ='กรุณาเลือกตกลง หรือ มีปัญหาการคุมกำเนิด';
                 }
-            }elseif ($typeMessage=='image' && $seqcode=='0006'){
-
-                   $case = 1;
-                    $userMessage ='รูปภาพ';
-
              
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
                 $userMessage  = 'สวัสดีค่ะ ';
@@ -284,16 +279,25 @@ class GetMessageController extends Controller
    
 
 
-// }elseif($typeMessage=='image'){
-  
-//                 $userMessage  = 'นี่คือรูป';
-//                 $case = 1; 
+}elseif($typeMessage=='image'){
+        switch ($seqcode) {
+            case '0006':
+                 $userMessage  = 'นี่คือรูป';
+                $case = 1; 
+                break;
+            
+            default:
+                 $userMessage  = 'no';
+                $case = 1; 
+                break;
+        }
+               
              
-// }else{
-//       $userMessage  = 'ไม่เข';
-//                 $case = 1; 
+}else{
+      $userMessage  = 'ไม่เข';
+                $case = 1; 
              
-// }
+}
 
 
 
