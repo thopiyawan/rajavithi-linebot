@@ -285,7 +285,7 @@ if($typeMessage=='text'){
                 $seqcode = '0007';
                 $question = $this->sequents_question($seqcode);
                 $userMessage = $question;
-                $case = 1; 
+                $case = 5; 
                 break;
             
             default:
