@@ -142,11 +142,13 @@ class GetMessageController extends Controller
             // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
             $replyToken  = $events['events'][0]['replyToken'];
             $user = $events['events'][0]['source']['userId'];
-            $userMessage = $events['events'][0]['message']['text'];
-            $typeMessage = $events['events'][0]['message']['type'];
+            // $userMessage = $events['events'][0]['message']['text'];
+            $userMessage= $events['events'][0]['message']['type'];
             $idMessage = $events['events'][0]['message']['id']; 
             }
 
+            $case = 1;
+            return $this->replymessage($replyToken,$userMessage,$case);
                 $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
                 $dbconn = pg_pconnect($conn_string);
 
@@ -159,7 +161,7 @@ class GetMessageController extends Controller
                      $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
                  }
 
-            $checkmessage = $this->checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage);
+            // $checkmessage = $this->checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage);
     }
     public function checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage)
     {  
