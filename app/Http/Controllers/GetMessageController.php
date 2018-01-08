@@ -296,12 +296,35 @@ if($typeMessage=='text'){
                     $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                     $userMessage =  $question;
 
+
                 }else{
                     $case = 1;
                     $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ เอกสารไม่ครบ';
                 }
 
+      //*****///
+            }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0008'){
+                
+                if($userMessage == '1'){
+                    $case = 6;
+                    $seqcode = '0009';
+                    $nextseqcode = '0010';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+                    
+                }elseif($userMessage == '2'){
+                    $case = 6;
+                    $seqcode = '0011';
+                    $nextseqcode = '0012';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
 
+                }else{
+                    $case = 1;
+                    $userMessage ='กรุณาเลือกใช่ หรือ ไม่ใช่';
+                }
 
 
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
@@ -521,9 +544,23 @@ if($typeMessage=='text'){
                                $imageUrl, // กำหนด url รุปภาพ
                                $actionBuilder  // กำหนด action object
                          )
-                      );       
- 
+                      );    
+
                     break;
+                case 7 : 
+                        $textMessage1 = new TextMessageBuilder($userMessage);
+
+                        $picFullSize = 'https://rajavithi-bot.herokuapp.com/images/2-3.png';
+                        $picThumbnail = 'https://rajavithi-bot.herokuapp.com/images/2-3.png';
+                        $textMessage2 = new ImageMessageBuilder($picFullSize,$picThumbnail);
+                      
+                  $multiMessage = new MultiMessageBuilder;
+                  $multiMessage->add($textMessage1);
+                  $multiMessage->add($textMessage2);
+                  $textMessageBuilder = $multiMessage; 
+                    break;   
+ 
+              
             }
             $response = $bot->replyMessage($replyToken,$textMessageBuilder); 
     }
