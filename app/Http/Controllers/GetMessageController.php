@@ -143,6 +143,8 @@ class GetMessageController extends Controller
             $replyToken  = $events['events'][0]['replyToken'];
             $user = $events['events'][0]['source']['userId'];
             $userMessage = $events['events'][0]['message']['text'];
+            $typeMessage = $events['events'][0]['message']['type'];
+            $idMessage = $events['events'][0]['message']['id']; 
             }
 
                  $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
@@ -157,9 +159,9 @@ class GetMessageController extends Controller
                      $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
                  }
 
-            $checkmessage = $this->checkmessage($replyToken,$userMessage,$user);
+            $checkmessage = $this->checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage);
     }
-    public function checkmessage($replyToken,$userMessage,$user)
+    public function checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage)
     {  
 
               $seqcode = $this->seqcode_select($user);
@@ -204,6 +206,45 @@ class GetMessageController extends Controller
                     $case = 1;
                     $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
                 }
+             }elseif(preg_match('/[image]/',$typeMessage) ? true : false &&  $seqcode == '0006'){
+                $response = $bot->getMessageContent($idMessage);
+                if ($response->isSucceeded()) {
+                    // คำสั่ง getRawBody() ในกรณีนี้ จะได้ข้อมูลส่งกลับมาเป็น binary 
+                    // เราสามารถเอาข้อมูลไปบันทึกเป็นไฟล์ได้
+                    $dataBinary = $response->getRawBody(); // return binary
+                    // ดึงข้อมูลประเภทของไฟล์ จาก header
+                    $fileType = $response->getHeader('Content-Type');    
+                    switch ($fileType){
+                        case (preg_match('/^image/',$fileType) ? true : false):
+                            list($typeFile,$ext) = explode("/",$fileType);
+                            $ext = ($ext=='jpeg' || $ext=='jpg')?"jpg":$ext;
+                            $fileNameSave = time().".".$ext;
+                            break;
+                        // case (preg_match('/^audio/',$fileType) ? true : false):
+                        //     list($typeFile,$ext) = explode("/",$fileType);
+                        //     $fileNameSave = time().".".$ext;                        
+                        //     break;
+                        // case (preg_match('/^video/',$fileType) ? true : false):
+                        //     list($typeFile,$ext) = explode("/",$fileType);
+                        //     $fileNameSave = time().".".$ext;                                
+                        //     break;                                                      
+                    }
+                    $botDataFolder = 'document_images/'; // โฟลเดอร์หลักที่จะบันทึกไฟล์
+                    $botDataUserFolder = $botDataFolder.$userID; // มีโฟลเดอร์ด้านในเป็น userId อีกขั้น
+                    if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
+                        mkdir($botDataUserFolder, 0777, true);
+                    }   
+                    // กำหนด path ของไฟล์ที่จะบันทึก
+                    $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
+                    file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
+                    $textReplyMessage = "บันทึกไฟล์เรียบร้อยแล้ว $fileNameSave";
+                    $replyData = new TextMessageBuilder($textReplyMessage);
+                    break;
+                }
+                $failMessage = json_encode($idMessage.' '.$response->getHTTPStatus() . ' ' . $response->getRawBody());
+                $case=1;
+                $userMessage = new TextMessageBuilder($failMessage);  
+
              }elseif(is_numeric($userMessage) !== false &&   $seqcode== '0003'){
                 
                 if($userMessage == '1'){
@@ -228,11 +269,6 @@ class GetMessageController extends Controller
                     $userMessage ='กรุณาเลือกตกลง หรือ มีปัญหาการคุมกำเนิด';
                 }
              
-               $question = $this->sequents_question($seqcode);
-               // $insert_sequentsteps = $this->insert_sequentsteps($user);
-               $userMessage =  $question;
- 
-
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
                 $userMessage  = 'สวัสดีค่ะ ';
                 $case = 1; 
@@ -362,7 +398,7 @@ class GetMessageController extends Controller
                     break;
              case 4 : 
                         $textMessage1 = new TextMessageBuilder($userMessage);
-                        
+
                         $picFullSize = 'https://rajavithi-bot.herokuapp.com/images/1.png';
                         $picThumbnail = 'https://rajavithi-bot.herokuapp.com/images/1.png';
                         $textMessage2 = new ImageMessageBuilder($picFullSize,$picThumbnail);
