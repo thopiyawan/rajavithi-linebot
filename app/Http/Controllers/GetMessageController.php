@@ -182,9 +182,9 @@ class GetMessageController extends Controller
                 $seqcode = '0001';
                 $nextseqcode = '0002';
             
-               // $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+               $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                $question = $this->sequents_question($seqcode);
-               $userMessage =  $question;
+               $userMessage = $question;
             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0001'){
                 
                 if($userMessage == '1'){
@@ -270,7 +270,7 @@ class GetMessageController extends Controller
         $dbconn = pg_pconnect($conn_string);
                 $result = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '$seqcode'");
                 while ($row = pg_fetch_object($result)) {
-                   return  $question->question;
+                   return  $row->question;
                 }  
                  
     }
