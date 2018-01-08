@@ -142,8 +142,8 @@ class GetMessageController extends Controller
             // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
             $replyToken  = $events['events'][0]['replyToken'];
             $user = $events['events'][0]['source']['userId'];
-            // $userMessage = $events['events'][0]['message']['text'];
-            $userMessage= $events['events'][0]['message']['type'];
+            $userMessage = $events['events'][0]['message']['text'];
+            $typeMessage = $events['events'][0]['message']['type'];
             $idMessage = $events['events'][0]['message']['id']; 
             }
 
@@ -161,7 +161,7 @@ class GetMessageController extends Controller
                      $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
                  }
 
-            // $checkmessage = $this->checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage);
+            $checkmessage = $this->checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage);
     }
     public function checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage)
     {  
@@ -208,11 +208,11 @@ class GetMessageController extends Controller
                     $case = 1;
                     $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
                 }
-             }elseif( $seqcode == '0006'){
+             }elseif( $typeMessage = 'image' && $seqcode == '0006'){
 
 
                 $case = 1;
-                $userMessage = $typeMessage;
+                $userMessage = '555555555';
                 // $response = $bot->getMessageContent($idMessage);
                 // if ($response->isSucceeded()) {
                 //     // คำสั่ง getRawBody() ในกรณีนี้ จะได้ข้อมูลส่งกลับมาเป็น binary 
