@@ -306,7 +306,7 @@ if($typeMessage=='text'){
             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0008'){
                 
                 if($userMessage == '1'){
-                    $case = 6;
+                    $case = 7;
                     $seqcode = '0009';
                     $nextseqcode = '0010';
                     $question = $this->sequents_question($seqcode);
@@ -314,7 +314,7 @@ if($typeMessage=='text'){
                     $userMessage =  $question;
                     
                 }elseif($userMessage == '2'){
-                    $case = 6;
+                    $case = 7;
                     $seqcode = '0011';
                     $nextseqcode = '0012';
                     $question = $this->sequents_question($seqcode);
@@ -357,7 +357,7 @@ if($typeMessage=='text'){
                
              
 }else{
-      $userMessage  = 'ไม่เข';
+      $userMessage  = 'สติ้กเกอร์น่ารักจัง';
                 $case = 1; 
              
 }
@@ -525,7 +525,6 @@ if($typeMessage=='text'){
                          )
                       ); 
 
-                    
                     break;
                case 6 : 
                     $actionBuilder = array(
