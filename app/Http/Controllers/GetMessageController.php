@@ -268,9 +268,6 @@ if($typeMessage=='text'){
                     $userMessage ='กรุณาเลือกตกลง หรือ มีปัญหาการคุมกำเนิด';
                 }
             
-
-
-
              }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0007'){
                 
                 if($userMessage == '1'){
@@ -301,7 +298,7 @@ if($typeMessage=='text'){
 
                 }else{
                     $case = 1;
-                    $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
+                    $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ เอกสารไม่ครบ';
                 }
 
 
@@ -322,7 +319,7 @@ if($typeMessage=='text'){
         switch ($seqcode) {
             case '0006':
                 $seqcode = '0007';
-                $seqcode = '0008';
+                $nextseqcode = '0008';
                 $question = $this->sequents_question($seqcode);
                 $userMessage = $question;
                 $case = 5; 
