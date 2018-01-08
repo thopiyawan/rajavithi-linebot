@@ -237,8 +237,9 @@ class GetMessageController extends Controller
                     // กำหนด path ของไฟล์ที่จะบันทึก
                     $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
                     file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
+                    $case=1;
                     $textReplyMessage = "บันทึกไฟล์เรียบร้อยแล้ว $fileNameSave";
-                    $replyData = new TextMessageBuilder($textReplyMessage);
+                    $userMessage = new TextMessageBuilder($textReplyMessage);
                     break;
                 }
                 $failMessage = json_encode($idMessage.' '.$response->getHTTPStatus() . ' ' . $response->getRawBody());
