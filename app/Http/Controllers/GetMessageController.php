@@ -348,6 +348,23 @@ if($typeMessage=='text'){
                 $case = 5; 
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                 break;
+            case '0009':
+                $seqcode = '0010';
+                $nextseqcode = '0011';
+                $question = $this->sequents_question($seqcode);
+                $userMessage = $question;
+                $case = 5; 
+                $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                break;
+            case '0011':
+                $seqcode = '0010';
+                $nextseqcode = '0011';
+                $question = $this->sequents_question($seqcode);
+                $userMessage = $question;
+                $case = 5; 
+                $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                break;
+            
             
             default:
                  $userMessage  = 'no';
