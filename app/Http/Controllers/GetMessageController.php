@@ -160,45 +160,7 @@ class GetMessageController extends Controller
                      $nextseqcode = '0000';             
                      $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
                  }
-        switch ($typeMessage){
-            case 'text':
-                switch ($userMessage) {
-                    case "p":
-           
-                            // ดึงค่ามาแบบเป็น JSON String โดยใช้คำสั่ง getRawBody() กรณีเป้นข้อความ text
-                            $textReplyMessage = 'pppppppppp'; // return string            
-                            $userMessage = new TextMessageBuilder($textReplyMessage);         
-                            break;              
-                    
-                     
-                        break;              
-                    case "สวัสดี":
-                        // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
-                   
-                            $textReplyMessage = 'สวัสดีครับ คุณ ';             
-                            $userMessage = new TextMessageBuilder($textReplyMessage);         
-                            break;              
-             
-                        break;                                                                                                                                                                                                                                          
-                    default:
-                        $textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
-                        $userMessage = new TextMessageBuilder($textReplyMessage);         
-                        break;                                      
-                }
-                break;      
-            case 'image' :
-                 
-           
-                            // ดึงค่ามาแบบเป็น JSON String โดยใช้คำสั่ง getRawBody() กรณีเป้นข้อความ text
-                            $textReplyMessage = 'pic'; // return string            
-                            $userMessage = new TextMessageBuilder($textReplyMessage);         
-                                       
-                    
-                     
-                        break;              
-
-        }
-            $response = $bot->replyMessage($replyToken, $userMessage); 
+      
             //$checkmessage = $this->checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage);
     }
     public function checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage)
