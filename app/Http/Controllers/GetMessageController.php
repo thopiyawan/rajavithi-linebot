@@ -245,7 +245,7 @@ class GetMessageController extends Controller
                 //     $textReplyMessage = "บันทึกไฟล์เรียบร้อยแล้ว $fileNameSave";
                 //     $userMessage = new TextMessageBuilder($textReplyMessage);
                 //     break;
-                }
+                // }
                 // $failMessage = json_encode($idMessage.' '.$response->getHTTPStatus() . ' ' . $response->getRawBody());
                 // $case=1;
                 // $userMessage = new TextMessageBuilder($failMessage);  
