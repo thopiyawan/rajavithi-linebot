@@ -215,7 +215,7 @@ class GetMessageController extends Controller
                     // ดึงข้อมูลประเภทของไฟล์ จาก header
                     $fileType = $response->getHeader('Content-Type');    
                     switch ($fileType){
-                        case (preg_match('/^image/',$fileType) ? true : false):
+                        case ($typeMessag  == 'image'):
                             list($typeFile,$ext) = explode("/",$fileType);
                             $ext = ($ext=='jpeg' || $ext=='jpg')?"jpg":$ext;
                             $fileNameSave = time().".".$ext;
