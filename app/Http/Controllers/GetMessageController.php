@@ -162,7 +162,6 @@ class GetMessageController extends Controller
                  }
         switch ($typeMessage){
             case 'text':
-                $userMessage = strtolower($userMessage); // แปลงเป็นตัวเล็ก สำหรับทดสอบ
                 switch ($userMessage) {
                     case "p":
            
@@ -188,9 +187,16 @@ class GetMessageController extends Controller
                 }
                 break;      
             case (preg_match('/[image|audio|video]/',$typeMessage) ? true : false) :
-                 $textReplyMessage = 'รูปปปปปปปปปปปปป '.$userData['displayName'];             
-                            $userMessage = new TextMessageBuilder($textReplyMessage);   
-                break; 
+                 
+           
+                            // ดึงค่ามาแบบเป็น JSON String โดยใช้คำสั่ง getRawBody() กรณีเป้นข้อความ text
+                            $textReplyMessage = 'pic'; // return string            
+                            $userMessage = new TextMessageBuilder($textReplyMessage);         
+                                       
+                    
+                     
+                        break;              
+
         }
             $response = $bot->replyMessage($replyToken, $userMessage); 
             //$checkmessage = $this->checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage);
