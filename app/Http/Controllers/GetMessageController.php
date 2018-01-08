@@ -165,60 +165,46 @@ class GetMessageController extends Controller
             //$checkmessage = $this->checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage);
 
 
-if($typeMessage=='text'){
+// if($typeMessage=='text'){
+//       if(!is_null($events)){
+//             $userMessage = $events['events'][0]['message']['text'];
+//             }
+//     if (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
+//                 $userMessage  = 'สวัสดีค่ะ ';
+//                 $case = 1; 
+//             }else{
+//                 $userMessage  = 'ฉันไม่เข้าใจ';
+//                 $case = 1; 
+//             }     
+
+
+// }elseif($typeMessage=='image'){
+  
+//                 $userMessage  = 'นี่คือรูป';
+//                 $case = 1; 
+             
+
+
+// }else{
+//       $userMessage  = 'bbbbb';
+//                 $case = 1; 
+             
+// }
+
+//   return $this->replymessage($replyToken,$userMessage,$case);
+
+
+   $seqcode = $this->seqcode_select($user);
+         
+
+
+//////////////////////////////////////////////////////////////////
+
+// if($typeMessage=='text'){
       if(!is_null($events)){
             $userMessage = $events['events'][0]['message']['text'];
             }
-    if (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
-                $userMessage  = 'สวัสดีค่ะ ';
-                $case = 1; 
-            }else{
-                $userMessage  = 'ฉันไม่เข้าใจ';
-                $case = 1; 
-            }     
-
-
-}elseif($typeMessage=='image'){
-  
-                $userMessage  = 'นี่คือรูป';
-                $case = 1; 
-             
-
-
-}else{
-      $userMessage  = 'bbbbb';
-                $case = 1; 
-             
-}
-
-  return $this->replymessage($replyToken,$userMessage,$case);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
-    public function checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage)
-    {  
-
-              $seqcode = $this->seqcode_select($user);
-                  
-            if ($userMessage =='ขอนัดกลืนแร่' ) {
+         if ($userMessage =='ขอนัดกลืนแร่' ) {
                 $case = 2;
                 $seqcode = '0001';
                 $nextseqcode = '0002';
@@ -258,50 +244,6 @@ if($typeMessage=='text'){
                     $case = 1;
                     $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
                 }
-             }elseif( $typeMessage == 'image' && $seqcode == '0006'){
-
-
-                $case = 1;
-                $userMessage = '555555555';
-                // $response = $bot->getMessageContent($idMessage);
-                // if ($response->isSucceeded()) {
-                //     // คำสั่ง getRawBody() ในกรณีนี้ จะได้ข้อมูลส่งกลับมาเป็น binary 
-                //     // เราสามารถเอาข้อมูลไปบันทึกเป็นไฟล์ได้
-                //     $dataBinary = $response->getRawBody(); // return binary
-                //     // ดึงข้อมูลประเภทของไฟล์ จาก header
-                //     $fileType = $response->getHeader('Content-Type');    
-                //     switch ($fileType){
-                //         case ($fileType  == 'image'):
-                //             list($typeFile,$ext) = explode("/",$fileType);
-                //             $ext = ($ext=='jpeg' || $ext=='jpg')?"jpg":$ext;
-                //             $fileNameSave = time().".".$ext;
-                //             break;
-                //         // case (preg_match('/^audio/',$fileType) ? true : false):
-                //         //     list($typeFile,$ext) = explode("/",$fileType);
-                //         //     $fileNameSave = time().".".$ext;                        
-                //         //     break;
-                //         // case (preg_match('/^video/',$fileType) ? true : false):
-                //         //     list($typeFile,$ext) = explode("/",$fileType);
-                //         //     $fileNameSave = time().".".$ext;                                
-                //         //     break;                                                      
-                //     }
-                //     $botDataFolder = 'document_images/'; // โฟลเดอร์หลักที่จะบันทึกไฟล์
-                //     $botDataUserFolder = $botDataFolder.$userID; // มีโฟลเดอร์ด้านในเป็น userId อีกขั้น
-                //     if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
-                //         mkdir($botDataUserFolder, 0777, true);
-                //     }   
-                //     // กำหนด path ของไฟล์ที่จะบันทึก
-                //     $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
-                //     file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
-                //     $case=1;
-                //     $textReplyMessage = "บันทึกไฟล์เรียบร้อยแล้ว $fileNameSave";
-                //     $userMessage = new TextMessageBuilder($textReplyMessage);
-                //     break;
-                // }
-                // $failMessage = json_encode($idMessage.' '.$response->getHTTPStatus() . ' ' . $response->getRawBody());
-                // $case=1;
-                // $userMessage = new TextMessageBuilder($failMessage);  
-
              }elseif(is_numeric($userMessage) !== false &&   $seqcode== '0003'){
                 
                 if($userMessage == '1'){
@@ -325,6 +267,11 @@ if($typeMessage=='text'){
                     $case = 1;
                     $userMessage ='กรุณาเลือกตกลง หรือ มีปัญหาการคุมกำเนิด';
                 }
+            }elseif ($typeMessage=='image' && $seqcode=='0006'){
+
+                   $case = 1;
+                    $userMessage ='รูปภาพ';
+
              
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
                 $userMessage  = 'สวัสดีค่ะ ';
@@ -334,15 +281,53 @@ if($typeMessage=='text'){
                 $case = 1; 
             }     
 
+   
+
+
+// }elseif($typeMessage=='image'){
+  
+//                 $userMessage  = 'นี่คือรูป';
+//                 $case = 1; 
+             
+// }else{
+//       $userMessage  = 'ไม่เข';
+//                 $case = 1; 
+             
+// }
+
+
+
+
+
+
+
+//////////////////////////////////////////
 
              return $this->replymessage($replyToken,$userMessage,$case);
           
               
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
-
-
-
      public function sequents_question($seqcode)
     {          
                    // $question = sequents::select('question')
