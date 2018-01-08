@@ -244,8 +244,7 @@ class GetMessageController extends Controller
                 $userMessage = new TextMessageBuilder($textReplyMessage);         
                 break;  
         }
-            $textMessageBuilder = new TextMessageBuilder($userMessage);
-            $response = $bot->replyMessage($replyToken,$textMessageBuilder); 
+            $response = $bot->replyMessage($replyToken, $userMessage); 
             //$checkmessage = $this->checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage);
     }
     public function checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage)
