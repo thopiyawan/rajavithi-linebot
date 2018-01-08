@@ -174,7 +174,7 @@ if($typeMessage=='text'){
             }     
 
 
-}elseif($typeMessage==='image'){
+}elseif(preg_match('/[image|audio|video]/',$typeMessage) ? true : false){
   
                 $userMessage  = 'นี่คือรูป';
                 $case = 1; 
