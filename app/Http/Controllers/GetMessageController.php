@@ -229,7 +229,7 @@ class GetMessageController extends Controller
                     //รูป
                     
                 }elseif($userMessage == '2'){
-                    $case = 3;
+                    $case = 1;
                     $seqcode = '0005';
                     $nextseqcode = '0006';
                     $question = $this->sequents_question($seqcode);
