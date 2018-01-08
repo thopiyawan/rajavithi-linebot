@@ -146,8 +146,8 @@ class GetMessageController extends Controller
             $typeMessage = $events['events'][0]['message']['type'];
             $idMessage   = $events['events'][0]['message']['id']; 
             }
-            $userMessage =  $typeMessage;
-            $case = 1 ;
+            $userMessage;
+
             return $this->replymessage($replyToken,$userMessage,$case);
             // $case = 1;
             // return $this->replymessage($replyToken,$userMessage,$case);
