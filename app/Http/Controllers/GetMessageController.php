@@ -141,10 +141,10 @@ class GetMessageController extends Controller
             if(!is_null($events)){
             // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
             $replyToken  = $events['events'][0]['replyToken'];
-            $user = $events['events'][0]['source']['userId'];
+            $user        = $events['events'][0]['source']['userId'];
             $userMessage = $events['events'][0]['message']['text'];
             $typeMessage = $events['events'][0]['message']['type'];
-            $idMessage = $events['events'][0]['message']['id']; 
+            $idMessage   = $events['events'][0]['message']['id']; 
             }
 
             // $case = 1;
@@ -174,7 +174,7 @@ if($typeMessage=='text'){
             }     
 
 
-}elseif($typeMessage=='image'){
+}elseif($typeMessage==='image'){
   
                 $userMessage  = 'นี่คือรูป';
                 $case = 1; 
