@@ -162,6 +162,49 @@ class GetMessageController extends Controller
                  }
       
             //$checkmessage = $this->checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage);
+
+
+if($typeMessage=='text'){
+    if (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
+                $userMessage  = 'สวัสดีค่ะ ';
+                $case = 1; 
+            }else{
+                $userMessage  = 'ฉันไม่เข้าใจ';
+                $case = 1; 
+            }     
+
+
+}elseif($typeMessage=='image'){
+  
+                $userMessage  = 'นี่คือรูป';
+                $case = 1; 
+             
+
+
+}
+
+      return $this->replymessage($replyToken,$userMessage,$case);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
     public function checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage)
     {  
