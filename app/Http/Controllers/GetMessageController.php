@@ -143,7 +143,7 @@ class GetMessageController extends Controller
             $replyToken  = $events['events'][0]['replyToken'];
             $user        = $events['events'][0]['source']['userId'];
            // $userMessage = $events['events'][0]['message']['text'];
-            $userMessage = $events['events'][0]['message']['type'];
+            $typeMessage = $events['events'][0]['message']['type'];
             $idMessage   = $events['events'][0]['message']['id']; 
             }
             //$userMessage =  $typeMessage;
