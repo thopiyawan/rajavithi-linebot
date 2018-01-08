@@ -206,7 +206,7 @@ class GetMessageController extends Controller
                     $case = 1;
                     $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
                 }
-             }elseif(is_string($typeMessage) == 'image' &&  $seqcode == '0006'){
+             }elseif(preg_match('/[image|audio|video]/',$typeMessage)!== false &&  $seqcode == '0006'){
 
 
                 $case = 1;
