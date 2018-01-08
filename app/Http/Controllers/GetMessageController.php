@@ -166,6 +166,9 @@ class GetMessageController extends Controller
 
 
 if($typeMessage=='text'){
+      if(!is_null($events)){
+            $userMessage = $events['events'][0]['message']['text'];
+            }
     if (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
                 $userMessage  = 'สวัสดีค่ะ ';
                 $case = 1; 
