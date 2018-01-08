@@ -524,6 +524,9 @@ if($typeMessage=='text'){
                                $actionBuilder  // กำหนด action object
                          )
                       ); 
+
+                    
+                    break;
                case 6 : 
                     $actionBuilder = array(
                                           new MessageTemplateActionBuilder(
