@@ -314,7 +314,7 @@ if($typeMessage=='text'){
                     $userMessage =  $question;
                     
                 }elseif($userMessage == '2'){
-                    $case = 7;
+                    $case = 9;
                     $seqcode = '0011';
                     $nextseqcode = '0012';
                     $question = $this->sequents_question($seqcode);
@@ -600,11 +600,23 @@ if($typeMessage=='text'){
                          )
                       );    
 
-                 $multiMessage = new MultiMessageBuilder;
+                  $multiMessage = new MultiMessageBuilder;
                   $multiMessage->add($textMessage1);
                   $multiMessage->add($textMessage2);
                   $textMessageBuilder = $multiMessage; 
                     break; 
+                case 9 : 
+                        $textMessage1 = new TextMessageBuilder($userMessage);
+
+                        $picFullSize = 'https://rajavithi-bot.herokuapp.com/images/4.png';
+                        $picThumbnail = 'https://rajavithi-bot.herokuapp.com/images/4.png';
+                        $textMessage2 = new ImageMessageBuilder($picFullSize,$picThumbnail);
+                      
+                  $multiMessage = new MultiMessageBuilder;
+                  $multiMessage->add($textMessage1);
+                  $multiMessage->add($textMessage2);
+                  $textMessageBuilder = $multiMessage; 
+                    break;  
  
               
             }
