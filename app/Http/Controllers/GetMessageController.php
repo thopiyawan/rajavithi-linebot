@@ -267,7 +267,46 @@ if($typeMessage=='text'){
                     $case = 1;
                     $userMessage ='กรุณาเลือกตกลง หรือ มีปัญหาการคุมกำเนิด';
                 }
-             
+            
+
+
+
+             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0007'){
+                
+                if($userMessage == '1'){
+                    $case = 6;
+                    $seqcode = '0008';
+                    $nextseqcode = '0009';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+                    //รูป
+                    
+                }elseif($userMessage == '2'){
+                    $case = 3;
+                    $seqcode = '0003';
+                    $nextseqcode = '0004';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+
+
+                }elseif($userMessage == '3'){
+                    $case = 1;
+                    $seqcode = '0005';
+                    $nextseqcode = '0006';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+
+                }else{
+                    $case = 1;
+                    $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
+                }
+
+
+
+
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
                 $userMessage  = 'สวัสดีค่ะ ';
                 $case = 1; 
@@ -283,9 +322,11 @@ if($typeMessage=='text'){
         switch ($seqcode) {
             case '0006':
                 $seqcode = '0007';
+                $seqcode = '0008';
                 $question = $this->sequents_question($seqcode);
                 $userMessage = $question;
                 $case = 5; 
+                $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                 break;
             
             default:
@@ -458,11 +499,32 @@ if($typeMessage=='text'){
                     $textMessageBuilder = new TemplateMessageBuilder('Template',
                      new ButtonTemplateBuilder(
                               $userMessage, // กำหนดหัวเรื่อง
-                              $userMessage, // กำหนดรายละเอียด
+                              'กดเลือกด้านล่างได้เลยค่ะ', // กำหนดรายละเอียด
                                $imageUrl, // กำหนด url รุปภาพ
                                $actionBuilder  // กำหนด action object
                          )
-                      );    
+                      ); 
+               case 6 : 
+                    $actionBuilder = array(
+                                          new MessageTemplateActionBuilder(
+                                          'ใช่',// ข้อความแสดงในปุ่ม
+                                          '1' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                          ),
+                                           new MessageTemplateActionBuilder(
+                                          'ไม่ใช่',// ข้อความแสดงในปุ่ม
+                                          '2' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                          )
+                                         );
+
+                    $imageUrl = NULL;
+                    $textMessageBuilder = new TemplateMessageBuilder('Template',
+                     new ButtonTemplateBuilder(
+                              $userMessage, // กำหนดหัวเรื่อง
+                              'กดเลือกด้านล่างได้เลยค่ะ', // กำหนดรายละเอียด
+                               $imageUrl, // กำหนด url รุปภาพ
+                               $actionBuilder  // กำหนด action object
+                         )
+                      );       
  
                     break;
             }
