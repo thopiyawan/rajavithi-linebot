@@ -147,8 +147,8 @@ class GetMessageController extends Controller
             $idMessage = $events['events'][0]['message']['id']; 
             }
 
-                 $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
-        $dbconn = pg_pconnect($conn_string);
+                $conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d6sqa1kjuhkplb user=kdhscmqukijgmf password=69ed8377f66479ac6222f469c6fa6cd2b2318b0ce23fd6a3f0cd7b94f18606ca";
+                $dbconn = pg_pconnect($conn_string);
 
                 $result = pg_query($dbconn,"SELECT seqcode FROM sequentsteps WHERE sender_id = '$user'");
                 $num = pg_num_rows($result);
@@ -206,7 +206,7 @@ class GetMessageController extends Controller
                     $case = 1;
                     $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
                 }
-             }elseif(preg_match('/[image|audio|video]/',$typeMessage)!== false &&  $seqcode == '0006'){
+             }elseif( $seqcode == '0006'){
 
 
                 $case = 1;
