@@ -282,7 +282,9 @@ if($typeMessage=='text'){
 }elseif($typeMessage=='image'){
         switch ($seqcode) {
             case '0006':
-                 $userMessage  = 'นี่คือรูป';
+                $seqcode = '0007';
+                $question = $this->sequents_question($seqcode);
+                $userMessage = $question;
                 $case = 1; 
                 break;
             
@@ -309,27 +311,7 @@ if($typeMessage=='text'){
 
              return $this->replymessage($replyToken,$userMessage,$case);
           
-              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 
     }
      public function sequents_question($seqcode)
@@ -455,6 +437,33 @@ if($typeMessage=='text'){
                   $multiMessage->add($textMessage1);
                   $multiMessage->add($textMessage2);
                   $textMessageBuilder = $multiMessage; 
+                    break;
+             case 5 : 
+                    $actionBuilder = array(
+                                          new MessageTemplateActionBuilder(
+                                          'ใช่',// ข้อความแสดงในปุ่ม
+                                          '1' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                          ),
+                                           new MessageTemplateActionBuilder(
+                                          'ไม่ใช่',// ข้อความแสดงในปุ่ม
+                                          '2' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                          ),
+                                           new MessageTemplateActionBuilder(
+                                          'มีเอกสารไม่ครบ',// ข้อความแสดงในปุ่ม
+                                          '3' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                          )
+                                         );
+
+                    $imageUrl = NULL;
+                    $textMessageBuilder = new TemplateMessageBuilder('Template',
+                     new ButtonTemplateBuilder(
+                              $userMessage, // กำหนดหัวเรื่อง
+                              $userMessage, // กำหนดรายละเอียด
+                               $imageUrl, // กำหนด url รุปภาพ
+                               $actionBuilder  // กำหนด action object
+                         )
+                      );    
+ 
                     break;
             }
             $response = $bot->replyMessage($replyToken,$textMessageBuilder); 
