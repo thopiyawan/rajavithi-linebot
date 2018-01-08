@@ -149,7 +149,7 @@ class GetMessageController extends Controller
 
              $seqcode = $this->seqcode_select;
                   
-            if ($userMessage =='ขอนัดกลืนแร่' && $seqcode == '') {
+            if ($userMessage =='ขอนัดกลืนแร่' && $seqcode == NULL ) {
                 $case = 2;
                 $seqcode = '0001';
                 $nextseqcode = '0002';
