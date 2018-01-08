@@ -246,9 +246,9 @@ class GetMessageController extends Controller
                 //     $userMessage = new TextMessageBuilder($textReplyMessage);
                 //     break;
                 }
-                $failMessage = json_encode($idMessage.' '.$response->getHTTPStatus() . ' ' . $response->getRawBody());
-                $case=1;
-                $userMessage = new TextMessageBuilder($failMessage);  
+                // $failMessage = json_encode($idMessage.' '.$response->getHTTPStatus() . ' ' . $response->getRawBody());
+                // $case=1;
+                // $userMessage = new TextMessageBuilder($failMessage);  
 
              }elseif(is_numeric($userMessage) !== false &&   $seqcode== '0003'){
                 
