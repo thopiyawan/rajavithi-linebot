@@ -325,6 +325,74 @@ if($typeMessage=='text'){
                     $case = 1;
                     $userMessage ='กรุณาเลือกใช่ หรือ ไม่ใช่';
                 }
+            }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0010'){
+                
+                if($userMessage == '1'){
+                    $case = 6;
+                    $seqcode = '0011';
+                    $nextseqcode = '0012';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+                    //รูป
+                    
+                }elseif($userMessage == '2'){
+                    $case = 4;
+                    $seqcode = '0009';
+                    $nextseqcode = '0010';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+
+
+                }elseif($userMessage == '3'){
+                    $case = 1;
+                    $seqcode = '0005';
+                    $nextseqcode = '0006';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+
+
+                }else{
+                    $case = 1;
+                    $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ เอกสารไม่ครบ';
+                }
+
+
+             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0012'){
+                
+                if($userMessage == '1'){
+                    $case = 6;
+                    $seqcode = '0013';
+                    $nextseqcode = '0018';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+                    //รูป
+                    
+                }elseif($userMessage == '2'){
+                    $case = 4;
+                    $seqcode = '0011';
+                    $nextseqcode = '0012';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+
+
+                }elseif($userMessage == '3'){
+                    $case = 1;
+                    $seqcode = '0005';
+                    $nextseqcode = '0006';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+
+
+                }else{
+                    $case = 1;
+                    $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ เอกสารไม่ครบ';
+                }
 
 
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
@@ -357,8 +425,8 @@ if($typeMessage=='text'){
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                 break;
             case '0011':
-                $seqcode = '0010';
-                $nextseqcode = '0011';
+                $seqcode = '0012';
+                $nextseqcode = '0013';
                 $question = $this->sequents_question($seqcode);
                 $userMessage = $question;
                 $case = 8; 
