@@ -186,7 +186,7 @@ class GetMessageController extends Controller
                         break;                                      
                 }
                 break;      
-            case (preg_match('/[image|audio|video]/',$typeMessage) ? true : false) :
+            case 'image' :
                  
            
                             // ดึงค่ามาแบบเป็น JSON String โดยใช้คำสั่ง getRawBody() กรณีเป้นข้อความ text
