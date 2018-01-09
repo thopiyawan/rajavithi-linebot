@@ -16,7 +16,6 @@ use App\Models\document_type as  document_type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
@@ -503,18 +502,8 @@ if($typeMessage=='text'){
                 $userMessage = $question;
                 $case = 5; 
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
-                 $response = $bot->getMessageContent($idMessage);
-    if ($response->isSucceeded()) {
-        // คำสั่ง getRawBody() ในกรณีนี้ จะได้ข้อมูลส่งกลับมาเป็น binary 
-        // เราสามารถเอาข้อมูลไปบันทึกเป็นไฟล์ได้
-        $dataBinary = $response->getRawBody(); // return binary
-        // ทดสอบดูค่าของ header ด้วยคำสั่ง getHeaders()
-        $dataHeader = $response->getHeaders();   
-             $userMessage = new TextMessageBuilder(json_encode($dataHeader));
-        break;
-    }
-//     $failMessage = json_encode($idMessage.' '.$response->getHTTPStatus() . ' ' . $response->getRawBody());
-//     $replyData = new TextMessageBuilder($failMessage);  
+                $typedoc = '1';
+                $save_doc = $this->save_doc($idMessage,$user,$typedoc);
                 break;
             case '0009':
                 $seqcode = '0010';
@@ -523,6 +512,7 @@ if($typeMessage=='text'){
                 $userMessage = $question;
                 $case = 8; 
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                $typedoc = '2-3';
                 break;
             case '0011':
                 $seqcode = '0012';
@@ -531,6 +521,7 @@ if($typeMessage=='text'){
                 $userMessage = $question;
                 $case = 8; 
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                $typedoc = '4';
                 break;
             case '0014':
                 $seqcode = '0015';
@@ -539,6 +530,7 @@ if($typeMessage=='text'){
                 $userMessage = $question;
                 $case = 8; 
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                $typedoc = '5';
                 break;
             case '0016':
                 $seqcode = '0017';
@@ -547,6 +539,7 @@ if($typeMessage=='text'){
                 $userMessage = $question;
                 $case = 8; 
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                $typedoc = '6';
                 break;
             
             
@@ -835,42 +828,22 @@ if($typeMessage=='text'){
 
 
 
-// public function save_doc($idMessage,$user)
-//     {
-//                 $response = $bot->getMessageContent($idMessage);
-//                 if ($response->isSucceeded()) {
-//                     // คำสั่ง getRawBody() ในกรณีนี้ จะได้ข้อมูลส่งกลับมาเป็น binary 
-//                     // เราสามารถเอาข้อมูลไปบันทึกเป็นไฟล์ได้
-//                     $dataBinary = $response->getRawBody(); // return binary
-//                     // ดึงข้อมูลประเภทของไฟล์ จาก header
-//                     $fileType = $response->getHeader('Content-Type');    
-//                     switch ($fileType){
-//                         case (preg_match('/^image/',$fileType) ? true : false):
-//                             list($typeFile,$ext) = explode("/",$fileType);
-//                             $ext = ($ext=='jpeg' || $ext=='jpg')?"jpg":$ext;
-//                            $fileNameSave = time().".".$ext;
-//                             break;
-//                         // case (preg_match('/^audio/',$fileType) ? true : false):
-//                         //     list($typeFile,$ext) = explode("/",$fileType);
-//                         //     $fileNameSave = time().".".$ext;                        
-//                         //     break;
-//                         // case (preg_match('/^video/',$fileType) ? true : false):
-//                         //     list($typeFile,$ext) = explode("/",$fileType);
-//                         //     $fileNameSave = time().".".$ext;                                
-//                         //     break;                                                      
-//                     }
-//                     $botDataFolder = 'botdata/'; // โฟลเดอร์หลักที่จะบันทึกไฟล์
-//                     $botDataUserFolder = $botDataFolder.$user; // มีโฟลเดอร์ด้านในเป็น userId อีกขั้น
-//                     if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
-//                        // mkdir($botDataUserFolder, 0777, true);
-//                     }   
-//                     // กำหนด path ของไฟล์ที่จะบันทึก
-//                     $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
-//                     file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
-//                    }
+    public function save_doc($idMessage,$user,$typedoc)
+    {
+        $fileNameSave = time().".".$ext;                                
+        $botDataFolder = 'botdata/'; // โฟลเดอร์หลักที่จะบันทึกไฟล์
+        $botDataUserFolder = $botDataFolder.$user; // มีโฟลเดอร์ด้านในเป็น userId อีกขั้น
+        if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
+            mkdir($botDataUserFolder, 0777, true);
+        }   
+        // กำหนด path ของไฟล์ที่จะบันทึก
+        $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
+        file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
+      //  $textReplyMessage = "บันทึกไฟล์เรียบร้อยแล้ว $fileNameSave";
+      //  $replyData = new TextMessageBuilder($textReplyMessage);
 
 
-// }
+    }
 
 
 
