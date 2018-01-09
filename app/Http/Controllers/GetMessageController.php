@@ -493,9 +493,6 @@ if($typeMessage=='text'){
                 $case = 1; 
             }     
 
-   
-
-
 }elseif($typeMessage=='image'){
         switch ($seqcode) {
             case '0006':
