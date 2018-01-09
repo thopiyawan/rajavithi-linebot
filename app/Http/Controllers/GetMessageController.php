@@ -244,7 +244,7 @@ if($typeMessage=='text'){
                     $case = 1;
                     $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
                 }
-             }elseif(is_numeric($userMessage) !== false &&   $seqcode== '0003'){
+             }elseif(is_string($userMessage) !== false &&   $seqcode== '0003'){
                 
                 if($userMessage == '1'){
                     $case = 1;
@@ -268,7 +268,7 @@ if($typeMessage=='text'){
                     $userMessage ='กรุณาเลือกตกลง หรือ มีปัญหาการคุมกำเนิด';
                 }
             
-             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0007'){
+             }elseif(is_string($userMessage) !== false &&  $seqcode == '0007'){
                 
                 if($userMessage == '1'){
                     $case = 6;
@@ -303,7 +303,7 @@ if($typeMessage=='text'){
                 }
 
       //*****///
-            }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0008'){
+            }elseif(is_string($userMessage) !== false &&  $seqcode == '0008'){
                 
                 if($userMessage == '1'){
                     $case = 7;
@@ -325,7 +325,7 @@ if($typeMessage=='text'){
                     $case = 1;
                     $userMessage ='กรุณาเลือกใช่ หรือ ไม่ใช่';
                 }
-            }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0010'){
+            }elseif(is_string($userMessage) !== false &&  $seqcode == '0010'){
                 
                 if($userMessage == '1'){
                     $case = 9;
@@ -360,7 +360,7 @@ if($typeMessage=='text'){
                 }
 
 
-             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0012'){
+             }elseif(is_string($userMessage) !== false &&  $seqcode == '0012'){
                 
                 if($userMessage == '1'){
                     $case = 6;
@@ -394,7 +394,7 @@ if($typeMessage=='text'){
                     $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ เอกสารไม่ครบ';
                 }
 
-            }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0013'){
+            }elseif(is_string($userMessage) !== false &&  $seqcode == '0013'){
                 
                 if($userMessage == '1'){
                     $case = 1;
@@ -417,7 +417,7 @@ if($typeMessage=='text'){
                     $userMessage ='กรุณาเลือกใช่ หรือ ไม่ใช่';
                 }
 
-             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0015'){
+             }elseif(is_string($userMessage) !== false &&  $seqcode == '0015'){
                 
                 if($userMessage == '1'){
                     $case = 11;
@@ -451,7 +451,7 @@ if($typeMessage=='text'){
                     $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ เอกสารไม่ครบ';
                 }
 
-            }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0017'){
+            }elseif(is_string($userMessage) !== false &&  $seqcode == '0017'){
                 
                 if($userMessage == '1'){
                     $case = 1;
