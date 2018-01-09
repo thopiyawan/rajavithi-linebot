@@ -211,7 +211,7 @@ if($typeMessage=='text'){
             
                $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                $question = $this->sequents_question($seqcode);
-               $userMessage = $question;
+               $userMessage = $idMessage ;
             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0001'){
                 
                 if($userMessage == '1'){
@@ -825,7 +825,7 @@ if($typeMessage=='text'){
 
 public function save_doc($idMessage,$user)
     {
-//     $response = $bot->getMessageContent($idMessage);
+                $response = $bot->getMessageContent($idMessage);
                 if ($response->isSucceeded()) {
                     // คำสั่ง getRawBody() ในกรณีนี้ จะได้ข้อมูลส่งกลับมาเป็น binary 
                     // เราสามารถเอาข้อมูลไปบันทึกเป็นไฟล์ได้
