@@ -463,7 +463,7 @@ if($typeMessage=='text'){
                     //รูป
                     
                 }elseif($userMessage == '2'){
-                    $case = 9;
+                    $case = 6;
                     $seqcode = '0016';
                     $nextseqcode = '0017';
                     $question = $this->sequents_question($seqcode);
