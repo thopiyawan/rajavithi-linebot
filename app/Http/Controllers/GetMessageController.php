@@ -394,6 +394,96 @@ if($typeMessage=='text'){
                     $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ เอกสารไม่ครบ';
                 }
 
+            }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0013'){
+                
+                if($userMessage == '1'){
+                    $case = 7;
+                    $seqcode = '0018';
+                    $nextseqcode = '0000';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+                    
+                }elseif($userMessage == '2'){
+                    $case = 10;
+                    $seqcode = '0014';
+                    $nextseqcode = '0015';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+
+                }else{
+                    $case = 1;
+                    $userMessage ='กรุณาเลือกใช่ หรือ ไม่ใช่';
+                }
+
+             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0015'){
+                
+                if($userMessage == '1'){
+                    $case = 6;
+                    $seqcode = '0016';
+                    $nextseqcode = '0017';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+                    //รูป
+                    
+                }elseif($userMessage == '2'){
+                    $case = 9;
+                    $seqcode = '0014';
+                    $nextseqcode = '0015';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+
+
+                }elseif($userMessage == '3'){
+                    $case = 1;
+                    $seqcode = '0005';
+                    $nextseqcode = '0006';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+
+
+                }else{
+                    $case = 1;
+                    $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ เอกสารไม่ครบ';
+                }
+
+            }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0017'){
+                
+                if($userMessage == '1'){
+                    $case = 1;
+                    $seqcode = '0018';
+                    $nextseqcode = '0000';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+                    //รูป
+                    
+                }elseif($userMessage == '2'){
+                    $case = 9;
+                    $seqcode = '0016';
+                    $nextseqcode = '0017';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+
+
+                }elseif($userMessage == '3'){
+                    $case = 1;
+                    $seqcode = '0005';
+                    $nextseqcode = '0006';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+
+
+                }else{
+                    $case = 1;
+                    $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ เอกสารไม่ครบ';
+                }
 
             }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
                 $userMessage  = 'สวัสดีค่ะ ';
@@ -427,6 +517,22 @@ if($typeMessage=='text'){
             case '0011':
                 $seqcode = '0012';
                 $nextseqcode = '0013';
+                $question = $this->sequents_question($seqcode);
+                $userMessage = $question;
+                $case = 8; 
+                $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                break;
+            case '0014':
+                $seqcode = '0015';
+                $nextseqcode = '0016';
+                $question = $this->sequents_question($seqcode);
+                $userMessage = $question;
+                $case = 8; 
+                $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                break;
+            case '0016':
+                $seqcode = '0017';
+                $nextseqcode = '0018';
                 $question = $this->sequents_question($seqcode);
                 $userMessage = $question;
                 $case = 8; 
@@ -678,6 +784,30 @@ if($typeMessage=='text'){
 
                         $picFullSize = 'https://rajavithi-bot.herokuapp.com/images/4.png';
                         $picThumbnail = 'https://rajavithi-bot.herokuapp.com/images/4.png';
+                        $textMessage2 = new ImageMessageBuilder($picFullSize,$picThumbnail);
+                      
+                  $multiMessage = new MultiMessageBuilder;
+                  $multiMessage->add($textMessage1);
+                  $multiMessage->add($textMessage2);
+                  $textMessageBuilder = $multiMessage; 
+                    break;  
+                case 10 : 
+                        $textMessage1 = new TextMessageBuilder($userMessage);
+
+                        $picFullSize = 'https://rajavithi-bot.herokuapp.com/images/5.png';
+                        $picThumbnail = 'https://rajavithi-bot.herokuapp.com/images/5.png';
+                        $textMessage2 = new ImageMessageBuilder($picFullSize,$picThumbnail);
+                      
+                  $multiMessage = new MultiMessageBuilder;
+                  $multiMessage->add($textMessage1);
+                  $multiMessage->add($textMessage2);
+                  $textMessageBuilder = $multiMessage; 
+                    break;  
+                case 11 : 
+                        $textMessage1 = new TextMessageBuilder($userMessage);
+
+                        $picFullSize = 'https://rajavithi-bot.herokuapp.com/images/6.png';
+                        $picThumbnail = 'https://rajavithi-bot.herokuapp.com/images/6.png';
                         $textMessage2 = new ImageMessageBuilder($picFullSize,$picThumbnail);
                       
                   $multiMessage = new MultiMessageBuilder;
