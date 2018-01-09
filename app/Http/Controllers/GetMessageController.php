@@ -855,7 +855,7 @@ public function save_doc($idMessage,$user)
                     // กำหนด path ของไฟล์ที่จะบันทึก
                     $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
                    // file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
-                   
+                   }
 
 
 }
