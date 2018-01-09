@@ -506,7 +506,7 @@ if($typeMessage=='text'){
                 $case = 5; 
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                 $typedoc = '1';
-                $save_doc = $this->save_doc($idMessage,$user,$typedoc);
+                // $save_doc = $this->save_doc($idMessage,$user,$typedoc);
                 break;
             case '0009':
                 $seqcode = '0010';
@@ -831,19 +831,7 @@ if($typeMessage=='text'){
 
 
 
-    public function save_doc($idMessage,$user,$typedoc)
-    {
-            
-       $destination = 'document/';
-
-// ex: photo-5396e3816cc3d.jpg
-       // $filename = $user.$typedoc ;
-       // $image->move($destination, $filename);
-        $page->image = $filename;
-       // $page->save();
-
-
-    }
+   
 
 
 
