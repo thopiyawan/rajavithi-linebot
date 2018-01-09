@@ -211,7 +211,7 @@ if($typeMessage=='text'){
             
                $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                $question = $this->sequents_question($seqcode);
-               $userMessage = $idMessage ;
+               $userMessage = $question;
             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0001'){
                 
                 if($userMessage == '1'){
@@ -502,7 +502,18 @@ if($typeMessage=='text'){
                 $userMessage = $question;
                 $case = 5; 
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
-                $save_doc = $this->save_doc($idMessage,$user);
+                 $response = $bot->getMessageContent($idMessage);
+    if ($response->isSucceeded()) {
+        // คำสั่ง getRawBody() ในกรณีนี้ จะได้ข้อมูลส่งกลับมาเป็น binary 
+        // เราสามารถเอาข้อมูลไปบันทึกเป็นไฟล์ได้
+        $dataBinary = $response->getRawBody(); // return binary
+        // ทดสอบดูค่าของ header ด้วยคำสั่ง getHeaders()
+        $dataHeader = $response->getHeaders();   
+             $userMessage = new TextMessageBuilder(json_encode($dataHeader));
+        break;
+    }
+//     $failMessage = json_encode($idMessage.' '.$response->getHTTPStatus() . ' ' . $response->getRawBody());
+//     $replyData = new TextMessageBuilder($failMessage);  
                 break;
             case '0009':
                 $seqcode = '0010';
@@ -823,42 +834,42 @@ if($typeMessage=='text'){
 
 
 
-public function save_doc($idMessage,$user)
-    {
-                $response = $bot->getMessageContent($idMessage);
-                if ($response->isSucceeded()) {
-                    // คำสั่ง getRawBody() ในกรณีนี้ จะได้ข้อมูลส่งกลับมาเป็น binary 
-                    // เราสามารถเอาข้อมูลไปบันทึกเป็นไฟล์ได้
-                    $dataBinary = $response->getRawBody(); // return binary
-                    // ดึงข้อมูลประเภทของไฟล์ จาก header
-                    $fileType = $response->getHeader('Content-Type');    
-                    switch ($fileType){
-                        case (preg_match('/^image/',$fileType) ? true : false):
-                            list($typeFile,$ext) = explode("/",$fileType);
-                            $ext = ($ext=='jpeg' || $ext=='jpg')?"jpg":$ext;
-                           $fileNameSave = time().".".$ext;
-                            break;
-                        // case (preg_match('/^audio/',$fileType) ? true : false):
-                        //     list($typeFile,$ext) = explode("/",$fileType);
-                        //     $fileNameSave = time().".".$ext;                        
-                        //     break;
-                        // case (preg_match('/^video/',$fileType) ? true : false):
-                        //     list($typeFile,$ext) = explode("/",$fileType);
-                        //     $fileNameSave = time().".".$ext;                                
-                        //     break;                                                      
-                    }
-                    $botDataFolder = 'botdata/'; // โฟลเดอร์หลักที่จะบันทึกไฟล์
-                    $botDataUserFolder = $botDataFolder.$user; // มีโฟลเดอร์ด้านในเป็น userId อีกขั้น
-                    if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
-                       // mkdir($botDataUserFolder, 0777, true);
-                    }   
-                    // กำหนด path ของไฟล์ที่จะบันทึก
-                    $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
-                    file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
-                   }
+// public function save_doc($idMessage,$user)
+//     {
+//                 $response = $bot->getMessageContent($idMessage);
+//                 if ($response->isSucceeded()) {
+//                     // คำสั่ง getRawBody() ในกรณีนี้ จะได้ข้อมูลส่งกลับมาเป็น binary 
+//                     // เราสามารถเอาข้อมูลไปบันทึกเป็นไฟล์ได้
+//                     $dataBinary = $response->getRawBody(); // return binary
+//                     // ดึงข้อมูลประเภทของไฟล์ จาก header
+//                     $fileType = $response->getHeader('Content-Type');    
+//                     switch ($fileType){
+//                         case (preg_match('/^image/',$fileType) ? true : false):
+//                             list($typeFile,$ext) = explode("/",$fileType);
+//                             $ext = ($ext=='jpeg' || $ext=='jpg')?"jpg":$ext;
+//                            $fileNameSave = time().".".$ext;
+//                             break;
+//                         // case (preg_match('/^audio/',$fileType) ? true : false):
+//                         //     list($typeFile,$ext) = explode("/",$fileType);
+//                         //     $fileNameSave = time().".".$ext;                        
+//                         //     break;
+//                         // case (preg_match('/^video/',$fileType) ? true : false):
+//                         //     list($typeFile,$ext) = explode("/",$fileType);
+//                         //     $fileNameSave = time().".".$ext;                                
+//                         //     break;                                                      
+//                     }
+//                     $botDataFolder = 'botdata/'; // โฟลเดอร์หลักที่จะบันทึกไฟล์
+//                     $botDataUserFolder = $botDataFolder.$user; // มีโฟลเดอร์ด้านในเป็น userId อีกขั้น
+//                     if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
+//                        // mkdir($botDataUserFolder, 0777, true);
+//                     }   
+//                     // กำหนด path ของไฟล์ที่จะบันทึก
+//                     $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
+//                     file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
+//                    }
 
 
-}
+// }
 
 
 
