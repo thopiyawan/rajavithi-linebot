@@ -840,7 +840,7 @@ if($typeMessage=='text'){
        // $filename = $user.$typedoc ;
        // $image->move($destination, $filename);
         $page->image = $filename;
-        $page->save();
+       // $page->save();
 
 
     }
