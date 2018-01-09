@@ -863,7 +863,7 @@ public function save_doc($idMessage,$user)
 //     }
 //     $failMessage = json_encode($idMessage.' '.$response->getHTTPStatus() . ' ' . $response->getRawBody());
 //     $replyData = new TextMessageBuilder($failMessage);  
-
+      }
 
 
 }
