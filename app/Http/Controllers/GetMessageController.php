@@ -834,9 +834,9 @@ public function save_doc($idMessage,$user)
                     $fileType = $response->getHeader('Content-Type');    
                     switch ($fileType){
                         case (preg_match('/^image/',$fileType) ? true : false):
-                            //list($typeFile,$ext) = explode("/",$fileType);
+                            list($typeFile,$ext) = explode("/",$fileType);
                             $ext = ($ext=='jpeg' || $ext=='jpg')?"jpg":$ext;
-                           // $fileNameSave = time().".".$ext;
+                           $fileNameSave = time().".".$ext;
                             break;
                         // case (preg_match('/^audio/',$fileType) ? true : false):
                         //     list($typeFile,$ext) = explode("/",$fileType);
@@ -849,12 +849,12 @@ public function save_doc($idMessage,$user)
                     }
                     $botDataFolder = 'botdata/'; // โฟลเดอร์หลักที่จะบันทึกไฟล์
                     $botDataUserFolder = $botDataFolder.$user; // มีโฟลเดอร์ด้านในเป็น userId อีกขั้น
-                    //if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
+                    if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
                        // mkdir($botDataUserFolder, 0777, true);
-                    //}   
+                    }   
                     // กำหนด path ของไฟล์ที่จะบันทึก
                     $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
-                   // file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
+                    file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
                    }
 
 
