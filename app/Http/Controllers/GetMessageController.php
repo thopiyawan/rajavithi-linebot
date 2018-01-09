@@ -837,7 +837,7 @@ if($typeMessage=='text'){
        $destination = 'document/';
 
 // ex: photo-5396e3816cc3d.jpg
-        $filename = $user.'-'.$typedoc ;
+        $filename = $user.$typedoc ;
         $image->move($destination, $filename);
         $page->image = $filename;
         $page->save();
