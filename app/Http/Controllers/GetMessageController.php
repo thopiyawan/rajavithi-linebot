@@ -405,7 +405,7 @@ if($typeMessage=='text'){
                     $userMessage =  $question;
                     
                 }elseif($userMessage == '2'){
-                    $case = 10;
+                    $case = 1;
                     $seqcode = '0014';
                     $nextseqcode = '0015';
                     $question = $this->sequents_question($seqcode);
@@ -429,7 +429,7 @@ if($typeMessage=='text'){
                     //รูป
                     
                 }elseif($userMessage == '2'){
-                    $case = 9;
+                    $case = 10;
                     $seqcode = '0014';
                     $nextseqcode = '0015';
                     $question = $this->sequents_question($seqcode);
@@ -463,7 +463,7 @@ if($typeMessage=='text'){
                     //รูป
                     
                 }elseif($userMessage == '2'){
-                    $case = 6;
+                    $case = 11;
                     $seqcode = '0016';
                     $nextseqcode = '0017';
                     $question = $this->sequents_question($seqcode);
