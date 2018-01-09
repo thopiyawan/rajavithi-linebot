@@ -397,7 +397,7 @@ if($typeMessage=='text'){
             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0013'){
                 
                 if($userMessage == '1'){
-                    $case = 7;
+                    $case = 1;
                     $seqcode = '0018';
                     $nextseqcode = '0000';
                     $question = $this->sequents_question($seqcode);
@@ -405,7 +405,7 @@ if($typeMessage=='text'){
                     $userMessage =  $question;
                     
                 }elseif($userMessage == '2'){
-                    $case = 1;
+                    $case = 10;
                     $seqcode = '0014';
                     $nextseqcode = '0015';
                     $question = $this->sequents_question($seqcode);
