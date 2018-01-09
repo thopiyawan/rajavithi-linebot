@@ -831,19 +831,19 @@ if($typeMessage=='text'){
 
 
 
-//     public function save_doc($idMessage,$user,$typedoc)
-//     {
-//             
-//        $destination = 'document/';
+    public function save_doc($idMessage,$user,$typedoc)
+    {
+            
+       $destination = 'document/';
 
-// // ex: photo-5396e3816cc3d.jpg
-//         $filename = $user.$typedoc ;
-//         $image->move($destination, $filename);
-//         $page->image = $filename;
-//         $page->save();
+// ex: photo-5396e3816cc3d.jpg
+       // $filename = $user.$typedoc ;
+       // $image->move($destination, $filename);
+        $page->image = $filename;
+        $page->save();
 
 
-//     }
+    }
 
 
 
