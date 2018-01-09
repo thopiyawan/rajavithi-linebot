@@ -16,6 +16,9 @@ use App\Models\document_type as  document_type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+
+use Illuminate\Support\Facades\Input;
+
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
@@ -830,17 +833,14 @@ if($typeMessage=='text'){
 
     public function save_doc($idMessage,$user,$typedoc)
     {
-        $fileNameSave = NOW().".type".$typedoc;                                
-        $botDataFolder = 'https://rajavithi-bot.herokuapp.com/document/'; // โฟลเดอร์หลักที่จะบันทึกไฟล์
-        $botDataUserFolder = $botDataFolder.$user; // มีโฟลเดอร์ด้านในเป็น userId อีกขั้น
-        if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
-            mkdir($botDataUserFolder, 0777, true);
-        }   
-        // กำหนด path ของไฟล์ที่จะบันทึก
-        $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
-        file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
-      //  $textReplyMessage = "บันทึกไฟล์เรียบร้อยแล้ว $fileNameSave";
-      //  $replyData = new TextMessageBuilder($textReplyMessage);
+            
+       $destination = 'document/';
+
+// ex: photo-5396e3816cc3d.jpg
+        $filename = $user.'-'.$typedoc ;
+        $image->move($destination, $filename);
+        $page->image = $filename;
+        $page->save();
 
 
     }
