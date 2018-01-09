@@ -825,7 +825,7 @@ if($typeMessage=='text'){
 
 public function save_doc($idMessage,$user)
     {
-    $response = $bot->getMessageContent($idMessage);
+//     $response = $bot->getMessageContent($idMessage);
                 if ($response->isSucceeded()) {
                     // คำสั่ง getRawBody() ในกรณีนี้ จะได้ข้อมูลส่งกลับมาเป็น binary 
                     // เราสามารถเอาข้อมูลไปบันทึกเป็นไฟล์ได้
