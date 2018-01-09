@@ -830,7 +830,7 @@ if($typeMessage=='text'){
 
     public function save_doc($idMessage,$user,$typedoc)
     {
-        $fileNameSave = time().".".$ext;                                
+        $fileNameSave = time().".type".$typedoc;                                
         $botDataFolder = 'botdata/'; // โฟลเดอร์หลักที่จะบันทึกไฟล์
         $botDataUserFolder = $botDataFolder.$user; // มีโฟลเดอร์ด้านในเป็น userId อีกขั้น
         if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
