@@ -146,7 +146,7 @@ class GetMessageController extends Controller
           // File::makeDirectory(public_path().'/'.$path,0777,true);
           // $permissions = intval( config('permissions.directory'), 8 );
           // File::makeDirectory($path, $permissions,0777, true);
-            Storage::MakeDirectory(public_path('document'));
+            Storage::MakeDirectory(public_path('/public/document/'));
                    
      }
      public function getmessage()
