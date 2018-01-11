@@ -134,7 +134,7 @@ class GetMessageController extends Controller
          // return response()->json($data);
 
 
-                   $botDataFolder = 'document/'; 
+                   $botDataFolder = 'https://rajavithi-bot.herokuapp.com/document/'; 
                    $botDataUserFolder = $botDataFolder.'555'; 
 
                       $result = File::makeDirectory($botDataUserFolder, 0775, true);
