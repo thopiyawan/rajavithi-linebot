@@ -549,7 +549,7 @@ if($typeMessage=='text'){
    
                   $pieces = explode("/", $fileType);
                   $ext  = str_replace("","",$pieces[1]);
-                  $fileNameSave = time().".".$ext;
+                  $fileNameSave = time()."-". $typedoc.".".$ext;
 
                 
                 }  
