@@ -558,7 +558,7 @@ if($typeMessage=='text'){
                    $botDataFolder = 'document/'; 
                    $botDataUserFolder = $botDataFolder.$user; 
                  if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
-                        mkdir($botDataUserFolder, 0777, true);
+                      $result = File::makeDirectory($botDataUserFolder, 0775, true);
                     }   
                     // $permissions = intval( config('permissions.directory'), 8 );
                     // $filesystem->makeDirectory('document/', $permissions, true);
