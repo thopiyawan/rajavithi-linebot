@@ -133,14 +133,12 @@ class GetMessageController extends Controller
          // $data = ['data' => $answer, 'code' => $code];
          // return response()->json($data);
 
-           $fileNameSave = '2.jpg';
 
                    $botDataFolder = 'document/'; 
                    $botDataUserFolder = $botDataFolder.'555'; 
-                 if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
-                      $result = File::makeDirectory($botDataUserFolder, 0775, true);
-                    }  
 
+                      $result = File::makeDirectory($botDataUserFolder, 0775, true);
+                   
      }
      public function getmessage()
     {         
