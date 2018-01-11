@@ -558,9 +558,9 @@ if($typeMessage=='text'){
                    $botDataFolder = '/document/'; 
                    $botDataUserFolder = $botDataFolder.$user; 
                 if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
-                      $permissions = intval( config('permissions.directory'), 8 );
-                    $filesystem->makeDirectory($path, $permissions, true);
-                    }   
+                    $permissions = intval( config('permissions.directory'), 8 );
+                    $filesystem->makeDirectory($botDataFolder, $permissions, true);
+                }   
                     $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
                      file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
                 // $userMessage =  $fileNameSave;
@@ -605,7 +605,7 @@ if($typeMessage=='text'){
             
             
             default:
-                 $userMessage  = 'no';
+                 $userMessage  = 'ส่งเพี่ยง1รูป';
                 $case = 1; 
                 break;
         }
