@@ -137,7 +137,7 @@ class GetMessageController extends Controller
                    // $botDataFolder = 'https://rajavithi-bot.herokuapp.com/document/'; 
                    // $botDataUserFolder = $botDataFolder.'555'; 
               
-                    File::makeDirectory($path=base_path("public/document/2555"), $mode = 0755, $recursive = true, $force = false);
+                    File::makeDirectory($path=base_path("https://rajavithi-bot.herokuapp.com/document/5555"), $mode = 0755, $recursive = true, $force = false);
 
   
                    
