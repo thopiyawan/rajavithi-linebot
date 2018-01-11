@@ -19,7 +19,7 @@ use App\Http\Controllers\Controller;
 //////////////////////
 use Illuminate\Support\Facades\Storage;
 
-
+use File;
 //////////////////////
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient;
