@@ -546,8 +546,12 @@ if($typeMessage=='text'){
                    if ($response->isSucceeded()) {
                     $dataBinary = $response->getRawBody();
                     $fileType = $response->getHeader('Content-Type'); 
+   
+                  $pieces = explode("/", $fileType);
+                  $ext  = str_replace("","",$pieces[1]);
+                  $fileNameSave = time().".".$ext;
                 }  
-                $userMessage = $fileType;
+                $userMessage =  $fileNameSave;
             
                 break;
             case '0009':
