@@ -509,7 +509,7 @@ if($typeMessage=='text'){
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
 
                 $typedoc = '1';
-                Storage::putFile('photos', new File('http://rajavithi-bot.herokuapp.com/document/'));
+                Storage::putFile('php://input', new File('http://rajavithi-bot.herokuapp.com/document/'));
                 //$save_doc = $this->save_doc($idMessage,$user,$typedoc);
                 break;
             case '0009':
