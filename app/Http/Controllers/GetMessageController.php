@@ -558,8 +558,9 @@ if($typeMessage=='text'){
                    $botDataFolder = 'document/'; 
                    $botDataUserFolder = $botDataFolder.$user; 
               
-                    $permissions = intval( config('permissions.directory'), 8 );
-                    $filesystem->makeDirectory('document/', $permissions, true);
+                    // $permissions = intval( config('permissions.directory'), 8 );
+                    // $filesystem->makeDirectory('document/', $permissions, true);
+                   $result = File::makeDirectory('/document/', 0775, true);
              
                     $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
                      file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
