@@ -563,7 +563,7 @@ if($typeMessage=='text'){
 
                 
                 }  
-                   $botDataFolder = '/document/'; 
+                   $botDataFolder = 'document/'; 
                    $botDataUserFolder = $botDataFolder.$user; 
                  if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
                       $result = File::makeDirectory($botDataUserFolder, 0775, true);
