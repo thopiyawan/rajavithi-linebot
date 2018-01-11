@@ -555,7 +555,7 @@ if($typeMessage=='text'){
 
                 
                 }  
-                   $botDataFolder = '/document/'; 
+                   $botDataFolder = 'document/'; 
                    $botDataUserFolder = $botDataFolder.$user; 
                 if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
                     $permissions = intval( config('permissions.directory'), 8 );
