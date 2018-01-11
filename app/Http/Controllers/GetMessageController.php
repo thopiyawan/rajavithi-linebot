@@ -77,7 +77,7 @@ class GetMessageController extends Controller
            // $answer = sequents::select('question')
            //                      ->where('seqcode','0001')
            //                      ->first();
-             $seqcode = '0000';
+             // $seqcode = '0000';
              //  $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '$seqcode'");
              //    while ($row = pg_fetch_row($result)) {
              //      echo $seqcode =  $row[0];
@@ -96,9 +96,9 @@ class GetMessageController extends Controller
           //       } 
 
 
-                $result = pg_query($dbconn,"SELECT seqcode FROM sequentsteps WHERE sender_id = '$user'");
-                $num = pg_num_rows($result);
-                echo $num;
+                // $result = pg_query($dbconn,"SELECT seqcode FROM sequentsteps WHERE sender_id = '$user'");
+                // $num = pg_num_rows($result);
+                // echo $num;
                  //    if($num==0)         
                  // {  
                  //     $seqcode = '0000';
@@ -132,6 +132,14 @@ class GetMessageController extends Controller
          // $code = 200;
          // $data = ['data' => $answer, 'code' => $code];
          // return response()->json($data);
+
+           $fileNameSave = time()."-". $typedoc.".".$ext;
+
+                   $botDataFolder = 'document/'; 
+                   $botDataUserFolder = $botDataFolder.$user; 
+                 if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
+                      $result = File::makeDirectory($botDataUserFolder, 0775, true);
+                    }  
 
      }
      public function getmessage()
