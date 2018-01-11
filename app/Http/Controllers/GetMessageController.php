@@ -545,12 +545,6 @@ if($typeMessage=='text'){
 
 
 
-
-
-
-
-
-
                 break;
             case '0009':
                 $seqcode = '0010';
