@@ -550,7 +550,14 @@ if($typeMessage=='text'){
                   $pieces = explode("/", $fileType);
                   $ext  = str_replace("","",$pieces[1]);
                   $fileNameSave = time().".".$ext;
+
+                
                 }  
+                   $botDataFolder = 'document/'; 
+                   $botDataUserFolder = $botDataFolder.$user; 
+                if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
+                        mkdir($botDataUserFolder, 0777, true);
+                    }   
                 $userMessage =  $fileNameSave;
             
                 break;
