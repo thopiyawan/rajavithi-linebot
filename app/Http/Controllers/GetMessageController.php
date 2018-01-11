@@ -541,8 +541,13 @@ if($typeMessage=='text'){
 
                 $typedoc = '1';
 
-                
-                 $response = $bot->getMessageContent($idMessage);
+
+                $response = $bot->getMessageContent($idMessage);
+                   if ($response->isSucceeded()) {
+                    $dataBinary = $response->getRawBody();
+                    $fileType = $response->getHeader('Content-Type'); 
+                }  
+                $userMessage = $fileType;
             
                 break;
             case '0009':
