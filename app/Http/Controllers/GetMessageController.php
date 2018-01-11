@@ -137,10 +137,11 @@ class GetMessageController extends Controller
                    // $botDataFolder = 'https://rajavithi-bot.herokuapp.com/document/'; 
                    // $botDataUserFolder = $botDataFolder.'555'; 
               
-File::makeDirectory($path=base_path("public/document/332555.png/"), $mode = 0777, $recursive = true, $force = false);
+// File::makeDirectory($path=base_path("public/document/332555.png/"), $mode = 0777, $recursive = true, $force = false);
 //           $folder = '55553';
 // $path = base_path('resources/promos/' . $folder . '/');
 // File::makeDirectory($path, 0777, true, true);
+          File::makeDirectory(public_path('storage/newdirectory'));
   
                    
      }
@@ -177,42 +178,8 @@ File::makeDirectory($path=base_path("public/document/332555.png/"), $mode = 0777
                      $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
                  }
       
-            //$checkmessage = $this->checkmessage($replyToken,$userMessage,$user,$idMessage,$typeMessage);
-
-
-// if($typeMessage=='text'){
-//       if(!is_null($events)){
-//             $userMessage = $events['events'][0]['message']['text'];
-//             }
-//     if (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
-//                 $userMessage  = 'สวัสดีค่ะ ';
-//                 $case = 1; 
-//             }else{
-//                 $userMessage  = 'ฉันไม่เข้าใจ';
-//                 $case = 1; 
-//             }     
-
-
-// }elseif($typeMessage=='image'){
-  
-//                 $userMessage  = 'นี่คือรูป';
-//                 $case = 1; 
-             
-
-
-// }else{
-//       $userMessage  = 'bbbbb';
-//                 $case = 1; 
-             
-// }
-
-//   return $this->replymessage($replyToken,$userMessage,$case);
-
-
-   $seqcode = $this->seqcode_select($user);
-         
-
-
+                $seqcode = $this->seqcode_select($user);
+        
 //////////////////////////////////////////////////////////////////
 
 if($typeMessage=='text'){
