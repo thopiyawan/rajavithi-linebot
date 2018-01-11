@@ -533,17 +533,14 @@ if($typeMessage=='text'){
                             break;                                                      
                     }
                     $botDataFolder = 'botdata/'; // โฟลเดอร์หลักที่จะบันทึกไฟล์
-                    $botDataUserFolder = $botDataFolder.$userID; // มีโฟลเดอร์ด้านในเป็น userId อีกขั้น
+                    $botDataUserFolder = $botDataFolder.$user; // มีโฟลเดอร์ด้านในเป็น userId อีกขั้น
                     if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
                         mkdir($botDataUserFolder, 0777, true);
                     }   
                     // กำหนด path ของไฟล์ที่จะบันทึก
                     $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
                     file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
-                    $textReplyMessage = "บันทึกไฟล์เรียบร้อยแล้ว $fileNameSave";
-                    $replyData = new TextMessageBuilder($textReplyMessage);
-
-
+                  
 
                 break;
             case '0009':
