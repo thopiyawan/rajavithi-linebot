@@ -142,7 +142,7 @@ class GetMessageController extends Controller
 // $path = base_path('resources/promos/' . $folder . '/');
 // File::makeDirectory($path, 0777, true, true);
           // File::makeDirectory(public_path('document/'));
-          $path = '/';
+          $path = '';
           File::makeDirectory(public_path().'/'.$path,0777,true);
   
                    
