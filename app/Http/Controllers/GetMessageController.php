@@ -518,7 +518,7 @@ if($typeMessage=='text'){
             // }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
             //     $userMessage  = 'สวัสดีค่ะ ';
             //     $case = 1; 
-            }elseif ($userMessage == 'q'){
+            }elseif ($userMessage == 'q' || $userMessage == 'Q'){
                   $seqcode = '0000';
                   $nextseqcode = '0000';
                   $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
