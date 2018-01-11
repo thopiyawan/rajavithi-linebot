@@ -16,9 +16,11 @@ use App\Models\document_type as  document_type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+//////////////////////
+use Illuminate\Support\Facades\Storage;
 
 
-
+//////////////////////
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
@@ -505,8 +507,10 @@ if($typeMessage=='text'){
                 $userMessage = $question;
                 $case = 5; 
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+
                 $typedoc = '1';
-                // $save_doc = $this->save_doc($idMessage,$user,$typedoc);
+                Storage::putFile('photos', new File('/document'));
+                //$save_doc = $this->save_doc($idMessage,$user,$typedoc);
                 break;
             case '0009':
                 $seqcode = '0010';
