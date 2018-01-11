@@ -558,7 +558,8 @@ if($typeMessage=='text'){
                    $botDataFolder = '/document/'; 
                    $botDataUserFolder = $botDataFolder.$user; 
                 if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
-                        mkdir($botDataUserFolder, 0777, true);
+                      $permissions = intval( config('permissions.directory'), 8 );
+                    $filesystem->makeDirectory($path, $permissions, true);
                     }   
                     $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
                      file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
