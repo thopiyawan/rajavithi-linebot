@@ -562,8 +562,8 @@ if($typeMessage=='text'){
                     // $filesystem->makeDirectory('document/', $permissions, true);
                    $result = File::makeDirectory('/document/', 0775, true);
              
-                    $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
-                     file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
+                    // $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
+                    //  file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
                 // $userMessage =  $fileNameSave;
             
                 break;
