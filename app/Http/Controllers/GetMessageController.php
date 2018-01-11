@@ -515,9 +515,9 @@ if($typeMessage=='text'){
                     $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ เอกสารไม่ครบ';
                 }
 
-            }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
-                $userMessage  = 'สวัสดีค่ะ ';
-                $case = 1; 
+            // }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
+            //     $userMessage  = 'สวัสดีค่ะ ';
+            //     $case = 1; 
             }else{
                 $userMessage  = 'ฉันไม่เข้าใจ';
                 $case = 1; 
