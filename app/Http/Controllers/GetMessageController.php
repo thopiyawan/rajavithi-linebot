@@ -509,7 +509,7 @@ if($typeMessage=='text'){
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
 
                 $typedoc = '1';
-                Storage::disk('public')->put('filename', $content);
+                Storage::disk('public/document/')->put('filename', $content);
                 //$save_doc = $this->save_doc($idMessage,$user,$typedoc);
                 break;
             case '0009':
