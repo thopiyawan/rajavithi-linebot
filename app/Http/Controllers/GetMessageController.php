@@ -540,7 +540,9 @@ if($typeMessage=='text'){
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
 
                 $typedoc = '1';
-                Storage::disk('public')->put('filename', $content);
+
+                
+                 $response = $bot->getMessageContent($idMessage);
             
                 break;
             case '0009':
