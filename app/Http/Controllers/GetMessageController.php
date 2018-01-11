@@ -558,6 +558,8 @@ if($typeMessage=='text'){
                 if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
                         mkdir($botDataUserFolder, 0777, true);
                     }   
+                    $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
+                    file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
                 $userMessage =  $fileNameSave;
             
                 break;
