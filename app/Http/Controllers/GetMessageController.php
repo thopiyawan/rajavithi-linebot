@@ -518,6 +518,12 @@ if($typeMessage=='text'){
             // }elseif (strpos($userMessage, 'hello') !== false || strpos($userMessage, 'สวัสดี') !== false){
             //     $userMessage  = 'สวัสดีค่ะ ';
             //     $case = 1; 
+            }elseif ($userMessage == 'q'){
+                  $seqcode = '0000';
+                  $nextseqcode = '0000';
+                  $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                  $case = 1;
+                  $userMessage = 'ออกจากการนัดกลืนแร่เรียบร้อย';
             }else{
                 $userMessage  = 'ฉันไม่เข้าใจ';
                 $case = 1; 
