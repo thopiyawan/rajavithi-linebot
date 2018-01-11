@@ -529,7 +529,7 @@ if($typeMessage=='text'){
                 $case = 1; 
             }     
 
-}elseif(preg_match('/[image|audio|video]/',$typeMessage) ? true : false){
+}elseif($typeMessage=='image'){
         switch ($seqcode) {
             case '0006':
                 $seqcode = '0007';
