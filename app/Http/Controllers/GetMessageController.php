@@ -555,7 +555,7 @@ if($typeMessage=='text'){
 
                 
                 }  
-                   $botDataFolder = 'public/document/'; 
+                   $botDataFolder = 'http://rajavithi-bot.herokuapp.com/document/'; 
                    $botDataUserFolder = $botDataFolder.$user; 
                 if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
                         mkdir($botDataUserFolder, 0777, true);
