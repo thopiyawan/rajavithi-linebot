@@ -211,7 +211,7 @@ if($typeMessage=='text'){
             }
 
         if(is_string($userMessage) !== false &&   $seqcode == '0000'){
-               $case = 2;
+               $case = 12;
                $seqcode = '0001_1';
                $nextseqcode = '0002';
             
@@ -221,7 +221,7 @@ if($typeMessage=='text'){
          }elseif(is_string($userMessage) !== false &&   $seqcode== '0001_1'){
                 
                 if($userMessage == '1'){
-                    $case = 12;
+                    $case = 2;
                     $seqcode = '0001';
                     $nextseqcode = '0002';
             
