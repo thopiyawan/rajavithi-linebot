@@ -217,6 +217,7 @@ if($typeMessage=='text'){
             
                $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                $userMessage = 'สวัสดีค่ะ ต้องการนัดกลืนแร่ไหมคะ';
+
         }elseif ($userMessage == 'q' || $userMessage == 'Q'){
                   $seqcode = '0000';
                   $nextseqcode = '0000';
@@ -554,7 +555,7 @@ if($typeMessage=='text'){
 
                 
                 }  
-                   $botDataFolder = 'document/'; 
+                   $botDataFolder = 'public/document/'; 
                    $botDataUserFolder = $botDataFolder.$user; 
                 if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
                         mkdir($botDataUserFolder, 0777, true);
