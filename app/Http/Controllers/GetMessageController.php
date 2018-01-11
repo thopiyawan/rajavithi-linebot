@@ -209,14 +209,39 @@ if($typeMessage=='text'){
       if(!is_null($events)){
             $userMessage = $events['events'][0]['message']['text'];
             }
-         if ($userMessage =='ขอนัดกลืนแร่' ) {
-                $case = 2;
-                $seqcode = '0001';
-                $nextseqcode = '0002';
+
+        if(is_string($userMessage) !== false &&   $seqcode == '0000'){
+               $case = 2;
+               $seqcode = '0001_1';
+               $nextseqcode = '0002';
             
                $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
-               $question = $this->sequents_question($seqcode);
-               $userMessage = $question;
+               $userMessage = 'สวัสดีค่ะ ต้องการนัดกลืนแร่ไหมคะ';
+
+         }elseif(is_string($userMessage) !== false &&   $seqcode== '0001_1'){
+                
+                if($userMessage == '1'){
+                    $case = 12;
+                    $seqcode = '0001';
+                    $nextseqcode = '0002';
+            
+                   $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                   $question = $this->sequents_question($seqcode);
+                   $userMessage = $question;
+                    
+                }elseif($userMessage == '2'){
+                    $case = 1;
+                    $seqcode = '0005';
+                    $nextseqcode = '0006';
+                    $question = $this->sequents_question($seqcode);
+                    $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
+                    $userMessage =  $question;
+
+                }else{
+                    $case = 1;
+                    $userMessage ='กรุณาเลือกต้องการหรือ ไม่ต้องการ';
+                }
+
             }elseif(is_numeric($userMessage) !== false &&  $seqcode == '0001'){
                 
                 if($userMessage == '1'){
@@ -510,38 +535,7 @@ if($typeMessage=='text'){
 
                 $typedoc = '1';
                 Storage::put('file.jpg', $content);
-                $response = $bot->getMessageContent($idMessage);
-                if ($response->isSucceeded()) {
-                    // คำสั่ง getRawBody() ในกรณีนี้ จะได้ข้อมูลส่งกลับมาเป็น binary 
-                    // เราสามารถเอาข้อมูลไปบันทึกเป็นไฟล์ได้
-                    $dataBinary = $response->getRawBody(); // return binary
-                    // ดึงข้อมูลประเภทของไฟล์ จาก header
-                    $fileType = $response->getHeader('Content-Type');    
-                    switch ($fileType){
-                        case (preg_match('/^image/',$fileType) ? true : false):
-                            list($typeFile,$ext) = explode("/",$fileType);
-                            $ext = ($ext=='jpeg' || $ext=='jpg')?"jpg":$ext;
-                            $fileNameSave = time().".".$ext;
-                            break;
-                        case (preg_match('/^audio/',$fileType) ? true : false):
-                            list($typeFile,$ext) = explode("/",$fileType);
-                            $fileNameSave = time().".".$ext;                        
-                            break;
-                        case (preg_match('/^video/',$fileType) ? true : false):
-                            list($typeFile,$ext) = explode("/",$fileType);
-                            $fileNameSave = time().".".$ext;                                
-                            break;                                                      
-                    }
-                    $botDataFolder = 'botdata/'; // โฟลเดอร์หลักที่จะบันทึกไฟล์
-                    $botDataUserFolder = $botDataFolder.$user; // มีโฟลเดอร์ด้านในเป็น userId อีกขั้น
-                    if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
-                        mkdir($botDataUserFolder, 0777, true);
-                    }   
-                    // กำหนด path ของไฟล์ที่จะบันทึก
-                    $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
-                    file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
-                  
-
+            
                 break;
             case '0009':
                 $seqcode = '0010';
@@ -858,6 +852,29 @@ if($typeMessage=='text'){
                   $multiMessage->add($textMessage2);
                   $textMessageBuilder = $multiMessage; 
                     break;  
+                case 12 : 
+                    $actionBuilder = array(
+                                          new MessageTemplateActionBuilder(
+                                          'ต้องการ',// ข้อความแสดงในปุ่ม
+                                          '1' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                          ),
+                                           new MessageTemplateActionBuilder(
+                                          'ไม่ต้องการ',// ข้อความแสดงในปุ่ม
+                                          '2' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                          )
+                                         );
+
+                    $imageUrl = NULL;
+                    $textMessageBuilder = new TemplateMessageBuilder('Template',
+                     new ButtonTemplateBuilder(
+                              $userMessage, // กำหนดหัวเรื่อง
+                              'กดเลือกด้านล่างได้เลยค่ะ', // กำหนดรายละเอียด
+                               $imageUrl, // กำหนด url รุปภาพ
+                               $actionBuilder  // กำหนด action object
+                         )
+                      );    
+
+                    break;
  
               
             }
