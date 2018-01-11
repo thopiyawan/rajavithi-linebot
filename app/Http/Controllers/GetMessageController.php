@@ -605,7 +605,7 @@ if($typeMessage=='text'){
             
             
             default:
-                 $userMessage  = 'ส่งเพี่ยง1รูป';
+                 $userMessage  = 'ส่งเพียง1รูป';
                 $case = 1; 
                 break;
         }
