@@ -540,7 +540,7 @@ if($typeMessage=='text'){
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
 
                 $typedoc = '1';
-                Storage::put('file.jpg', $content);
+                Storage::disk('public')->put('filename', $content);
             
                 break;
             case '0009':
