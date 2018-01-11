@@ -143,7 +143,9 @@ class GetMessageController extends Controller
 // File::makeDirectory($path, 0777, true, true);
           // File::makeDirectory(public_path('document/'));
           $path = '';
-          File::makeDirectory(public_path().'/'.$path,0777,true);
+          // File::makeDirectory(public_path().'/'.$path,0777,true);
+          $permissions = intval( config('permissions.directory'), 8 );
+          $filesystem->makeDirectory($path, $permissions, true);
   
                    
      }
