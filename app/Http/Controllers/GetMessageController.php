@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 //////////////////////
+
 use Illuminate\Support\Facades\Storage;
 
 use File;
@@ -547,7 +548,7 @@ if($typeMessage=='text'){
 
                 
                 }  
-                   $botDataFolder = ''; 
+                   $botDataFolder = '/'; 
                    $botDataUserFolder = $botDataFolder.$user; 
                  // if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
                  //      $result = File::makeDirectory($botDataUserFolder, 0775, true);
@@ -560,11 +561,11 @@ if($typeMessage=='text'){
                     //  file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
                 // $userMessage =  $fileNameSave;
 
-                    if($response->hasFile('image'))
+                    if($request->hasFile('image'))
                         {
-                            $image = $response->file('image')->store('public/images');
-                            $filename = $response->file('image')->hashName();
-                            $post->image = $fileFullSavePath;
+                            $image = $request->file('image')->store('public/images');
+                            $filename = $request->file('image')->hashName();
+                            $post->image = $filename;
                         }
 
             
