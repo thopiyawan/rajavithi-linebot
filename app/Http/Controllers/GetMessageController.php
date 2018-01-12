@@ -573,8 +573,8 @@ if($typeMessage=='text'){
             
                     //$destinationPath = public_path(). '/images/';
                 
-                Storage::disk('public')->put('filename',$dataBinary);
-                 
+                //Storage::disk('public')->put('filename',$dataBinary);
+                 $exists = Storage::disk('public')->exists($fileNameSave);
    
                 break;
             case '0009':
