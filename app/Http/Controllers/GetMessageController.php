@@ -149,8 +149,8 @@ class GetMessageController extends Controller
           // File::makeDirectory($path, $permissions,0777, true);
             // Storage::MakeDirectory(public_path('/public/document/'));
 
-          $fileNameSave = 'p.jpg';
-    $exists = Storage::disk('public')->exists($fileNameSave);
+    //       $fileNameSave = 'p.jpg';
+    // $exists = Storage::disk('public')->exists($fileNameSave);
 
 // $path = public_path().'/documenttest1';
 // // File::makeDirectory($path, $mode = 0777, true, true);
@@ -576,7 +576,7 @@ if($typeMessage=='text'){
                     //$destinationPath = public_path(). '/images/';
                 
                 //Storage::disk('public')->put('filename',$dataBinary);
-                 $exists = Storage::disk('public')->exists($fileNameSave);
+                 $exists = Storage::disk('uploads')->exists($fileNameSave);
    
                 break;
             case '0009':
