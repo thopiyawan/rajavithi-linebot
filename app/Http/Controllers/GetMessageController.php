@@ -134,7 +134,7 @@ class GetMessageController extends Controller
          // $data = ['data' => $answer, 'code' => $code];
          // return response()->json($data);
 
-
+        //\Storage::disk('uploads')->put('filename', $file_content);
                    // $botDataFolder = 'https://rajavithi-bot.herokuapp.com/document/'; 
                    // $botDataUserFolder = $botDataFolder.'555'; 
               
@@ -571,14 +571,11 @@ if($typeMessage=='text'){
                 // $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
 
             
-                    $destinationPath = public_path(). '/images/';
-                    $filename = $file->getClientOriginalName();
-
-                    $file->move($destinationPath, $filename);
-                //Storage::disk('uploads')->put('filename', $file_content);
+                    //$destinationPath = public_path(). '/images/';
+                
+                Storage::disk('public')->put('filename',$dataBinary);
                  
-
-            
+   
                 break;
             case '0009':
                 $seqcode = '0010';
