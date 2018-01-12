@@ -155,7 +155,23 @@ class GetMessageController extends Controller
 
 //       mkdir($path, 0777, false);
 
+   if(Input::hasFile('image')){
+            
 
+                     $file = Input::file('image');
+
+                     $destinationPath = public_path(). '/uploads/';
+                        $filename = $file->getClientOriginalName();
+
+                        $file->move($destinationPath, $filename);
+
+                        echo  $filename;
+                        //echo '<img src="uploads/'. $filename . '"/>';
+
+                        $user = ImageTest::create([
+                            'filename' => $filename,
+                        ]);
+                    }
 
 
 
@@ -560,13 +576,16 @@ if($typeMessage=='text'){
                 $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
                     //  file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
                 // $userMessage =  $fileNameSave;
-                     $filename = 'ppppp.png';
-                    if($request->hasFile('image'))
-                        {
-                            $image = $request->file('image')->store('public/images');
-                            $filename = $request->file('image')->hashName();
-                            $post->image = $filename;
-                        }
+                    //  $filename = 'ppppp.png';
+                    // if($request->hasFile('image'))
+                    //     {
+                    //         $image = $request->file('image')->store('public/images');
+                    //         $filename = $request->file('image')->hashName();
+                    //         $post->image = $filename;
+                    //     }
+
+
+                 
 
             
                 break;
