@@ -569,22 +569,13 @@ if($typeMessage=='text'){
         
              
                 // $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
-               if(Input::hasFile('image')){
+
             
+                    $destinationPath = public_path(). '/images/';
+                    $filename = $file->getClientOriginalName();
 
-                     $file = Input::file('image');
-
-                     $destinationPath = public_path(). '/images/';
-                        $filename = $file->getClientOriginalName();
-
-                        $file->move($destinationPath, $filename);
-                        //echo '<img src="uploads/'. $filename . '"/>';
-
-                        $user = document_data::create([
-                            'document_name' =>$fileNameSave,
-                        ]);
-                    }  
-
+                    $file->move($destinationPath, $filename);
+                //Storage::disk('uploads')->put('filename', $file_content);
                  
 
             
