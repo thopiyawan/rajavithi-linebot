@@ -155,23 +155,23 @@ class GetMessageController extends Controller
 
 //       mkdir($path, 0777, false);
 
-   if(Input::hasFile('image')){
+   // if(Input::hasFile('image')){
             
 
-                     $file = Input::file('image');
+   //                   $file = Input::file('image');
 
-                     $destinationPath = public_path(). '/uploads/';
-                        $filename = $file->getClientOriginalName();
+   //                   $destinationPath = public_path(). '/uploads/';
+   //                      $filename = $file->getClientOriginalName();
 
-                        $file->move($destinationPath, $filename);
+   //                      $file->move($destinationPath, $filename);
 
-                        echo  $filename;
-                        //echo '<img src="uploads/'. $filename . '"/>';
+   //                      echo  $filename;
+   //                      //echo '<img src="uploads/'. $filename . '"/>';
 
-                        $user = document_data::create([
-                            'document_name' => $filename,
-                        ]);
-                    }
+   //                      $user = document_data::create([
+   //                          'document_name' => $filename,
+   //                      ]);
+   //                  }
 
 
 
