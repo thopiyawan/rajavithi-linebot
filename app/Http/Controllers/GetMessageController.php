@@ -168,8 +168,8 @@ class GetMessageController extends Controller
                         echo  $filename;
                         //echo '<img src="uploads/'. $filename . '"/>';
 
-                        $user = ImageTest::create([
-                            'filename' => $filename,
+                        $user = document_data::create([
+                            'document_name' => $filename,
                         ]);
                     }
 
