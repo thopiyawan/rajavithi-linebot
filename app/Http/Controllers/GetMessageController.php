@@ -155,8 +155,8 @@ class GetMessageController extends Controller
 //       mkdir($path, 0777, false);
 
 
-if (! File::exists(public_path()."uploads/properties")) {
-    File::makeDirectory(public_path()."uploads/properties");
+if (! File::exists(public_path()."uploads")) {
+    File::makeDirectory(public_path()."uploads");
 }
 
 
