@@ -152,7 +152,7 @@ class GetMessageController extends Controller
 $path = public_path().'/document' . 'test1';
 // File::makeDirectory($path, $mode = 0777, true, true);
 
-      mkdir($path, 0777, false,);
+      mkdir($path, 0777, false);
 
 
 
