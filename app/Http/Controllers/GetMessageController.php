@@ -560,7 +560,7 @@ if($typeMessage=='text'){
                 $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
                     //  file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
                 // $userMessage =  $fileNameSave;
-
+                     $filename = 'ppppp.png';
                     if($request->hasFile('image'))
                         {
                             $image = $request->file('image')->store('public/images');
