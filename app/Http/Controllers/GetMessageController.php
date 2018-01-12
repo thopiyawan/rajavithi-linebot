@@ -154,9 +154,11 @@ class GetMessageController extends Controller
 
 //       mkdir($path, 0777, false);
 
-$filename = 'test123.png';
-if (! File::exists(public_path()."/uploads/".$filename)) {
-    File::makeDirectory(public_path()."/uploads".$filename);
+if($request->hasFile('image'))
+{
+    $image = $request->file('image')->store('public/images');
+    $filename = $request->file('image')->hashName();
+    $post->image = $filename;
 }
 
 
