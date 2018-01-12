@@ -154,12 +154,6 @@ class GetMessageController extends Controller
 
 //       mkdir($path, 0777, false);
 
-if($request->hasFile('image'))
-{
-    $image = $request->file('image')->store('public/images');
-    $filename = $request->file('image')->hashName();
-    $post->image = $filename;
-}
 
 
 
@@ -553,18 +547,26 @@ if($typeMessage=='text'){
 
                 
                 }  
-                   $botDataFolder = 'document/'; 
+                   $botDataFolder = ''; 
                    $botDataUserFolder = $botDataFolder.$user; 
-                 if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
-                      $result = File::makeDirectory($botDataUserFolder, 0775, true);
-                    }   
+                 // if(!file_exists($botDataUserFolder)) { // ตรวจสอบถ้ายังไม่มีให้สร้างโฟลเดอร์ userId
+                 //      $result = File::makeDirectory($botDataUserFolder, 0775, true);
+                 //    }   
                     // $permissions = intval( config('permissions.directory'), 8 );
                     // $filesystem->makeDirectory('document/', $permissions, true);
                    // $result = File::makeDirectory('/document/', 0775, true);
              
-                    // $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
+                $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
                     //  file_put_contents($fileFullSavePath,$dataBinary); // ทำการบันทึกไฟล์
                 // $userMessage =  $fileNameSave;
+
+                    if($response->hasFile('image'))
+                        {
+                            $image = $response->file('image')->store('public/images');
+                            $filename = $response->file('image')->hashName();
+                            $post->image = $fileFullSavePath;
+                        }
+
             
                 break;
             case '0009':
