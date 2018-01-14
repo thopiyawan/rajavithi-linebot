@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 //////////////////////
 
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
-use File;
+use Illuminate\Support\Facades\File;
+use Storage;
 //////////////////////
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient;
@@ -562,7 +562,7 @@ if($typeMessage=='text'){
    
                   $pieces = explode("/", $fileType);
                   $ext  = str_replace("","",$pieces[1]);
-                  $fileNameSave = time()."-". $typedoc.".".$ext;
+                  $fileName = time()."-". $typedoc.".".$ext;
 
                 
                 }  
@@ -576,7 +576,11 @@ if($typeMessage=='text'){
                     //$destinationPath = public_path(). '/images/';
                 
                 //Storage::disk('public')->put('filename',$dataBinary);
-                 $exists = Storage::disk('uploads')->exists($fileNameSave);
+                 // $exists = Storage::disk('uploads')->exists($fileNameSave);
+
+                $fileName = Input::file('fileUpload')->getClientOriginalName();
+                Storage::disk('public')->put($fileName, File::get(Input::file('fileUpload')));
+
    
                 break;
             case '0009':
