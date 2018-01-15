@@ -175,7 +175,7 @@ class GetMessageController extends Controller
    //                      ]);
    //                  }
 
-    $fileName = Input::file('fileUpload')->getClientOriginalName();
+    $fileName = Input::file('fileUpload');
                 Storage::disk('public')->put($fileName, File::get(Input::file('fileUpload')));
 
 
