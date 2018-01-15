@@ -111,7 +111,8 @@ class GetMessageController extends Controller
               // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','0006','','0007','0',NOW(),NOW())") or die(pg_errormessage());
          //       $seqcode = '5000';
          //       $nextseqcode = '0000';
-
+                     $fileFullSavePath = 'app/public/abc.jpg';
+                     file_put_contents( $fileFullSavePath );
          // $update_sequentsteps = pg_exec($dbconn, "UPDATE sequentsteps SET  seqcode = '{$seqcode}', nextseqcode = '{$nextseqcode}' WHERE sender_id = '{$user}' ") or die(pg_errormessage());  
                    // return $question->question;
 
