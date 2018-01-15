@@ -543,7 +543,7 @@ if($typeMessage=='text'){
                 $userMessage  = 'ฉันไม่เข้าใจ';
                 $case = 1; 
             }     
-
+/////////////////*******image*****///////////////////////
 }elseif($typeMessage=='image'){
         switch ($seqcode) {
             case '0006':
@@ -564,25 +564,12 @@ if($typeMessage=='text'){
    
                      $pieces = explode("/", $fileType);
                      $ext  = str_replace("","",$pieces[1]);
-                     $fileName = time()."-". $typedoc.".".$ext;
+                     $fileFullSave = time()."-". $typedoc.".".$ext;
                    }  
+                     $fileFullSavePath = 'app/public/'.$fileNameSave;
+                     file_put_contents( $fileFullSavePath ,$dataBinary);
 
-                     file_put_contents( $fileName ,$dataBinary);
-                //    $botDataFolder = '/'; 
-                //    $botDataUserFolder = $botDataFolder.$user; 
-        
-             
-                // $fileFullSavePath = $botDataUserFolder.'/'.$fileNameSave;
-
-            
-                    //$destinationPath = public_path(). '/images/';
-                
-                //Storage::disk('public')->put('filename',$dataBinary);
-                 // $exists = Storage::disk('uploads')->exists($fileNameSave);
-
-                // $fileName = Input::file('fileUpload')->getClientOriginalName();
-                // Storage::disk('public')->put($fileName, File::get(Input::file('fileUpload')));
-
+           
    
                 break;
             case '0009':
