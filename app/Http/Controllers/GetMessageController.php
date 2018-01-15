@@ -175,8 +175,8 @@ class GetMessageController extends Controller
    //                      ]);
    //                  }
 
-    $fileName = Input::file('fileUpload');
-                Storage::disk('public')->put($fileName, File::get(Input::file('fileUpload')));
+    // $fileName = Input::file('fileUpload');
+    //             Storage::disk('public')->put($fileName, File::get(Input::file('fileUpload')));
 
 
                    
@@ -557,17 +557,17 @@ if($typeMessage=='text'){
                 $typedoc = '1';
 
 
-                $response = $bot->getMessageContent($idMessage);
-                   if ($response->isSucceeded()) {
-                    $dataBinary = $response->getRawBody();
-                    $fileType = $response->getHeader('Content-Type'); 
+                // $response = $bot->getMessageContent($idMessage);
+                //    if ($response->isSucceeded()) {
+                //     $dataBinary = $response->getRawBody();
+                //     $fileType = $response->getHeader('Content-Type'); 
    
-                  $pieces = explode("/", $fileType);
-                  $ext  = str_replace("","",$pieces[1]);
-                  $fileName = time()."-". $typedoc.".".$ext;
+                //   $pieces = explode("/", $fileType);
+                //   $ext  = str_replace("","",$pieces[1]);
+                //   $fileName = time()."-". $typedoc.".".$ext;
 
                 
-                }  
+                // }  
                 //    $botDataFolder = '/'; 
                 //    $botDataUserFolder = $botDataFolder.$user; 
         
@@ -580,8 +580,8 @@ if($typeMessage=='text'){
                 //Storage::disk('public')->put('filename',$dataBinary);
                  // $exists = Storage::disk('uploads')->exists($fileNameSave);
 
-                $fileName = Input::file('fileUpload')->getClientOriginalName();
-                Storage::disk('public')->put($fileName, File::get(Input::file('fileUpload')));
+                // $fileName = Input::file('fileUpload')->getClientOriginalName();
+                // Storage::disk('public')->put($fileName, File::get(Input::file('fileUpload')));
 
    
                 break;
