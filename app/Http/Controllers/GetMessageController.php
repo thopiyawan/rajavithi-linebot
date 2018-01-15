@@ -223,7 +223,7 @@ if($typeMessage=='text'){
             $userMessage = $events['events'][0]['message']['text'];
             }
 
-        if(is_string($userMessage) !== false &&   $seqcode == '0000'){
+        if(is_string($userMessage) !== false &&   $seqcode == '0000' || $userMessage == 'ขอนัดกลืนแร่'){
                $case = 12;
                $seqcode = '0001_1';
                $nextseqcode = '0002';
@@ -231,7 +231,7 @@ if($typeMessage=='text'){
                $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                $userMessage = 'สวัสดีค่ะ ต้องการนัดกลืนแร่ไหมคะ';
 
-        }elseif ($userMessage == 'q' || $userMessage == 'Q' || $userMessage == 'เริ่มต้นการใช้งาน' ||$userMessage == 'ขอนัดกลืนแร่'){
+        }elseif ($userMessage == 'q' || $userMessage == 'Q' || $userMessage == 'เริ่มต้นการใช้งาน' ){
                   $seqcode = '0000';
                   $nextseqcode = '0000';
                   $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
