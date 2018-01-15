@@ -223,7 +223,7 @@ if($typeMessage=='text'){
             $userMessage = $events['events'][0]['message']['text'];
             }
 
-        if(is_string($userMessage) !== false &&   $seqcode == '0000' || $userMessage == 'ขอนัดกลืนแร่'){
+        if(is_string($userMessage) !== false &&   $seqcode == '0000' || strpos($userMessage, 'ขอนัดกลืนแร่') !== false){
                $case = 12;
                $seqcode = '0001_1';
                $nextseqcode = '0002';
