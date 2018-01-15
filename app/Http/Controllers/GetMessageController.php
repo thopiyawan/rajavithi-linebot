@@ -557,17 +557,17 @@ if($typeMessage=='text'){
                 $typedoc = '1';
 
 
-                // $response = $bot->getMessageContent($idMessage);
-                //    if ($response->isSucceeded()) {
-                //     $dataBinary = $response->getRawBody();
-                //     $fileType = $response->getHeader('Content-Type'); 
+                $response = $bot->getMessageContent($idMessage);
+                   if ($response->isSucceeded()) {
+                     $dataBinary = $response->getRawBody();
+                     $fileType = $response->getHeader('Content-Type'); 
    
-                //   $pieces = explode("/", $fileType);
-                //   $ext  = str_replace("","",$pieces[1]);
-                //   $fileName = time()."-". $typedoc.".".$ext;
+                     $pieces = explode("/", $fileType);
+                     $ext  = str_replace("","",$pieces[1]);
+                     $fileName = time()."-". $typedoc.".".$ext;
+                   }  
 
-                
-                // }  
+                     file_put_contents( $fileName ,$dataBinary);
                 //    $botDataFolder = '/'; 
                 //    $botDataUserFolder = $botDataFolder.$user; 
         
@@ -635,7 +635,6 @@ if($typeMessage=='text'){
                 $case = 1; 
              
 }
-
 
 //////////////////////////////////////////
 
