@@ -567,8 +567,8 @@ if($typeMessage=='text'){
                      $ext  = str_replace("","",$pieces[1]);
                      $fileFullSave = time()."-". $typedoc.".".$ext;
                    }  
-                     $fileFullSavePath = 'app/public/'.$fileNameSave;
-                     file_put_contents( $fileFullSavePath ,$dataBinary);
+                     // $fileFullSavePath = 'app/public/'.$fileNameSave;
+                     // file_put_contents( $fileFullSavePath ,$dataBinary);
 
            
    
