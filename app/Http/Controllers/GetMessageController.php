@@ -112,22 +112,25 @@ class GetMessageController extends Controller
          //       $seqcode = '5000';
          //       $nextseqcode = '0000';
 
-          $dataBinary = [
-    "Server" => "nginx",
-    "Content-Type"=> "image/jpeg",
-    "Content-Length"=> "84748",
-    "X-Line-Request-Id"=> "a1f60f25-f716-419e-bfb7-7fc5fc5148d6",
-    "X-Content-Type-Options"=> "nosniff",
-    "X-XSS-Protection"=> "1; mode=block",
-    "X-Frame-Options"=> "DENY",
-    "Expires"=> "Fri, 17 Nov 2017 17:23:07 GMT",
-    "Cache-Control"=> "max-age=0, no-cache, no-store",
-    "Pragma"=> "no-cache",
-    "Date"=> "Fri, 17 Nov 2017 17:23:07 GMT",
-    "Connection"=> "keep-alive"];
+    //       $dataBinary = [
+    // "Server" => "nginx",
+    // "Content-Type"=> "image/jpeg",
+    // "Content-Length"=> "84748",
+    // "X-Line-Request-Id"=> "a1f60f25-f716-419e-bfb7-7fc5fc5148d6",
+    // "X-Content-Type-Options"=> "nosniff",
+    // "X-XSS-Protection"=> "1; mode=block",
+    // "X-Frame-Options"=> "DENY",
+    // "Expires"=> "Fri, 17 Nov 2017 17:23:07 GMT",
+    // "Cache-Control"=> "max-age=0, no-cache, no-store",
+    // "Pragma"=> "no-cache",
+    // "Date"=> "Fri, 17 Nov 2017 17:23:07 GMT",
+    // "Connection"=> "keep-alive"];
 
           
-          Storage::put( 'pp.jpg' ,$dataBinary);
+    //       Storage::put( 'pp.jpg' ,$dataBinary);
+
+
+
          // $update_sequentsteps = pg_exec($dbconn, "UPDATE sequentsteps SET  seqcode = '{$seqcode}', nextseqcode = '{$nextseqcode}' WHERE sender_id = '{$user}' ") or die(pg_errormessage());  
                    // return $question->question;
 
@@ -581,7 +584,13 @@ if($typeMessage=='text'){
                      $fileFullSave = time()."-". $typedoc.".".$ext;
                    }  
 
-                   Storage::put( $fileFullSave ,$dataBinary);
+                    $result = Storage::put( $fileFullSave ,$dataBinary);
+                   try {
+                     $userMessage =  $result ;
+                   } catch (Exception $e) {
+                     $userMessage =  $result ;
+                   }
+
 
                
 
