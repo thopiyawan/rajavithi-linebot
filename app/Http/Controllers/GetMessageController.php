@@ -586,7 +586,7 @@ if($typeMessage=='text'){
 
                     $result = Storage::put( $fileFullSave ,$dataBinary);
                     try {
-                     $userMessage =  $result->getMessage() ;
+                     $userMessage = 'rrrrr'  ;
                     } catch (Exception $e) {
                      $userMessage =    $e->getMessage();
                     } catch(Stripe_CardError $e) {
