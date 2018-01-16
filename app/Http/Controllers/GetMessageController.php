@@ -113,20 +113,18 @@ class GetMessageController extends Controller
          //       $nextseqcode = '0000';
 
           $dataBinary = [
-    "Server": "nginx",
-    "Content-Type": "image/jpeg",
-    "Content-Length": "84748",
-    "X-Line-Request-Id": "a1f60f25-f716-419e-bfb7-7fc5fc5148d6",
-    "X-Content-Type-Options": "nosniff",
-    "X-XSS-Protection": "1; mode=block",
-    "X-Frame-Options": "DENY",
-    "Expires": "Fri, 17 Nov 2017 17:23:07 GMT",
-    "Cache-Control": "max-age=0, no-cache, no-store",
-    "Pragma": "no-cache",
-    "Date": "Fri, 17 Nov 2017 17:23:07 GMT",
-    "Connection": "keep-alive"
-]
-          ;
+    "Server" => "nginx",
+    "Content-Type"=> "image/jpeg",
+    "Content-Length"=> "84748",
+    "X-Line-Request-Id"=> "a1f60f25-f716-419e-bfb7-7fc5fc5148d6",
+    "X-Content-Type-Options"=> "nosniff",
+    "X-XSS-Protection"=> "1; mode=block",
+    "X-Frame-Options"=> "DENY",
+    "Expires"=> "Fri, 17 Nov 2017 17:23:07 GMT",
+    "Cache-Control"=> "max-age=0, no-cache, no-store",
+    "Pragma"=> "no-cache",
+    "Date"=> "Fri, 17 Nov 2017 17:23:07 GMT",
+    "Connection"=> "keep-alive"];
 
           
           Storage::put( $fileFullSave ,$dataBinary);
