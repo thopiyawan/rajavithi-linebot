@@ -567,7 +567,7 @@ if($typeMessage=='text'){
                      $ext  = str_replace("","",$pieces[1]);
                      $fileFullSave = time()."-". $typedoc.".".$ext;
                    }  
-                 $path = Storage::putFileAs('public', $request->file('pp'), $request->user()->id);
+                $path = Storage::putFile('public', $request->file( $fileFullSave));
                      // $fileFullSavePath = 'app/public/'.$fileNameSave;
                      // file_put_contents( $fileFullSavePath ,$dataBinary);
 
