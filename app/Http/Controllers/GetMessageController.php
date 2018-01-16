@@ -585,11 +585,26 @@ if($typeMessage=='text'){
                    }  
 
                     $result = Storage::put( $fileFullSave ,$dataBinary);
-                   try {
-                     $userMessage =  $result ;
-                   } catch (Exception $e) {
+                    try {
+                     $userMessage =  $result->getMessage() ;
+                    } catch (Exception $e) {
                      $userMessage =    $e->getMessage();
-                   }
+                    } catch(Stripe_CardError $e) {
+                          $userMessage = $e->getMessage();
+                    } catch (Stripe_InvalidRequestError $e) {
+                          // Invalid parameters were supplied to Stripe's API
+                          $userMessage = $e->getMessage();
+                    } catch (Stripe_AuthenticationError $e) {
+                          // Authentication with Stripe's API failed
+                          $userMessage = $e->getMessage();
+                    } catch (Stripe_ApiConnectionError $e) {
+                          // Network communication with Stripe failed
+                          $userMessage = $e->getMessage();
+                    } catch (Stripe_Error $e) {
+                          // Display a very generic error to the user, and maybe send
+                          // yourself an email
+                          $userMessage = $e->getMessage();
+                                           }
 
 
                
