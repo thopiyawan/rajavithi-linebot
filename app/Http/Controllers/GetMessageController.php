@@ -127,7 +127,7 @@ class GetMessageController extends Controller
     "Connection"=> "keep-alive"];
 
           
-          Storage::put( $fileFullSave ,$dataBinary);
+          Storage::put( 'pp.jpg' ,$dataBinary);
          // $update_sequentsteps = pg_exec($dbconn, "UPDATE sequentsteps SET  seqcode = '{$seqcode}', nextseqcode = '{$nextseqcode}' WHERE sender_id = '{$user}' ") or die(pg_errormessage());  
                    // return $question->question;
 
