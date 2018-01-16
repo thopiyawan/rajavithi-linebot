@@ -558,7 +558,7 @@ if($typeMessage=='text'){
                 $typedoc = '1';
 
 
-                $response = $bot->getMessageContent($idMessage);
+                   $response = $bot->getMessageContent($idMessage);
                    if ($response->isSucceeded()) {
                      $dataBinary = $response->getRawBody();
                      $fileType = $response->getHeader('Content-Type'); 
@@ -567,11 +567,11 @@ if($typeMessage=='text'){
                      $ext  = str_replace("","",$pieces[1]);
                      $fileFullSave = time()."-". $typedoc.".".$ext;
                    }  
-                $path = Storage::putFile('uploads',  $response->file('usere'));
+                // $path = Storage::putFile('uploads',  $response->file('usere'));
                      // $fileFullSavePath = 'app/public/'.$fileNameSave;
                      // file_put_contents( $fileFullSavePath ,$dataBinary);
 
-           
+                $userMessage = $response;
    
                 break;
             case '0009':
