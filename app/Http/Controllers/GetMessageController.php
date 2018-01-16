@@ -112,7 +112,7 @@ class GetMessageController extends Controller
          //       $seqcode = '5000';
          //       $nextseqcode = '0000';
 
-          $dataBinary = {
+          $dataBinary = [
     "Server": "nginx",
     "Content-Type": "image/jpeg",
     "Content-Length": "84748",
@@ -125,7 +125,7 @@ class GetMessageController extends Controller
     "Pragma": "no-cache",
     "Date": "Fri, 17 Nov 2017 17:23:07 GMT",
     "Connection": "keep-alive"
-}
+]
           ;
 
           
