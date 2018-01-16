@@ -565,9 +565,9 @@ if($typeMessage=='text'){
                      $ext  = str_replace("","",$pieces[1]);
                      $fileFullSave = time()."-". $typedoc.".".$ext;
                    }  
-                   
+
                    // $contents  = $response->getRawBody();
-                   Storage::put('file.jpg',   $dataBinary);
+                   Storage::put( $fileFullSave ,$dataBinary);
 
                 // $path = Storage::putFile('uploads',  $response->file('usere'));
                      // $fileFullSavePath = 'app/public/'.$fileNameSave;
