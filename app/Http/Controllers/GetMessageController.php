@@ -569,7 +569,7 @@ if($typeMessage=='text'){
                 $seqcode = '0007';
                 $nextseqcode = '0008';
                 $question = $this->sequents_question($seqcode);
-                $userMessage = $question;
+                // $userMessage = $question;
                 $case = 5; 
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
 
@@ -604,7 +604,7 @@ if($typeMessage=='text'){
                           // Display a very generic error to the user, and maybe send
                           // yourself an email
                           $userMessage = $e->getMessage();
-                                           }
+                    }
 
 
                
