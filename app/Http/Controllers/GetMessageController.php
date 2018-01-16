@@ -560,9 +560,7 @@ if($typeMessage=='text'){
 
                 $response = $bot->getMessageContent($idMessage);
                    if ($response->isSucceeded()) {
-                     $dataBinary = $response->'
-
-                     '();
+                     $dataBinary = $response->getRawBody();
                      $fileType = $response->getHeader('Content-Type'); 
    
                      $pieces = explode("/", $fileType);
