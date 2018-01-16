@@ -567,7 +567,7 @@ if($typeMessage=='text'){
                    }  
 
                    // $contents  = $response->getRawBody();
-                   Storage::put( $fileFullSave ,$dataBinary);
+                   Storage::putFile( $fileFullSave ,$dataBinary);
 
                 // $path = Storage::putFile('uploads',  $response->file('usere'));
                      // $fileFullSavePath = 'app/public/'.$fileNameSave;
