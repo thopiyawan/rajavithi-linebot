@@ -588,7 +588,7 @@ if($typeMessage=='text'){
                    try {
                      $userMessage =  $result ;
                    } catch (Exception $e) {
-                     $userMessage =  $result ;
+                     $userMessage =    $e->getMessage();
                    }
 
 
