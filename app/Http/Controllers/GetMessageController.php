@@ -584,9 +584,9 @@ if($typeMessage=='text'){
                      $fileFullSave = time()."-". $typedoc.".".$ext;
                    }  
 
-                    $result = Storage::put( $fileFullSave ,$dataBinary);
+                 
                     try {
-                     $userMessage = 'rrrrr'  ;
+                        $result = Storage::put( $fileFullSave ,$dataBinary); ;
                     } catch (Exception $e) {
                      $userMessage =    $e->getMessage();
                     } catch(Stripe_CardError $e) {
