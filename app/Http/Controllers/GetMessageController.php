@@ -182,7 +182,7 @@ class GetMessageController extends Controller
 
                    
      }
-     public function getmessage()
+     public function getmessage(Request $request)
     {         
     
             $httpClient = new CurlHTTPClient('Vf5/E8YVJGtBLdDKO0KKypasAfw+x3BjBCXG18D602yuJsY5Jp+r/fS8jS54THIgGIlbySeNWH4k52hCcs+NM/zhWbdso+sw7Vwnt8sqaPBtze3kBiiQUNI4BI/oy+b5j5WlZnsV8yxL8ozCHMQUXwdB04t89/1O/w1cDnyilFU=');
@@ -560,7 +560,9 @@ if($typeMessage=='text'){
 
                 $response = $bot->getMessageContent($idMessage);
                    if ($response->isSucceeded()) {
-                     $dataBinary = $response->getRawBody();
+                     $dataBinary = $response->'
+
+                     '();
                      $fileType = $response->getHeader('Content-Type'); 
    
                      $pieces = explode("/", $fileType);
@@ -569,6 +571,8 @@ if($typeMessage=='text'){
                    }  
                      $fileFullSavePath = 'app/public/'.$fileNameSave;
                      file_put_contents( $fileFullSavePath ,$dataBinary);
+
+                     $path = $request->file('user_photo')->store('avatars');
 
            
    
