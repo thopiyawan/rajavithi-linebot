@@ -111,8 +111,25 @@ class GetMessageController extends Controller
               // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','0006','','0007','0',NOW(),NOW())") or die(pg_errormessage());
          //       $seqcode = '5000';
          //       $nextseqcode = '0000';
-                     $fileFullSavePath = 'app/public/abc.jpg';
-                     file_put_contents( $fileFullSavePath );
+
+          $dataBinary = {
+    "Server": "nginx",
+    "Content-Type": "image/jpeg",
+    "Content-Length": "84748",
+    "X-Line-Request-Id": "a1f60f25-f716-419e-bfb7-7fc5fc5148d6",
+    "X-Content-Type-Options": "nosniff",
+    "X-XSS-Protection": "1; mode=block",
+    "X-Frame-Options": "DENY",
+    "Expires": "Fri, 17 Nov 2017 17:23:07 GMT",
+    "Cache-Control": "max-age=0, no-cache, no-store",
+    "Pragma": "no-cache",
+    "Date": "Fri, 17 Nov 2017 17:23:07 GMT",
+    "Connection": "keep-alive"
+}
+          ;
+
+          
+          Storage::put( $fileFullSave ,$dataBinary);
          // $update_sequentsteps = pg_exec($dbconn, "UPDATE sequentsteps SET  seqcode = '{$seqcode}', nextseqcode = '{$nextseqcode}' WHERE sender_id = '{$user}' ") or die(pg_errormessage());  
                    // return $question->question;
 
@@ -565,7 +582,7 @@ if($typeMessage=='text'){
                      $ext  = str_replace("","",$pieces[1]);
                      $fileFullSave = time()."-". $typedoc.".".$ext;
                    }  
-                   
+
                    Storage::put( $fileFullSave ,$dataBinary);
 
                
