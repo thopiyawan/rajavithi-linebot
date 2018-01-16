@@ -571,7 +571,7 @@ if($typeMessage=='text'){
                      // $fileFullSavePath = 'app/public/'.$fileNameSave;
                      // file_put_contents( $fileFullSavePath ,$dataBinary);
 
-                $userMessage = $dataBinary;
+                $userMessage = $fileType;
    
                 break;
             case '0009':
