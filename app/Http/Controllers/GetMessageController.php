@@ -556,8 +556,6 @@ if($typeMessage=='text'){
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
 
                 $typedoc = '1';
-
-
                    $response = $bot->getMessageContent($idMessage);
                    if ($response->isSucceeded()) {
                      $dataBinary = $response->getRawBody();
@@ -567,11 +565,15 @@ if($typeMessage=='text'){
                      $ext  = str_replace("","",$pieces[1]);
                      $fileFullSave = time()."-". $typedoc.".".$ext;
                    }  
+                   
+                   $contents  = $response->getRawBody();
+                   Storage::put('file.jpg', $contents);
+
                 // $path = Storage::putFile('uploads',  $response->file('usere'));
                      // $fileFullSavePath = 'app/public/'.$fileNameSave;
                      // file_put_contents( $fileFullSavePath ,$dataBinary);
 
-                $userMessage = $fileType;
+        
    
                 break;
             case '0009':
