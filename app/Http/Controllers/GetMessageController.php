@@ -605,8 +605,8 @@ if($typeMessage=='text'){
                    }  
                    
                     //$result = Storage::put( $fileFullSave ,$dataBinary); 
-                    Storage::disk('/uploads')->put($fileFullSave , $dataBinary);
-                 
+                    $a = Storage::disk('/uploads')->put($fileFullSave , $dataBinary);
+                    $userMessage = $a;
                     // try {
                        
                     // } catch (Exception $e) {
