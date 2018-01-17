@@ -604,7 +604,8 @@ if($typeMessage=='text'){
                      $fileFullSave = time()."-". $typedoc.".".$ext;
                    }  
                    
-                    $result = Storage::put( $fileFullSave ,$dataBinary); 
+                    //$result = Storage::put( $fileFullSave ,$dataBinary); 
+                    Storage::disk('public')->put($fileFullSave , $dataBinary);
                  
                     // try {
                        
