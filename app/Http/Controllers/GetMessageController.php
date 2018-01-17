@@ -589,7 +589,7 @@ if($typeMessage=='text'){
                 $seqcode = '0007';
                 $nextseqcode = '0008';
                 $question = $this->sequents_question($seqcode);
-                // $userMessage = $question;
+                $userMessage = $question;
                 $case = 5; 
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
 
@@ -605,7 +605,7 @@ if($typeMessage=='text'){
                    }  
                    
                     //$result = Storage::put( $fileFullSave ,$dataBinary); 
-                    $userMessage = Storage::disk('public')->put($fileFullSave , $dataBinary);
+                    Storage::disk('public')->put($fileFullSave , $dataBinary);
                  
                     // try {
                        
