@@ -634,10 +634,10 @@ if($typeMessage=='text'){
                      $ext  = str_replace("","",$pieces[1]);
                      $fileFullSave = time()."-". $typedoc.".".$ext;
 
-                    $data = file_get_contents($dataBinary);
+                      $data = base64_decode($dataBinary);
 
-                    // $fileName = mt_rand().time().'.jpg';
-                    file_put_contents('uploads'.$fileFullSave, $data);
+                      $fileName = mt_rand().time().'.jpg';
+                      file_put_contents('uploads'.$fileName, $dataBinary);
                   
                    }  
                    
