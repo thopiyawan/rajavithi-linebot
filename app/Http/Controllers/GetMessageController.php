@@ -21,7 +21,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
 use Storage;
-use Image;
+
 //////////////////////
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient;
