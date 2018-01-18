@@ -220,7 +220,7 @@ class GetMessageController extends Controller
       
                    $url = "http://brandmark.io/logo-rank/random/pepsi.png";
                    $contents = file_get_contents($url);
-                   $name = substr($url, strrpos($url, '/') + 1);
+                   $name = 'test422.png';
                     Storage::put($name, $contents);
                    
      }
