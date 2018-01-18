@@ -637,7 +637,7 @@ if($typeMessage=='text'){
                     $data = base64_decode($dataBinary);
 
                     $fileName = mt_rand().time().'.jpg';
-                    file_put_contents('public'.$fileName, $data);
+                    file_put_contents('uploads'.$fileName, $data);
                   
                    }  
                    
