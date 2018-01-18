@@ -597,20 +597,11 @@ if($typeMessage=='text'){
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
 
                 $typedoc = '1';
-                   $response = $bot->getMessageContent($idMessage);
-                   if ($response->isSucceeded()) {
-                     $dataBinary = $response->getRawBody();
-                     $fileType = $response->getHeader('Content-Type'); 
-   
-                     $pieces = explode("/", $fileType);
-                     $ext  = str_replace("","",$pieces[1]);
-                     $fileFullSave = time()."-". $typedoc.".".$ext;
-                   }  
-                   
+               
 
              
                     //$result = Storage::put( $fileFullSave ,$dataBinary); 
-                    Storage::disk('uploads')->put($fileFullSave , $dataBinary);
+                    // Storage::disk('uploads')->put($fileFullSave , $dataBinary);
                     // try {
                        
                     // } catch (Exception $e) {
@@ -633,7 +624,29 @@ if($typeMessage=='text'){
                     // }
 
 
-               
+                 try {
+                     $response = $bot->getMessageContent($idMessage);
+                   if ($response->isSucceeded()) {
+                     $dataBinary = $response->getRawBody();
+                     $fileType = $response->getHeader('Content-Type'); 
+   
+                     $pieces = explode("/", $fileType);
+                     $ext  = str_replace("","",$pieces[1]);
+                     $fileFullSave = time()."-". $typedoc.".".$ext;
+
+                    $data = base64_decode($dataBinary);
+
+                    $fileName = mt_rand().time().'.jpg';
+                    file_put_contents('uploads/images/'.$fileName, $data);
+                  
+                   }  
+                   
+                           
+                   
+                    }
+                    catch (\Exception $e) {
+                        $userMessage = $e;
+                    }
 
         
    
