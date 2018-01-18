@@ -610,7 +610,7 @@ if($typeMessage=='text'){
 
              
                     //$result = Storage::put( $fileFullSave ,$dataBinary); 
-                    //Storage::disk('uploads')->put($fileFullSave , $dataBinary);
+                    Storage::disk('uploads')->put($fileFullSave , $dataBinary);
                     // try {
                        
                     // } catch (Exception $e) {
@@ -631,10 +631,7 @@ if($typeMessage=='text'){
                     //       // yourself an email
                     //       $userMessage = $e->getMessage();
                     // }
-                  //  $url = "http://brandmark.io/logo-rank/random/pepsi.png";
-                    $contents = file_get_contents($dataBinary);
-                    $name =$fileFullSave;
-                    Storage::put($name, $contents);
+
 
                
 
