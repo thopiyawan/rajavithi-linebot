@@ -112,41 +112,41 @@ class GetMessageController extends Controller
          //       $seqcode = '5000';
          //       $nextseqcode = '0000';
 
-          $dataBinary = [
-    "Server" => "nginx",
-    "Content-Type"=> "image/jpeg",
-    "Content-Length"=> "84748",
-    "X-Line-Request-Id"=> "a1f60f25-f716-419e-bfb7-7fc5fc5148d6",
-    "X-Content-Type-Options"=> "nosniff",
-    "X-XSS-Protection"=> "1; mode=block",
-    "X-Frame-Options"=> "DENY",
-    "Expires"=> "Fri, 17 Nov 2017 17:23:07 GMT",
-    "Cache-Control"=> "max-age=0, no-cache, no-store",
-    "Pragma"=> "no-cache",
-    "Date"=> "Fri, 17 Nov 2017 17:23:07 GMT",
-    "Connection"=> "keep-alive"];
+    //       $dataBinary = [
+    // "Server" => "nginx",
+    // "Content-Type"=> "image/jpeg",
+    // "Content-Length"=> "84748",
+    // "X-Line-Request-Id"=> "a1f60f25-f716-419e-bfb7-7fc5fc5148d6",
+    // "X-Content-Type-Options"=> "nosniff",
+    // "X-XSS-Protection"=> "1; mode=block",
+    // "X-Frame-Options"=> "DENY",
+    // "Expires"=> "Fri, 17 Nov 2017 17:23:07 GMT",
+    // "Cache-Control"=> "max-age=0, no-cache, no-store",
+    // "Pragma"=> "no-cache",
+    // "Date"=> "Fri, 17 Nov 2017 17:23:07 GMT",
+    // "Connection"=> "keep-alive"];
 
           
-            try {
-                          Storage::put( 'pp.jpg' ,$dataBinary);
-                    } catch (Exception $e) {
-                         echo $userMessage =    $e->getMessage();
-                    } catch(Stripe_CardError $e) {
-                            echo $userMessage = $e->getMessage();
-                    } catch (Stripe_InvalidRequestError $e) {
-                          // Invalid parameters were supplied to Stripe's API
-                            echo  $userMessage = $e->getMessage();
-                    } catch (Stripe_AuthenticationError $e) {
-                          // Authentication with Stripe's API failed
-                           echo  $userMessage = $e->getMessage();
-                    } catch (Stripe_ApiConnectionError $e) {
-                          // Network communication with Stripe failed
-                            echo  $userMessage = $e->getMessage();
-                    } catch (Stripe_Error $e) {
-                          // Display a very generic error to the user, and maybe send
-                          // yourself an email
-                           echo  $userMessage = $e->getMessage();
-                    }
+    //         try {
+    //                       Storage::put( 'pp.jpg' ,$dataBinary);
+    //                 } catch (Exception $e) {
+    //                      echo $userMessage =    $e->getMessage();
+    //                 } catch(Stripe_CardError $e) {
+    //                         echo $userMessage = $e->getMessage();
+    //                 } catch (Stripe_InvalidRequestError $e) {
+    //                       // Invalid parameters were supplied to Stripe's API
+    //                         echo  $userMessage = $e->getMessage();
+    //                 } catch (Stripe_AuthenticationError $e) {
+    //                       // Authentication with Stripe's API failed
+    //                        echo  $userMessage = $e->getMessage();
+    //                 } catch (Stripe_ApiConnectionError $e) {
+    //                       // Network communication with Stripe failed
+    //                         echo  $userMessage = $e->getMessage();
+    //                 } catch (Stripe_Error $e) {
+    //                       // Display a very generic error to the user, and maybe send
+    //                       // yourself an email
+    //                        echo  $userMessage = $e->getMessage();
+    //                 }
         
 
 
@@ -217,7 +217,11 @@ class GetMessageController extends Controller
     // $fileName = Input::file('fileUpload');
     //             Storage::disk('public')->put($fileName, File::get(Input::file('fileUpload')));
 
-
+      
+                   $url = "http://brandmark.io/logo-rank/random/pepsi.png";
+                   $contents = file_get_contents($url);
+                   $name = substr($url, strrpos($url, '/') + 1);
+                    Storage::put($name, $contents);
                    
      }
      public function getmessage()
@@ -604,6 +608,8 @@ if($typeMessage=='text'){
                      $fileFullSave = time()."-". $typedoc.".".$ext;
                    }  
                    
+
+             
                     //$result = Storage::put( $fileFullSave ,$dataBinary); 
                     Storage::disk('uploads')->put($fileFullSave , $dataBinary);
                     // try {
