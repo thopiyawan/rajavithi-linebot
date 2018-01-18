@@ -624,7 +624,7 @@ if($typeMessage=='text'){
                     // }
 
 
-                 try {
+ 
                      $response = $bot->getMessageContent($idMessage);
                    if ($response->isSucceeded()) {
                      $dataBinary = $response->getRawBody();
@@ -637,17 +637,13 @@ if($typeMessage=='text'){
                       //$data = base64_decode($dataBinary);
 
                       //$fileName = mt_rand().time().'.jpg';
-                      file_put_contents('public'.$fileFullSave, $dataBinary);
+                      file_put_contents('uploads'.$fileFullSave, $dataBinary);
                   
                    }  
                    
                            
                    
-                    }
-                    catch (\Exception $e) {
-                        $userMessage = $e;
-                    }
-
+                   
         
    
                 break;
