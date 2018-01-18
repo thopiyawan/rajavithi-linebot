@@ -219,13 +219,15 @@ class GetMessageController extends Controller
     //             Storage::disk('public')->put($fileName, File::get(Input::file('fileUpload')));
 
       
-                   // $url = "http://brandmark.io/logo-rank/random/pepsi.png";
+                    $url = "http://brandmark.io/logo-rank/random/pepsi.png";
                    // $contents = file_get_contents($url);
                    // $name = 'test422.png';
                    //  Storage::put($name, $contents);
-          $path = 'https://i.stack.imgur.com/koFpQ.png';
-          $filename = basename($path);
-          Image::make($path)->save(public_path('images/' . $filename));
+
+
+          File::makeDirectory(public_path('images/kits/'.  $url ), 0775, true);
+
+
                    
      }
      public function getmessage()
