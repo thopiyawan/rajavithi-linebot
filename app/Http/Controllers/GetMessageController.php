@@ -650,9 +650,6 @@ if($typeMessage=='text'){
                     //file_put_contents('https://rajavithi-bot.herokuapp.com/images/'.$fileFullSave, $data);
                    //::put('avatars/1',  $dataBinary );
                    // Storage::disk('local')->put('file.txt',$dataBinary);
-                   
-        
-   
                 break;
             case '0009':
                 $seqcode = '0010';
