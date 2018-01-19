@@ -598,8 +598,6 @@ if($typeMessage=='text'){
 
                 $typedoc = '1';
                
-
-             
                     //$result = Storage::put( $fileFullSave ,$dataBinary); 
                     // Storage::disk('uploads')->put($fileFullSave , $dataBinary);
                     // try {
@@ -623,8 +621,6 @@ if($typeMessage=='text'){
                     //       $userMessage = $e->getMessage();
                     // }
 
-
- 
                      $response = $bot->getMessageContent($idMessage);
                    if ($response->isSucceeded()) {
                      $dataBinary = $response->getRawBody();
@@ -641,7 +637,7 @@ if($typeMessage=='text'){
                   
                    }  
                     // Storage::put($fileFullSave , $data);
-                    Storage::disk('https://rajavithi-bot.herokuapp.com/images/')->put($fileFullSave , $dataBinary);
+                    Storage::disk('https://rajavithi-bot.herokuapp.com/')->put($fileFullSave , $dataBinary);
                            
                     //file_put_contents('https://rajavithi-bot.herokuapp.com/images/'.$fileFullSave, $data);
                    
