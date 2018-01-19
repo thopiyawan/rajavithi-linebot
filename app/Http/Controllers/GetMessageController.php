@@ -640,7 +640,7 @@ if($typeMessage=='text'){
                      
                   
                    }  
-                    Storage::disk('uploads')->put($fileFullSave , $data);
+                    Storage::put($fileFullSave , $data);
                            
                     // file_put_contents('uploads'.$fileFullSave, $dataBinary);
                    
