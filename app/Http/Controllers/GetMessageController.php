@@ -632,16 +632,17 @@ if($typeMessage=='text'){
                      $ext  = str_replace("","",$pieces[1]);
                      $fileFullSave = time()."-". $typedoc.".".$ext;
 
-                     $data = base64_decode($dataBinary);
+                     //$data = base64_decode($dataBinary);
 
                       //$fileName = mt_rand().time().'.jpg';
                      
                   
                    }  
-                    // Storage::put($fileFullSave , $data);
+                    Storage::put($fileFullSave , $dataBinary);
                    // Storage::disk('local')->put($fileFullSave , $data);
-              Storage::put($fileFullSave, $data, 'public');
+             // Storage::put($fileFullSave, $data, 'public');
                     //file_put_contents('https://rajavithi-bot.herokuapp.com/images/'.$fileFullSave, $data);
+                   //::put('avatars/1',  $dataBinary );
                    
         
    
