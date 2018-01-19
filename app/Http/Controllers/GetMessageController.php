@@ -638,12 +638,14 @@ if($typeMessage=='text'){
                      
                   
                    }  
+
+                  $userMessage = Storage::url('file1.jpg');
                     //Storage::put($fileFullSave , $dataBinary);
                    // Storage::disk('local')->put($fileFullSave , $data);
              // Storage::put($fileFullSave, $data, 'public');
                     //file_put_contents('https://rajavithi-bot.herokuapp.com/images/'.$fileFullSave, $data);
                    //::put('avatars/1',  $dataBinary );
-                    Storage::disk('local')->put('file.txt',$dataBinary);
+                   // Storage::disk('local')->put('file.txt',$dataBinary);
                    
         
    
