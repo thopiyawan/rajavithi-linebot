@@ -81,7 +81,7 @@ class GetMessageController extends Controller
 
 
           //Storage::putFile('photos', new File('local'));
-          Storage::putFile('photos', new File('/'), 'public');
+          Storage::putFile('photos', new File('/app/public'), 'public');
            // $answer = sequents::select('question')
            //                      ->where('seqcode','0001')
            //                      ->first();
