@@ -19,10 +19,8 @@ use App\Http\Controllers\Controller;
 //////////////////////
 
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\File;
-
-
+use Illuminate\Support\Facades\File;
+use Storage;
 
 //////////////////////
 use LINE\LINEBot;
@@ -78,10 +76,6 @@ class GetMessageController extends Controller
         $dbconn = pg_pconnect($conn_string);
             
           $user = 'U2dc636d2cd052e82c29f5284e00f69b9';
-
-
-          //Storage::putFile('photos', new File('local'));
-        
            // $answer = sequents::select('question')
            //                      ->where('seqcode','0001')
            //                      ->first();
@@ -222,10 +216,9 @@ class GetMessageController extends Controller
    //                  }
 
     // $fileName = Input::file('fileUpload');
-  
-    // Storage::disk('public')->put($fileName, File::get(Input::file('fileUpload')));
-      // Storage::makeDirectory($directory);
-      // Storage::makeDirectory($directory);
+    //             Storage::disk('public')->put($fileName, File::get(Input::file('fileUpload')));
+
+      
                  
 
                    
@@ -637,20 +630,16 @@ if($typeMessage=='text'){
                      $ext  = str_replace("","",$pieces[1]);
                      $fileFullSave = time()."-". $typedoc.".".$ext;
 
-                     //$data = base64_decode($dataBinary);
+                     $data = base64_decode($dataBinary);
 
                       //$fileName = mt_rand().time().'.jpg';
                      
                   
                    }  
-
-                 // $userMessage = Storage::url('file1.jpg');
-                    //Storage::put($fileFullSave , $dataBinary);
-                   // Storage::disk('local')->put($fileFullSave , $data);
-             // Storage::put($fileFullSave, $data, 'public');
+                    // Storage::put($fileFullSave , $data);
+                    Storage::disk('local')->put($fileFullSave , $data);
+                           
                     //file_put_contents('https://rajavithi-bot.herokuapp.com/images/'.$fileFullSave, $data);
-                   //::put('avatars/1',  $dataBinary );
-                   // Storage::disk('local')->put('file.txt',$dataBinary);
                    
         
    
