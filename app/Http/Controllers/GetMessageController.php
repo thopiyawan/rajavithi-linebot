@@ -76,151 +76,6 @@ class GetMessageController extends Controller
         $dbconn = pg_pconnect($conn_string);
             
           $user = 'U2dc636d2cd052e82c29f5284e00f69b9';
-           // $answer = sequents::select('question')
-           //                      ->where('seqcode','0001')
-           //                      ->first();
-             // $seqcode = '0000';
-             //  $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '$seqcode'");
-             //    while ($row = pg_fetch_row($result)) {
-             //      echo $seqcode =  $row[0];
-             //      echo $question = $row[1];
-             //    }   
-              // $result = pg_query($dbconn,"SELECT seqcode FROM sequentsteps WHERE sender_id = '$user'");
-              //   while ($row = pg_fetch_row($result)) {
-              //     return $seqcode =  $row[0];
-              //     //echo $question = $row[1];
-              //   }   
-
-          // $result = pg_query($dbconn,"SELECT seqcode FROM sequentsteps WHERE sender_id = '$user'");
-          //       while ($row = pg_fetch_object($result)) {
-            
-          //          echo  $row->seqcode;
-          //       } 
-
-
-                // $result = pg_query($dbconn,"SELECT seqcode FROM sequentsteps WHERE sender_id = '$user'");
-                // $num = pg_num_rows($result);
-                // echo $num;
-                 //    if($num==0)         
-                 // {  
-                 //     $seqcode = '0000';
-                 //     $nextseqcode = '0000';             
-                 //     $insert_sequentsteps = $this->insert_sequentsteps($user,$seqcode,$nextseqcode);
-                 // }
-
-
-              // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user}','0006','','0007','0',NOW(),NOW())") or die(pg_errormessage());
-         //       $seqcode = '5000';
-         //       $nextseqcode = '0000';
-
-    //       $dataBinary = [
-    // "Server" => "nginx",
-    // "Content-Type"=> "image/jpeg",
-    // "Content-Length"=> "84748",
-    // "X-Line-Request-Id"=> "a1f60f25-f716-419e-bfb7-7fc5fc5148d6",
-    // "X-Content-Type-Options"=> "nosniff",
-    // "X-XSS-Protection"=> "1; mode=block",
-    // "X-Frame-Options"=> "DENY",
-    // "Expires"=> "Fri, 17 Nov 2017 17:23:07 GMT",
-    // "Cache-Control"=> "max-age=0, no-cache, no-store",
-    // "Pragma"=> "no-cache",
-    // "Date"=> "Fri, 17 Nov 2017 17:23:07 GMT",
-    // "Connection"=> "keep-alive"];
-
-          
-    //         try {
-    //                       Storage::put( 'pp.jpg' ,$dataBinary);
-    //                 } catch (Exception $e) {
-    //                      echo $userMessage =    $e->getMessage();
-    //                 } catch(Stripe_CardError $e) {
-    //                         echo $userMessage = $e->getMessage();
-    //                 } catch (Stripe_InvalidRequestError $e) {
-    //                       // Invalid parameters were supplied to Stripe's API
-    //                         echo  $userMessage = $e->getMessage();
-    //                 } catch (Stripe_AuthenticationError $e) {
-    //                       // Authentication with Stripe's API failed
-    //                        echo  $userMessage = $e->getMessage();
-    //                 } catch (Stripe_ApiConnectionError $e) {
-    //                       // Network communication with Stripe failed
-    //                         echo  $userMessage = $e->getMessage();
-    //                 } catch (Stripe_Error $e) {
-    //                       // Display a very generic error to the user, and maybe send
-    //                       // yourself an email
-    //                        echo  $userMessage = $e->getMessage();
-    //                 }
-        
-
-
-
-         // $update_sequentsteps = pg_exec($dbconn, "UPDATE sequentsteps SET  seqcode = '{$seqcode}', nextseqcode = '{$nextseqcode}' WHERE sender_id = '{$user}' ") or die(pg_errormessage());  
-                   // return $question->question;
-
-        // $user = 'U2dc636d2cd052e82c29f5284e00f69b9';
-
-           // $users_register = DB::table('users_register')
-           //             ->where('sender_id', $user)
-           //             ->update(['user_age' => $answer ]);
-                     // $answer = DB::table('sequents')
-                     // ->select('question')
-                     // ->where('seqcode', '0001')
-                     // ->first();
-                    // $answer = $answer->question;
-                    // $users_register = DB::table('users_register')
-                    //    ->where('user_id', $user)
-                    //    ->update(['email' => $answer ]);
-
-           // $answer = json_decode($answer , true);
-         // $code = 200;
-         // $data = ['data' => $answer, 'code' => $code];
-         // return response()->json($data);
-
-        //\Storage::disk('uploads')->put('filename', $file_content);
-                   // $botDataFolder = 'https://rajavithi-bot.herokuapp.com/document/'; 
-                   // $botDataUserFolder = $botDataFolder.'555'; 
-              
-// File::makeDirectory($path=base_path("public/document/332555.png/"), $mode = 0777, $recursive = true, $force = false);
-//           $folder = '55553';
-// $path = base_path('resources/promos/' . $folder . '/');
-// File::makeDirectory($path, 0777, true, true);
-          // File::makeDirectory(public_path('document/'));
-          //$path = 'public/document/';
-          // File::makeDirectory(public_path().'/'.$path,0777,true);
-          // $permissions = intval( config('permissions.directory'), 8 );
-          // File::makeDirectory($path, $permissions,0777, true);
-            // Storage::MakeDirectory(public_path('/public/document/'));
-
-    //       $fileNameSave = 'p.jpg';
-    // $exists = Storage::disk('public')->exists($fileNameSave);
-
-// $path = public_path().'/documenttest1';
-// // File::makeDirectory($path, $mode = 0777, true, true);
-
-//       mkdir($path, 0777, false);
-
-   // if(Input::hasFile('image')){
-            
-
-   //                   $file = Input::file('image');
-
-   //                   $destinationPath = public_path(). '/uploads/';
-   //                      $filename = $file->getClientOriginalName();
-
-   //                      $file->move($destinationPath, $filename);
-
-   //                      echo  $filename;
-   //                      //echo '<img src="uploads/'. $filename . '"/>';
-
-   //                      $user = document_data::create([
-   //                          'document_name' => $filename,
-   //                      ]);
-   //                  }
-
-    // $fileName = Input::file('fileUpload');
-    //             Storage::disk('public')->put($fileName, File::get(Input::file('fileUpload')));
-
-      
-                 
-
                    
      }
      public function getmessage()
@@ -597,29 +452,7 @@ if($typeMessage=='text'){
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
 
                 $typedoc = '1';
-               
-                    //$result = Storage::put( $fileFullSave ,$dataBinary); 
-                    // Storage::disk('uploads')->put($fileFullSave , $dataBinary);
-                    // try {
-                       
-                    // } catch (Exception $e) {
-                    //  $userMessage =    $e->getMessage();
-                    // } catch(Stripe_CardError $e) {
-                    //       $userMessage = $e->getMessage();
-                    // } catch (Stripe_InvalidRequestError $e) {
-                    //       // Invalid parameters were supplied to Stripe's API
-                    //       $userMessage = $e->getMessage();
-                    // } catch (Stripe_AuthenticationError $e) {
-                    //       // Authentication with Stripe's API failed
-                    //       $userMessage = $e->getMessage();
-                    // } catch (Stripe_ApiConnectionError $e) {
-                    //       // Network communication with Stripe failed
-                    //       $userMessage = $e->getMessage();
-                    // } catch (Stripe_Error $e) {
-                    //       // Display a very generic error to the user, and maybe send
-                    //       // yourself an email
-                    //       $userMessage = $e->getMessage();
-                    // }
+              
 
                      $response = $bot->getMessageContent($idMessage);
                    if ($response->isSucceeded()) {
@@ -632,15 +465,13 @@ if($typeMessage=='text'){
 
                      $data = base64_decode($dataBinary);
 
-                      //$fileName = mt_rand().time().'.jpg';
+
                      
                   
                    }  
-                    // Storage::put($fileFullSave , $data);
+             
                     Storage::disk('local')->put($fileFullSave , $data);
                            
-                    //file_put_contents('https://rajavithi-bot.herokuapp.com/images/'.$fileFullSave, $data);
-                   
         
    
                 break;
