@@ -81,7 +81,7 @@ class GetMessageController extends Controller
 
 
           //Storage::putFile('photos', new File('local'));
-          Storage::putFile('photos', new File('/app/public'), 'public');
+          Storage::putFile('photos', new File('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Pepsi_logo_2014.svg/1200px-Pepsi_logo_2014.svg.png'), 'public');
            // $answer = sequents::select('question')
            //                      ->where('seqcode','0001')
            //                      ->first();
