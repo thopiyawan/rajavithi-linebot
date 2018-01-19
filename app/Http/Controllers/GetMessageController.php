@@ -451,29 +451,6 @@ if($typeMessage=='text'){
                 $case = 5; 
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
 
-                $typedoc = '1';
-              
-
-                     $response = $bot->getMessageContent($idMessage);
-                   if ($response->isSucceeded()) {
-                     $dataBinary = $response->getRawBody();
-                     $fileType = $response->getHeader('Content-Type'); 
-   
-                     $pieces = explode("/", $fileType);
-                     $ext  = str_replace("","",$pieces[1]);
-                     $fileFullSave = time()."-". $typedoc.".".$ext;
-
-                     $data = base64_decode($dataBinary);
-
-
-                     
-                  
-                   }  
-             
-                    Storage::disk('local')->put($fileFullSave , $data);
-                           
-        
-   
                 break;
             case '0009':
                 $seqcode = '0010';
