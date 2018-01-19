@@ -221,11 +221,11 @@ class GetMessageController extends Controller
    //                      ]);
    //                  }
 
-    $fileName = Input::file('fileUpload');
+    // $fileName = Input::file('fileUpload');
   
-    Storage::disk('public')->put($fileName, File::get(Input::file('fileUpload')));
-
-      
+    // Storage::disk('public')->put($fileName, File::get(Input::file('fileUpload')));
+     $directory = '5555555';
+      Storage::makeDirectory($directory);
                  
 
                    
