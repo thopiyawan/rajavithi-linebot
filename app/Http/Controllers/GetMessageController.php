@@ -436,10 +436,11 @@ if($typeMessage=='text'){
             //     $userMessage  = 'สวัสดีค่ะ ';
             //     $case = 1; 
             
-            }else{
-                $userMessage  = 'ฉันไม่เข้าใจ';
-                $case = 1; 
-            }     
+            }
+            // else{
+            //     $userMessage  = 'ฉันไม่เข้าใจ';
+            //     $case = 1; 
+            // }     
 /////////////////*******image*****///////////////////////
 }elseif($typeMessage=='image'){
         switch ($seqcode) {
@@ -450,7 +451,6 @@ if($typeMessage=='text'){
                 $userMessage = $question;
                 $case = 5; 
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
-
                 break;
             case '0009':
                 $seqcode = '0010';
