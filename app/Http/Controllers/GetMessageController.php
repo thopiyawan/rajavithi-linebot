@@ -147,7 +147,7 @@ if($typeMessage=='text'){
                    $userMessage = $question;
                     
                 }elseif($userMessage == '2'){
-                    $case = 1;
+                    $case = 13;
                     $seqcode = '0005';
                     //$nextseqcode = '0006';
                     $question = $this->sequents_question($seqcode);
@@ -182,7 +182,7 @@ if($typeMessage=='text'){
 
 
                 }elseif($userMessage == '3'){
-                    $case = 1;
+                    $case = 13;
                     $seqcode = '0005';
                     // $nextseqcode = '0006';
 
@@ -199,7 +199,7 @@ if($typeMessage=='text'){
              }elseif(is_string($userMessage) !== false &&   $seqcode== '0003'){
                 
                 if($userMessage == '1'){
-                    $case = 1;
+                    $case = 13;
                     $seqcode = '0004';
                    // $nextseqcode = '0005';
                     $question = $this->sequents_question($seqcode);
@@ -210,7 +210,7 @@ if($typeMessage=='text'){
                     //รูป
                     
                 }elseif($userMessage == '2'){
-                    $case = 1;
+                    $case = 13;
                     $seqcode = '0005';
                     // $nextseqcode = '0006';
                     $question = $this->sequents_question($seqcode);
@@ -245,7 +245,7 @@ if($typeMessage=='text'){
 
 
                 }elseif($userMessage == '3'){
-                    $case = 1;
+                    $case = 13;
                     $seqcode = '0005';
                     // $nextseqcode = '0006';
                   
@@ -305,7 +305,7 @@ if($typeMessage=='text'){
 
 
                 }elseif($userMessage == '3'){
-                    $case = 1;
+                    $case = 13;
                     $seqcode = '0005';
                     // $nextseqcode = '0006';
                     $question = $this->sequents_question($seqcode);
@@ -342,7 +342,7 @@ if($typeMessage=='text'){
 
 
                 }elseif($userMessage == '3'){
-                    $case = 1;
+                    $case = 13;
                     $seqcode = '0005';
                     // $nextseqcode = '0006';
                     $question = $this->sequents_question($seqcode);
@@ -403,7 +403,7 @@ if($typeMessage=='text'){
 
 
                 }elseif($userMessage == '3'){
-                    $case = 1;
+                    $case = 13;
                     $seqcode = '0005';
                     // $nextseqcode = '0006';
                     $question = $this->sequents_question($seqcode);
@@ -439,7 +439,7 @@ if($typeMessage=='text'){
 
 
                 }elseif($userMessage == '3'){
-                    $case = 1;
+                    $case = 13;
                     $seqcode = '0005';
                     // $nextseqcode = '0006';
                     $question = $this->sequents_question($seqcode);
@@ -812,6 +812,19 @@ else{
                          )
                       );    
 
+                    break;
+                case 13 : 
+
+                        $textMessage1 = new TextMessageBuilder($userMessage);
+                        $Message = 'งั้นขอตัวไปก่อนจนกว่าจะมีเคสใหม่นะคะ/ครับ';
+                        $textMessage2 = new TextMessageBuilder($Message);
+
+
+
+                        $multiMessage = new MultiMessageBuilder;
+                        $multiMessage->add($textMessage1);
+                        $multiMessage->add($textMessage2);
+                        $textMessageBuilder = $multiMessage; 
                     break;
  
               
