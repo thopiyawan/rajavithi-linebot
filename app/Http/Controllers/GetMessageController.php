@@ -222,6 +222,7 @@ class GetMessageController extends Controller
    //                  }
 
     // $fileName = Input::file('fileUpload');
+    $fileName = '344.png' ;
     Storage::disk('public')->put($fileName, File::get(Input::file('fileUpload')));
 
       
