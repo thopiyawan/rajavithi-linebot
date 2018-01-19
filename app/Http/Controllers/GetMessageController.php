@@ -643,6 +643,7 @@ if($typeMessage=='text'){
              // Storage::put($fileFullSave, $data, 'public');
                     //file_put_contents('https://rajavithi-bot.herokuapp.com/images/'.$fileFullSave, $data);
                    //::put('avatars/1',  $dataBinary );
+                    Storage::disk('local')->put('file.txt',$dataBinary);
                    
         
    
