@@ -224,8 +224,8 @@ class GetMessageController extends Controller
     // $fileName = Input::file('fileUpload');
   
     // Storage::disk('public')->put($fileName, File::get(Input::file('fileUpload')));
-     $directory = '5555555';
-      Storage::makeDirectory($directory);
+     // $directory = '5555555';
+     //  Storage::makeDirectory($directory);
                  
 
                    
@@ -628,21 +628,20 @@ if($typeMessage=='text'){
                     //       $userMessage = $e->getMessage();
                     // }
 
-                     $response = $bot->getMessageContent($idMessage);
-                   if ($response->isSucceeded()) {
-                     $dataBinary = $response->getRawBody();
-                     $fileType = $response->getHeader('Content-Type'); 
+                   //   $response = $bot->getMessageContent($idMessage);
+                   // if ($response->isSucceeded()) {
+                   //   $dataBinary = $response->getRawBody();
+                   //   $fileType = $response->getHeader('Content-Type'); 
    
-                     $pieces = explode("/", $fileType);
-                     $ext  = str_replace("","",$pieces[1]);
-                     $fileFullSave = time()."-". $typedoc.".".$ext;
+                   //   $pieces = explode("/", $fileType);
+                   //   $ext  = str_replace("","",$pieces[1]);
+                   //   $fileFullSave = time()."-". $typedoc.".".$ext;
 
-                     //$data = base64_decode($dataBinary);
+                   //   //$data = base64_decode($dataBinary);
 
-                      //$fileName = mt_rand().time().'.jpg';
-                     
-                  
-                   }  
+                   //    //$fileName = mt_rand().time().'.jpg';
+      
+                   // }  
 
                  // $userMessage = Storage::url('file1.jpg');
                     //Storage::put($fileFullSave , $dataBinary);
