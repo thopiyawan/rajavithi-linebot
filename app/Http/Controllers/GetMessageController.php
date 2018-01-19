@@ -80,7 +80,7 @@ class GetMessageController extends Controller
           $user = 'U2dc636d2cd052e82c29f5284e00f69b9';
 
 
-          Storage::putFile('photos', new File('/storage'));
+          Storage::putFile('photos', new File('local'));
            // $answer = sequents::select('question')
            //                      ->where('seqcode','0001')
            //                      ->first();
