@@ -19,8 +19,8 @@ use App\Http\Controllers\Controller;
 //////////////////////
 
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 
 
 
@@ -78,6 +78,9 @@ class GetMessageController extends Controller
         $dbconn = pg_pconnect($conn_string);
             
           $user = 'U2dc636d2cd052e82c29f5284e00f69b9';
+
+
+          Storage::putFile('photos', new File('/path/to/photo'));
            // $answer = sequents::select('question')
            //                      ->where('seqcode','0001')
            //                      ->first();
@@ -639,7 +642,7 @@ if($typeMessage=='text'){
                   
                    }  
 
-                  $userMessage = Storage::url('file1.jpg');
+                 // $userMessage = Storage::url('file1.jpg');
                     //Storage::put($fileFullSave , $dataBinary);
                    // Storage::disk('local')->put($fileFullSave , $data);
              // Storage::put($fileFullSave, $data, 'public');
