@@ -149,8 +149,10 @@ if($typeMessage=='text'){
                 }elseif($userMessage == '2'){
                     $case = 1;
                     $seqcode = '0005';
-                    $nextseqcode = '0006';
+                    //$nextseqcode = '0006';
                     $question = $this->sequents_question($seqcode);
+                    $seqcode = '0000';
+                    $nextseqcode = '0006';
                     $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                     $userMessage =  $question;
 
@@ -181,12 +183,12 @@ if($typeMessage=='text'){
 
                 }elseif($userMessage == '3'){
                     $case = 1;
-                    // $seqcode = '0005';
+                    $seqcode = '0005';
                     // $nextseqcode = '0006';
-                    $seqcode = '0000';
-                    $nextseqcode = '0006';
 
                     $question = $this->sequents_question($seqcode);
+                    $seqcode = '0000';
+                    $nextseqcode = '0006';
                     $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                     $userMessage =  $question;
 
@@ -207,11 +209,11 @@ if($typeMessage=='text'){
                     
                 }elseif($userMessage == '2'){
                     $case = 1;
-                    // $seqcode = '0005';
+                    $seqcode = '0005';
                     // $nextseqcode = '0006';
+                    $question = $this->sequents_question($seqcode);
                     $seqcode = '0000';
                     $nextseqcode = '0006';
-                    $question = $this->sequents_question($seqcode);
                     $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                     $userMessage =  $question;
 
@@ -242,11 +244,12 @@ if($typeMessage=='text'){
 
                 }elseif($userMessage == '3'){
                     $case = 1;
-                    // $seqcode = '0005';
+                    $seqcode = '0005';
                     // $nextseqcode = '0006';
+                  
+                    $question = $this->sequents_question($seqcode);
                     $seqcode = '0000';
                     $nextseqcode = '0006';
-                    $question = $this->sequents_question($seqcode);
                     $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                     $userMessage =  $question;
 
@@ -301,11 +304,11 @@ if($typeMessage=='text'){
 
                 }elseif($userMessage == '3'){
                     $case = 1;
-                    // $seqcode = '0005';
+                    $seqcode = '0005';
                     // $nextseqcode = '0006';
+                    $question = $this->sequents_question($seqcode);
                     $seqcode = '0000';
                     $nextseqcode = '0006';
-                    $question = $this->sequents_question($seqcode);
                     $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                     $userMessage =  $question;
 
@@ -338,11 +341,11 @@ if($typeMessage=='text'){
 
                 }elseif($userMessage == '3'){
                     $case = 1;
-                    // $seqcode = '0005';
+                    $seqcode = '0005';
                     // $nextseqcode = '0006';
+                    $question = $this->sequents_question($seqcode);
                     $seqcode = '0000';
                     $nextseqcode = '0006';
-                    $question = $this->sequents_question($seqcode);
                     $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                     $userMessage =  $question;
 
@@ -397,11 +400,11 @@ if($typeMessage=='text'){
 
                 }elseif($userMessage == '3'){
                     $case = 1;
-                    // $seqcode = '0005';
+                    $seqcode = '0005';
                     // $nextseqcode = '0006';
+                    $question = $this->sequents_question($seqcode);
                     $seqcode = '0000';
                     $nextseqcode = '0006';
-                    $question = $this->sequents_question($seqcode);
                     $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                     $userMessage =  $question;
 
@@ -433,11 +436,11 @@ if($typeMessage=='text'){
 
                 }elseif($userMessage == '3'){
                     $case = 1;
-                    // $seqcode = '0005';
+                    $seqcode = '0005';
                     // $nextseqcode = '0006';
+                    $question = $this->sequents_question($seqcode);
                     $seqcode = '0000';
                     $nextseqcode = '0006';
-                    $question = $this->sequents_question($seqcode);
                     $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                     $userMessage =  $question;
 
