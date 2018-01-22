@@ -421,10 +421,12 @@ if($typeMessage=='text'){
             }elseif(is_string($userMessage) !== false &&  $seqcode == '0017'){
                 
                 if($userMessage == '1'){
-                    $case = 1;
+                    $case = 13;
                     $seqcode = '0018';
-                    $nextseqcode = '0000';
+                    //$nextseqcode = '0000';
                     $question = $this->sequents_question($seqcode);
+                    $seqcode = '0000';
+                    $nextseqcode = '0000';
                     $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                     $userMessage =  $question;
                     //รูป
