@@ -681,8 +681,8 @@ if($typeMessage=='text'){
                     $imageUrl = NULL;
                     $textMessageBuilder = new TemplateMessageBuilder('Template',
                      new ButtonTemplateBuilder(
-                              $userMessage, // กำหนดหัวเรื่อง
-                              'กดเลือกด้านล่างได้เลยค่ะ', // กำหนดรายละเอียด
+                               NULL, // กำหนดหัวเรื่อง
+                               $userMessage, // กำหนดรายละเอียด
                                $imageUrl, // กำหนด url รุปภาพ
                                $actionBuilder  // กำหนด action object
                          )
