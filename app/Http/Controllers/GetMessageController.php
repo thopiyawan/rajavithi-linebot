@@ -610,8 +610,8 @@ if($typeMessage=='text'){
                     $imageUrl = NULL;
                     $textMessage2 = new TemplateMessageBuilder('Template',
                      new ButtonTemplateBuilder(
-                              'ผู้ป่วยเป็นผู้ชายหรือผู้หญิงวัยหมดประจำเดือนหรือ', // กำหนดหัวเรื่อง
-                              'ได้คุมกำเนิดด้วยวิธีทำหมัน, ฉีดยาคุม, ฝังยาคุมหรือใส่ห่วงอนามัยแล้วใช่หรือไม่?', // กำหนดรายละเอียด
+                              NULL, // กำหนดหัวเรื่อง
+                              'ผู้ป่วยเป็นผู้ชายหรือผู้หญิงวัยหมดประจำเดือนหรือได้คุมกำเนิดด้วยวิธีทำหมัน, ฉีดยาคุม, ฝังยาคุมหรือใส่ห่วงอนามัยแล้วใช่หรือไม่?', // กำหนดรายละเอียด
                                $imageUrl, // กำหนด url รุปภาพ
                                $actionBuilder  // กำหนด action object
                          )
@@ -816,6 +816,20 @@ if($typeMessage=='text'){
 
                     break;
                 case 13 : 
+
+                        $textMessage1 = new TextMessageBuilder($userMessage);
+                        $Message = 'งั้นขอตัวไปก่อนจนกว่าจะมีเคสใหม่นะคะ/ครับ';
+                        $textMessage2 = new TextMessageBuilder($Message);
+
+
+
+                        $multiMessage = new MultiMessageBuilder;
+                        $multiMessage->add($textMessage1);
+                        $multiMessage->add($textMessage2);
+                        $textMessageBuilder = $multiMessage; 
+                    break;
+
+                case 14 : 
 
                         $textMessage1 = new TextMessageBuilder($userMessage);
                         $Message = 'งั้นขอตัวไปก่อนจนกว่าจะมีเคสใหม่นะคะ/ครับ';
