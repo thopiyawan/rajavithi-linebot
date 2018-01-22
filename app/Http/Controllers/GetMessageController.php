@@ -490,7 +490,7 @@ if($typeMessage=='text'){
                 $nextseqcode = '0013';
                 $question = $this->sequents_question($seqcode);
                 $userMessage = $question;
-                $case = 8; 
+                $case = 5; 
                 $update_sequentsteps = $this->update_sequentsteps($user,$seqcode,$nextseqcode);
                 $typedoc = '4';
                 break;
