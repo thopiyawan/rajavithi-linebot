@@ -194,7 +194,7 @@ if($typeMessage=='text'){
 
                 }else{
                     $case = 1;
-                    $userMessage ='กรุณาเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
+                    $userMessage ='กรุณากดเลือกใช่,ไม่ใช่ หรือ ไม่แน่ใจ';
                 }
              }elseif(is_string($userMessage) !== false &&   $seqcode== '0003'){
                 
@@ -221,7 +221,7 @@ if($typeMessage=='text'){
 
                 }else{
                     $case = 1;
-                    $userMessage ='กรุณาเลือกตกลง หรือ มีปัญหาการคุมกำเนิด';
+                    $userMessage ='กรุณากดเลือกตกลง หรือ มีปัญหาการคุมกำเนิด';
                 }
             
              }elseif(is_string($userMessage) !== false &&  $seqcode == '0007'){
