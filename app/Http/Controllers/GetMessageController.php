@@ -385,7 +385,7 @@ if($typeMessage=='text'){
              }elseif(is_string($userMessage) !== false &&  $seqcode == '0015'){
                 
                 if($userMessage == '1'){
-                    $case = 15;
+                    $case = 11;
                     $seqcode = '0016';
                     $nextseqcode = '0017';
                     $question = $this->sequents_question($seqcode);
