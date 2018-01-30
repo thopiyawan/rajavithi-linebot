@@ -842,6 +842,34 @@ if($typeMessage=='text'){
                         $multiMessage->add($textMessage2);
                         $textMessageBuilder = $multiMessage; 
                     break;
+                case 15 : 
+
+                        $textMessage1 = new TextMessageBuilder($userMessage);
+                        $Message = 'งั้นขอตัวไปก่อนจนกว่าจะมีเคสใหม่นะคะ/ครับ';
+                        $actionBuilder = array(
+                                          new MessageTemplateActionBuilder(
+                                          'ขอติดต่อพยาบาล',// ข้อความแสดงในปุ่ม
+                                          'ขอติดต่อพยาบาล' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                          ),
+                                         );
+
+                        $imageUrl = NULL;
+                        $textMessage2 = new TemplateMessageBuilder('Template',
+                        new ButtonTemplateBuilder(
+                              NULL, // กำหนดหัวเรื่อง
+                              'หากมีปัญหาในการส่งรูป กด "ขอติดต่อพยาบาล"', // กำหนดรายละเอียด
+                               $imageUrl, // กำหนด url รุปภาพ
+                               $actionBuilder  // กำหนด action object
+                           )
+                        );    
+
+
+
+                        $multiMessage = new MultiMessageBuilder;
+                        $multiMessage->add($textMessage1);
+                        $multiMessage->add($textMessage2);
+                        $textMessageBuilder = $multiMessage; 
+                    break;
  
               
             }
