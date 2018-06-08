@@ -76,6 +76,7 @@ class GetMessageController extends Controller
         $dbconn = pg_pconnect($conn_string);
             
           $user = 'U2dc636d2cd052e82c29f5284e00f69b9';
+            echo "$user";
                    
      }
      public function getmessage()
