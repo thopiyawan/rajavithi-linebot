@@ -583,7 +583,7 @@ if($typeMessage=='text'){
 
     public function replymessage($replyToken,$userMessage,$case)
     {
-          $httpClient = new CurlHTTPClient('Vf5/E8YVJGtBLdDKO0KKypasAfw+x3BjBCXG18D602yuJsY5Jp+r/fS8jS54THIgGIlbySeNWH4k52hCcs+NM/zhWbdso+sw7Vwnt8sqaPBtze3kBiiQUNI4BI/oy+b5j5WlZnsV8yxL8ozCHMQUXwdB04t89/1O/w1cDnyilFU=');
+          $httpClient = new CurlHTTPClient('hxZ7ZxmMzOVJoRtd303wcXtJQQ3VrpCmzuS9DJkGQ724LDDVqGfmviwAJKWPr1lkGIlbySeNWH4k52hCcs+NM/zhWbdso+sw7Vwnt8sqaPCuWA4y7wXVZw7Xl6uTZIaDEvdIve7y/4ys6BWABUpXvwdB04t89/1O/w1cDnyilFU=');
             $bot = new LINEBot($httpClient, array('channelSecret' => '96503ab7de564a74e4e13c5a7a3e0e40'));
             
             switch($case) {
